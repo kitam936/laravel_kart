@@ -10,15 +10,16 @@ const setting = {
     noCalendar: true,
     dateFormat: "H:i",
     time_24hr: true,
-    minTime: "9:00",
-    maxTime: "20:00"
+    minTime: "8:00",
+    maxTime: "16:00"
    }
 
 
-flatpickr("#event_date", {
+flatpickr("#date", {
     "locale": Japanese,
-    minDate: "today",
-    maxDate: new Date().fp_incr(180)
+    // minDate: "today",
+    minDate: "2020-01",
+    maxDate: new Date().fp_incr(30)
     });
 flatpickr("#start_time", setting);
-flatpickr("#end_time",setting);
+
