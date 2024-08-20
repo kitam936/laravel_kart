@@ -16,7 +16,9 @@ class Circuit extends Model
         'area_id',
         'photo1',
         'photo2',
-        'cir_info'
+        'cir_info',
+        'url',
+        'length'
     ];
 
     public function area()

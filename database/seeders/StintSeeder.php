@@ -23,6 +23,7 @@ class StintSeeder extends Seeder
             'laps'=>20,
             'best_time'=>34.75,
             'start_date'=>'2024/08/13 10:00',
+            'dry_wet' => 'dry'
             ],
 
             [
@@ -34,6 +35,7 @@ class StintSeeder extends Seeder
             'laps'=>20,
             'best_time'=>34.67,
             'start_date'=>'2024/08/13 09:00',
+            'dry_wet' => 'dry'
             ],
 
 
