@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('photo1')->nullable();
             $table->string('photo2')->nullable();
             $table->text('cir_info')->nullable();
+            $table->text('url')->nullable();
+            $table->integer('length')->nullable();
             $table->timestamps();
         });
     }
