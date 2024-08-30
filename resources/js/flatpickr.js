@@ -15,11 +15,26 @@ const setting = {
    }
 
 
-flatpickr("#date", {
+flatpickr("#from_date", {
     "locale": Japanese,
     // minDate: "today",
     minDate: "2020-01",
     maxDate: new Date().fp_incr(30)
     });
+
+flatpickr("#to_date", {
+    "locale": Japanese,
+    // minDate: "today",
+    minDate: "2020-01",
+    maxDate: new Date().fp_incr(30)
+    });
+
+flatpickr("#start_date", {
+    "locale": Japanese,
+    // minDate: "today",
+    minDate: "2020-01",
+    maxDate: new Date().fp_incr(30)
+    });
+
 flatpickr("#start_time", setting);
 

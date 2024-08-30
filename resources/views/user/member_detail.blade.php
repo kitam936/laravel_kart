@@ -13,7 +13,7 @@
 
 
         {{-- @foreach ($users as $user) --}}
-        @if($login_user->role_id == 1)
+        @if(($login_user->role_id == 1))
         <div class="md:flex md:ml-32">
         <div class="ml-2 mb-2 md:mb-0">
             <button type="button" onclick="location.href='{{ route('pw_change_admin',['user'=>$user->id])}}'" class="w-32 text-center text-sm text-white bg-green-500 border-0 py-1 px-2 focus:outline-none hover:bg-green-600 rounded ">パスワード変更</button>
@@ -22,7 +22,7 @@
         <form id="delete_{{$user->id}}" method="POST" action="{{ route('user_destroy',['user'=>$user->id]) }}">
             @csrf
             @method('delete')
-            <div class="ml-0 mt-2 md:ml-4 md:mt-0">
+            <div class="ml-2 mt-2 md:ml-4 md:mt-0">
                 <div  class="w-32 text-center text-sm text-white bg-red-500 border-0 py-1 px-2 focus:outline-none hover:bg-red-600 rounded ">
                 <a href="#" data-id="{{ $user->id }}" onclick="deletePost(this)" >メンバー削除</a>
                 </div>
