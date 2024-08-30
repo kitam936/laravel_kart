@@ -25,9 +25,12 @@ return new class extends Migration
             $table->integer('min_rev')->nullable();
             $table->integer('fr_tread')->nullable();
             $table->integer('re_tread')->nullable();
-            $table->integer('sprocket')->nullable();
+            $table->integer('fr_sprocket')->nullable();
+            $table->integer('re_sprocket')->nullable();
             $table->string('stabilizer')->nullable();
             $table->integer('tire_pres')->nullable();
+            $table->integer('tire_temp')->nullable();
+            $table->integer('tire_age')->nullable();
             $table->integer('cab_hi')->nullable();
             $table->integer('cab_lo')->nullable();
             $table->string('dry_wet')->nullable();

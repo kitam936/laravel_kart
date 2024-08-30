@@ -90,7 +90,6 @@
 
 
                                 <div class="flex ml-1 px-2 mx-auto">
-
                                     <div class="w-full mb-1">
                                         <span class=" text-sm ">画像1</span>
                                         @if(!empty($user->photo1))
@@ -109,8 +108,6 @@
                                         @endif
                                         {{-- <img src="{{ asset('storage/users/'.$user->photo2) }}"> --}}
                                     </div>
-
-
                                 </div>
 
                                 {{-- @endforeach --}}

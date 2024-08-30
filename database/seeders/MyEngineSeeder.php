@@ -21,6 +21,26 @@ class MyEngineSeeder extends Seeder
             'my_engine_info'=>'New',
             'purchase_date'=>'2020/02/20',
             ],
+            [
+            'id' => 2,
+            'user_id'=> 1,
+            'engine_id' => 2,
+            'my_engine_info'=>'old',
+            'purchase_date'=>'2018/02/20',
+            ],
+            [
+            'id' => 4,
+            'user_id'=> 2,
+            'engine_id' => 1,
+            'my_engine_info'=>'old',
+            'purchase_date'=>'2016/02/20',
+            ],
+            ['id' => 5,
+            'user_id'=> 3,
+            'engine_id' => 2,
+            'my_engine_info'=>'old',
+            'purchase_date'=>'2015/02/20',
+            ],
 
     ]);
     }
