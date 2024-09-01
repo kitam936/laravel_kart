@@ -15,6 +15,7 @@ class My_kart extends Model
         'id',
         'user_id',
         'maker_id',
+        'model_year',
         'photo1',
         'photo2',
         'my_kart_info',

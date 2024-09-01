@@ -19,6 +19,7 @@ class Stint extends Model
         'cir_id',
         'start_date',
         'laps',
+        'distance',
         'best_time',
         'max_rev',
         'min_rev',

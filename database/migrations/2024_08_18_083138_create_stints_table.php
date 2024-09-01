@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('cir_id');
             $table->dateTime('start_date');
             $table->integer('laps');
+            $table->integer('distance');
             $table->double('best_time',4,2);
             $table->integer('max_rev')->nullable();
             $table->integer('min_rev')->nullable();
@@ -28,7 +29,7 @@ return new class extends Migration
             $table->integer('fr_sprocket')->nullable();
             $table->integer('re_sprocket')->nullable();
             $table->string('stabilizer')->nullable();
-            $table->integer('tire_pres')->nullable();
+            $table->double('tire_pres',3,2)->nullable();
             $table->integer('tire_temp')->nullable();
             $table->integer('tire_age')->nullable();
             $table->integer('cab_hi')->nullable();

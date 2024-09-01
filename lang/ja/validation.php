@@ -161,13 +161,16 @@ return [
         'password-confirmation'=>'パスワード確認',
         'event_name' => 'イベント名',
         'information' => 'イベント詳細',
-        'event_date' =>'開催日',
-        'end_time' => '終了時間',
+        'start_date' =>'走行日',
         'start_time' => '開始時間',
-        'capacity' => '定員',
-        'main_fee' => '参加費',
-        'sub_fee' => '同伴参加費',
-        'area_id' => '開催エリア',
-        'place' => '開催場所',
+        'cir_id' =>'サーキット',
+        'kart_id' => 'カート',
+        'tire_id' => 'タイヤ',
+        'engine_id' => 'エンジン',
+        'laps'=>'Lap数',
+        'upper_of_time'=>'タイム（秒）',
+        'bottom_of_time'=>'タイム（秒以下）',
+
+
     ]
 ];
