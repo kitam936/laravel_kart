@@ -64,7 +64,7 @@ class HumiditySeeder extends Seeder
             ],
             [
             'id' => 9,
-            'humi_range' => '91% - 10%0',
+            'humi_range' => '91% - 100%',
             'from' => 91,
             'to' => 100
             ],

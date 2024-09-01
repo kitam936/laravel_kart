@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('maker_id');
+            $table->integer('model_year');
             $table->text('photo1')->nullable();
             $table->text('photo2')->nullable();
             $table->text('my_kart_info')->nullable();

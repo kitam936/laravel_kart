@@ -48,7 +48,9 @@ Route::get('my_stint_show/{stint}', [StintController::class, 'my_stint_show'])->
 Route::get('stint_list', [StintController::class, 'stint_list'])->name('stint_list');
 Route::get('stint_show/{stint}', [StintController::class, 'stint_show'])->name('stint_show');
 Route::get('stint_edit/{stint}', [StintController::class, 'stint_edit'])->name('stint_edit');
+Route::post('stint_update/{stint}', [StintController::class, 'stint_update'])->name('stint_update');
 Route::get('stint_create', [StintController::class, 'stint_create'])->name('stint_create');
+Route::get('stint_create_2', [StintController::class, 'stint_create_2'])->name('stint_create_2');
 Route::post('stint_store', [StintController::class, 'stint_store'])->name('stint_store');
 Route::post('stint_destroy/{stint}', [StintController::class, 'stint_destroy'])->name('stint_destroy');
 Route::get('mykart.index', [MainteContoroller::class, 'index'])->name('mykart.index');

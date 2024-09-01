@@ -22,17 +22,30 @@ class StoreStintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event_name' => ['required', 'max:50'],
-            'information' => ['required', 'max:200'],
-            'area_id' => ['required'],
-            'place' => ['required', 'max:50'],
-            'main_fee' => ['required', 'numeric', 'between:0,10000'],
-            'sub_fee' => ['required', 'numeric', 'between:0,10000'],
-            'event_date' => ['required', 'date'],
+            'stint_info' => ['max:200'],
+            'user_id' => ['required'],
+            'kart_id' => ['required'],
+            'tire_id' => ['required'],
+            'engine_id' => ['required'],
+            'cir_id' => ['required'],
+            'start_date' => ['required', 'date'],
             'start_time' => ['required'],
-            'end_time' => ['required', 'after:start_time'],
-            'capacity' => ['required', 'numeric', 'between:1,200'],
-            'is_visible' => ['required', 'boolean']
+            'laps' => ['required', 'numeric', 'between:1,200'],
+            'upper_of_time' => ['required', 'numeric'],
+            'bottom_of_time' => ['required', 'numeric'],
+            // 'dry_wet' => ['required'],
+            'image'=>['image|mimes:jpg,jpeg,png|max:2048'],
+            'files.*.image' => ['required|image|mimes:jpg,jpeg,png|max:2048'],
+
         ];
+    }
+
+    public function messages()
+    {
+        return [
+        'image' => '指定されたファイルが画像ではありません。',
+        'mines' => '指定された拡張子（jpg/jpeg/png）ではありません。',
+        'max' => 'ファイルサイズは2MB以内にしてください。',
+    ];
     }
 }
