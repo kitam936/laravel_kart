@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateStintRequest extends FormRequest
+class UpdateCircuitRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,18 +22,8 @@ class UpdateStintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'stint_info' => ['max:200'],
-            'user_id' => ['required'],
-            'kart_id' => ['required'],
-            'tire_id' => ['required'],
-            'engine_id' => ['required'],
-            'cir_id' => ['required'],
-            'start_date' => ['required', 'date'],
-            'start_time' => ['required'],
-            'laps' => ['required', 'numeric', 'between:1,200'],
-            'upper_of_time' => ['required', 'numeric'],
-            'bottom_of_time' => ['required', 'numeric'],
-            // 'dry_wet' => ['required'],
+            'cir_info' => ['max:200'],
+            'cir_name' => ['required'],
             'image'=>['image|mimes:jpg,jpeg,png|max:2048'],
             'files.*.image' => ['required|image|mimes:jpg,jpeg,png|max:2048'],
         ];

@@ -32,6 +32,11 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('circuit_list') }}" :active="request()->routeIs('circuit_list')">
+                       Circuit List
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('memberlist') }}" :active="request()->routeIs('memberlist')">
                        Member List
                     </x-nav-link>
@@ -110,6 +115,11 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('my_stint') }}" :active="request()->routeIs('my_stint')">
                 My Stint
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('circuit_list') }}" :active="request()->routeIs('circuit_list')">
+                Circuit List
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">

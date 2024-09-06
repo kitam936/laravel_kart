@@ -4,9 +4,12 @@
             Stint詳細
         </h2>
     <form>
-        <div class="md:flex md:ml-20">
+        <div class="flex md:ml-20">
         <div class="ml-0 md:ml-4">
             <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('stint_list') }}'" >StintList</button>
+        </div>
+        <div class="ml-0 md:ml-4">
+            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('circuit_detail',['circuit'=>$stint->cir_id]) }}'" >Circuit詳細</button>
         </div>
         @if(!empty($stint->filename))
         <div class="ml-00 mt-2 md:ml-4 md:mt-0">
