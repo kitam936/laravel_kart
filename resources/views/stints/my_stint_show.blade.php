@@ -6,6 +6,7 @@
     <form>
         <div class="md:flex md:ml-20">
         <x-input type="hidden" id="stint_id" name="stint_id" value="{{ $stint_id }}"/>
+
         <div class="ml-0 md:ml-4">
             <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('my_stint') }}'" >MyStint</button>
         </div>
@@ -193,7 +194,7 @@
             @if(!empty($stint->stint_info))
             <div class="ml-2 mr-4">
                 <x-label for="stint_info" value="コメント" class="mt-1"/>
-                <div row="5" id="stint_info" class="pl-2 w-full text-sm items-center bg-gray-100 border rounded"  name="stint_info" required>{!! nl2br(e($stint->stint_info)) !!}</div>
+                <div row="5" id="stint_info" class="pl-2 w-full text-sm items-center bg-gray-100 border rounded"  name="stint_info" >{!! nl2br(e($stint->stint_info)) !!}</div>
             </div>
             @endif
 
@@ -229,6 +230,9 @@
                     <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_edit',['stint'=>$stint_id])}}'" >編集</button>
                 </div>
             <form id="delete_{{$stint_id}}" method="POST" action="{{ route('stint_destroy',['stint'=>$stint_id]) }}">
+                <input type="hidden" id="photo1" name="photo1" value="{{ $stint->photo1 }}" />
+                <input type="hidden" id="photo2" name="photo2" value="{{ $stint->photo2 }}" />
+                <input type="hidden" id="photo3" name="photo3" value="{{ $stint->photo3 }}" />
                 @csrf
                 <div class="ml-0 mt-0 md:ml-4 md:mt-0">
                     <div class="w-40 h-8 bg-red-500 text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">

@@ -13,6 +13,7 @@ use App\Models\My_kart;
 use App\Models\My_tire;
 use App\Models\My_engine;
 use App\Models\Stint;
+use App\Models\Favorite;
 
 
 class User extends Authenticatable
@@ -82,6 +83,11 @@ class User extends Authenticatable
     public function stints()
     {
         return $this->hasMany(Stint::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 
 }

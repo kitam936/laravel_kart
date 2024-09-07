@@ -118,7 +118,7 @@ class StintController extends Controller
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-                'stints.cab_lo','stints.photo1','stints.photo2','stints.photo3')
+                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3')
         // 'stints.laps','stints.max_rev','stints.min_rev')
 
         // ->select('reservations.id as resv_id','reservations.event_id','events.start_date','events.end_date','events.event_name',
@@ -160,7 +160,7 @@ class StintController extends Controller
 
         $temps = DB::table('temps')
         ->where('temps.id','>',0)
-        ->where('temps.id','<',7)
+        ->where('temps.id','<',8)
         ->get();
 
         $road_temps = DB::table('roadtemps')
@@ -353,7 +353,7 @@ class StintController extends Controller
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
         // ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','users.name','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
-        'stints.laps','stints.max_rev','stints.min_rev')
+        'stints.laps','stints.max_rev','stints.min_rev','stints.cir_id')
         ->orderBy('stints.best_time')
         ->get();
 
@@ -405,14 +405,14 @@ class StintController extends Controller
         ->leftjoin('tiretemps','tiretemps.id','=','stints.tire_temp')
         ->leftjoin('humidities','humidities.id','=','stints.humidity')
         ->where('stints.id' ,$id)
-        ->select('stints.id','users.name','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
+        ->select('stints.id','users.name','stints.cir_id','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
                 'roadtemps.roadtemp_range','temps.temp_range','stints.temp','stints.tire_temp','tiretemps.tiretemp_range',
                 'stints.atm_pressure','stints.humidity','humidities.humi_range','stints.my_kart_id','makers.id','my_karts.maker_id',
                 'makers.maker_name','stints.my_engine_id','my_engines.engine_id','engines.engine_name','my_karts.model_year',
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-                'stints.cab_lo','stints.photo1','stints.photo2','stints.photo3')
+                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3')
         ->first();
 
 
@@ -447,7 +447,7 @@ class StintController extends Controller
                 'stints.my_tire_id','my_tires.tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-                'stints.cab_lo','stints.photo1 as stint_photo1','stints.photo2 as stint_photo2','stints.photo3 as stint_photo3','stints.created_at')
+                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3','stints.created_at')
         ->first();
 
         $user = User::findOrFail(Auth::id());
@@ -491,14 +491,133 @@ class StintController extends Controller
         return view('stints.stint_edit',compact('stint','tire_temps','temps','road_temps','humis','cirs','karts','tires','engines','user'));
     }
 
-    public function stint_update(Request $request)
+    public function stint_update(UpdateStintRequest $request, $id)
     {
-        //
+        $stint=Stint::findOrFail($id);
+
+        $start = $request['start_date'] . " " . $request['start_time'];
+        $startDate = Carbon::createFromFormat(
+        'Y-m-d H:i', $start );
+        // dd($start,$startDate);
+
+        $circuit = DB::table('circuits')
+        ->where('circuits.id',$request['cir_id'])
+        ->first();
+
+        $pastlaps= DB::table('stints')
+        ->where('stints.user_id',Auth::id())
+        ->where('stints.my_tire_id',$request['tire_id'])
+        // ->select('stints.my_tire_id','laps')
+        ->selectRaw('SUM(stints.laps) as laps')
+        ->first();
+
+
+        $filePath1 = 'public/stint/' . $stint->photo1;
+        if(!empty($request->image1) && (Storage::exists($filePath1))){
+            Storage::delete($filePath1);
+            // dd($filePath1,$request->image1);
+        }
+        $filePath2 = 'public/stint/' . $stint->photo2;
+        if(!empty($request->image2) && (Storage::exists($filePath2))){
+            Storage::delete($filePath2);
+            // dd($filePath2,$request->image2);
+        }
+
+        $filePath3 = 'public/stint/' . $stint->photo3;
+        if(!empty($request->image3) && (Storage::exists($filePath3))){
+            Storage::delete($filePath3);
+            // dd($filePath3,$request->image3);
+        }
+
+        if(!is_null($request->file('image1'))){
+            $fileName1 = uniqid(rand().'_');
+            $extension1 = $request->file('image1')->extension();
+            $fileNameToStore1 = $fileName1. '.' . $extension1;
+            $resizedImage1 = InterventionImage::make($request->file('image1'))->resize(400, 400,function($constraint){$constraint->aspectRatio();})->encode();
+            Storage::put('public/stint/' . $fileNameToStore1, $resizedImage1 );
+        }else{
+            $fileNameToStore1 = $stint->photo1;
+        };
+
+        if(!is_null($request->file('image2'))){
+            $fileName2 = uniqid(rand().'_');
+            $extension2 = $request->file('image2')->extension();
+            $fileNameToStore2 = $fileName2. '.' . $extension2;
+            $resizedImage2 = InterventionImage::make($request->file('image2'))->resize(400, 400,function($constraint){$constraint->aspectRatio();})->encode();
+            Storage::put('public/stint/' . $fileNameToStore2, $resizedImage2 );
+        }else{
+            $fileNameToStore2 = $stint->photo2;
+        };
+        if(!is_null($request->file('image3'))){
+            $fileName3 = uniqid(rand().'_');
+            $extension3 = $request->file('image3')->extension();
+            $fileNameToStore3 = $fileName3. '.' . $extension3;
+            $resizedImage3 = InterventionImage::make($request->file('image3'))->resize(400, 400,function($constraint){$constraint->aspectRatio();})->encode();
+            Storage::put('public/stint/' . $fileNameToStore3, $resizedImage3 );
+        }else{
+            $fileNameToStore3 = $stint->photo3;
+        };
+
+        $stint->user_id = Auth::id();
+        $stint->my_kart_id = $request['kart_id'];
+        $stint->my_tire_id = $request['tire_id'];
+        $stint->my_engine_id = $request['engine_id'];
+        $stint->cir_id = $request['cir_id'];
+        $stint->start_date = $startDate;
+        $stint->laps = $request['laps'];
+        $stint->best_time = $request['upper_of_time']+$request['bottom_of_time']/100;
+        $stint->max_rev = $request['max_rev'];
+        $stint->min_rev = $request['min_rev'];
+        $stint->fr_tread = $request['fr_tread'];
+        $stint->re_tread = $request['re_tread'];
+        $stint->fr_sprocket = $request['fr_sprocket'];
+        $stint->re_sprocket = $request['re_sprocket'];
+        $stint->stabilizer = $request['stabilizer'];
+        $stint->tire_pres = $request['tire_pres']/100;
+        $stint->tire_temp = $request['tire_temp_id'];
+        $stint->tire_age = $request['laps']+$pastlaps->laps;
+        $stint->distance = $request['laps']*$circuit->length;
+        $stint->cab_hi = $request['cab_hi'];
+        $stint->cab_lo = $request['cab_lo'];
+        $stint->dry_wet = $request['dry/wet'];
+        $stint->temp = $request['temp_id'];
+        $stint->humidity = $request['humi_id'];
+        $stint->atm_pressure = $request['atm_pressure'];
+        $stint->road_temp = $request['road_temp_id'];
+        $stint->stint_info = $request['stint_info'];
+        $stint->photo1 = $fileNameToStore1;
+        $stint->photo2 = $fileNameToStore2;
+        $stint->photo3 = $fileNameToStore3;
+        // dd($request->stint_info);
+
+        $stint->save();
+
+        return to_route('my_stint')->with(['message'=>'Stintが更新されました','status'=>'info']);
     }
 
 
-    public function stint_destroy($id)
+    public function stint_destroy(Request $request,$id)
     {
+        $stint=Stint::findOrFail($id);
+        $filePath1 = 'public/stint/' . $stint->photo1;
+        // if(!empty($request->photo1) && (Storage::exists($filePath1))){
+        if((Storage::exists($filePath1))){
+            Storage::delete($filePath1);
+            // dd($filePath1,$request->photo1);
+        }
+        $filePath2 = 'public/stint/' . $stint->photo2;
+        // if(!empty($request->photo2) && (Storage::exists($filePath2))){
+        if((Storage::exists($filePath2))){
+            Storage::delete($filePath2);
+            // dd($filePath2,$request->photo2);
+        }
+
+        $filePath3 = 'public/stint/' . $stint->photo3;
+        // if(!empty($request->photo3) && (Storage::exists($filePath3))){
+        if((Storage::exists($filePath3))){
+            Storage::delete($filePath3);
+            // dd($filePath3,$request->photo3);
+        }
         Stint::findOrFail($id)->delete();
 
         return to_route('my_stint')->with(['message'=>'Stintが削除されました','status'=>'alert']);

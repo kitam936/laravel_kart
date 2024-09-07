@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Carbon\Carbon;
+use App\Models\Circuit;
+use App\Models\User;
 
 class Stint extends Model
 {
@@ -55,6 +57,16 @@ class Stint extends Model
     { return new Attribute(
     get: fn () => Carbon::parse($this->start_date)->format('Y-m-d'),
     );}
+
+    public function circuit()
+    {
+        return $this->belongsTo(Circuit::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
 

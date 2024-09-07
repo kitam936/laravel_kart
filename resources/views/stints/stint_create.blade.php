@@ -174,10 +174,10 @@
 
                 <div class="ml-2 mr-4 flex">
                 <div class="mr-2">
-                    <x-label for="fr_tread" value="フロントトレッド" class="mt-0"/>
+                    <x-label for="fr_tread" value="フロントトレッド(内側)" class="mt-0"/>
                     <select name="fr_tread" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                         <option value="" @if(\Request::get('fr_tread') == '0') selected @endif >前トレッド</option>
-                        @for($i = 1; $i <= 5; $i++)
+                        @for($i = 5; $i <= 20; $i=$i+5)
                         <option value="{{$i}}">{{$i}}</option>
                         @endfor
                     </select>

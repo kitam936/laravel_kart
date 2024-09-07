@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Stint;
+use App\Models\Favorite;
 
 class My_engine extends Model
 {
@@ -27,5 +28,10 @@ class My_engine extends Model
     public function stints()
     {
         return $this->hasMany(Stint::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
     }
 }

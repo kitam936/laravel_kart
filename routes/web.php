@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\CircuitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\StintController;
 use App\Http\Controllers\MainteContoroller;
+use App\Models\Circuit;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,17 @@ Route::get('stint_data_edit/{stint}', [DocumentController::class, 'data_edit'])-
 Route::post('stint_data_upload/{stint}', [DocumentController::class, 'data_upload'])->name('stint_data_upload');
 Route::post('stint_data_destroy/{stint}', [DocumentController::class, 'data_destroy'])->name('stint_data_destroy');
 Route::get('stint_data_download/{stint}',[DocumentController::class,'data_download'])->name('stint_data_download');
+Route::get('circuit_list', [CircuitController::class, 'circuit_list'])->name('circuit_list');
+Route::get('circuit_detail/{circuit}', [CircuitController::class, 'circuit_detail'])->name('circuit_detail');
+Route::get('circuit_edit/{circuit}', [CircuitController::class, 'circuit_edit'])->name('circuit_edit');
+Route::post('circuit_update/{circuit}', [CircuitController::class, 'circuit_update'])->name('circuit_update');
+Route::get('circuit_create', [CircuitController::class, 'circuit_create'])->name('circuit_create');
+Route::post('circuit_store', [CircuitController::class, 'circuit_store'])->name('circuit_store');
+Route::post('circuit_destroy/{circuit}', [CircuitController::class, 'circuit_destroy'])->name('circuit_destroy');
+Route::get('favorite_edit/{circuit}', [CircuitController::class, 'favorite_edit'])->name('favorite_edit');
+Route::get('favorite_edit_of/{circuit}', [CircuitController::class, 'favorite_edit_of'])->name('favorite_edit_of');
+Route::post('favorite_store', [CircuitController::class, 'favorite_store'])->name('favorite_store');
+Route::post('favorite_destroy/{id}', [CircuitController::class, 'favorite_destroy'])->name('favorite_destroy');
 });
 
 require __DIR__.'/auth.php';

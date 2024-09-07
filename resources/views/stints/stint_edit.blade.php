@@ -36,9 +36,10 @@
 
                 <div>
                     <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}" />
-                </div>
-                <div>
                     <input type="hidden" id="stint_id" name="stint_id" value="{{ $stint->stint_id }}" />
+                    <input type="hidden" id="photo1" name="photo1" value="{{ $stint->photo1 }}" />
+                    <input type="hidden" id="photo2" name="photo2" value="{{ $stint->photo2 }}" />
+                    <input type="hidden" id="photo3" name="photo3" value="{{ $stint->photo3 }}" />
                 </div>
 
 
@@ -46,7 +47,7 @@
                     <div class="flex justify-between">
                         <div class="mr-2">
                             <x-label for="start_date" value="走行日" />
-                            <x-input id="start_date" class="bg-gray-100 block mt-1 w-full" id="start_date" type="text" name="start_date" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('y-m-d') }}" required  />
+                            <x-input id="start_date" class="bg-gray-100 block mt-1 w-full" id="start_date" type="text" name="start_date" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('Y-m-d') }}" required  />
                         </div>
                         <div>
                             <x-label for="start_time" value="開始時間" />
@@ -157,8 +158,8 @@
                 <div class="ml-2 mr-4 flex">
                     <div class="mr-2">
                         <x-label for="tire_pres" value="タイヤ圧" class="mt-0"/>
-                        <select name="tire_pres" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="{{ $stint->tire_pres }}" @if(\Request::get('tire_pres') == '0') selected @endif >{{ $stint->tire_pres }}</option>
+                        <select name="tire_pres" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <option value="{{ $stint->tire_pres*100 }}" @if(\Request::get('tire_pres') == '0') selected @endif >{{ $stint->tire_pres }}</option>
                             @for($i = 65; $i <= 130; $i=$i+5)
                             <option value="{{$i}}">{{$i/100}}</option>
                             @endfor
@@ -201,7 +202,7 @@
                     <div calss="mr-2">
                         <x-label for="upper_of_time" value="BestTime" class="mt-0"/>
                         <select name="upper_of_time" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('upper_of_time') == '0') selected @endif >秒</option>
+                            <option value="{{ floor($stint->best_time) }}" @if(\Request::get('upper_of_time') == '0') selected @endif >{{ floor($stint->best_time) }}</option>
                             @for($i = 30; $i <= 60; $i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -213,7 +214,7 @@
                         <x-label for="bottom_of_time" value=" コンマ以下2桁" class="mt-0"/>
                         {{-- <x-input id="number_of_sub" class="bg-gray-100 block mt-1 w-full" id="number_of_sub" type="text" name="number_of_sub" :value="old('number_of_sub')" required  /> --}}
                         <select name="bottom_of_time" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('bottom_of_time') == '0') selected @endif >秒以下</option>
+                            <option value="{{ ($stint->best_time*100)%100}}" @if(\Request::get('bottom_of_time') == '0') selected @endif >{{ ($stint->best_time*100)%100 }}</option>
                             @for($i = 00; $i <= 99; $i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -225,7 +226,7 @@
                         <x-label for="laps" value="Lap数" class="mt-0"/>
                         {{-- <x-input id="number_of_sub" class="bg-gray-100 block mt-1 w-full" id="number_of_sub" type="text" name="number_of_sub" :value="old('number_of_sub')" required  /> --}}
                         <select name="laps" class="w-20 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('laps') == '0') selected @endif >Lap</option>
+                            <option value="{{ $stint->laps }}" @if(\Request::get('laps') == '0') selected @endif >{{ $stint->laps }}</option>
                             @for($i = 00; $i <= 50; $i++)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -239,7 +240,7 @@
                     <div>
                         <x-label for="max_rev" value="最高回転数" class="mt-0"/>
                         <select name="max_rev" class="w-24 mr-2 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('max_rev') == '0') selected @endif >Max</option>
+                            <option value="{{ $stint->max_rev }}" @if(\Request::get('max_rev') == '0') selected @endif >{{ $stint->max_rev }}</option>
                             @for($i = 13500; $i <= 15000; $i=$i+100)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -248,7 +249,7 @@
                     <div class="mr-4">
                         <x-label for="min_rev" value="最低回転数" class="mt-0"/>
                         <select name="min_rev" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('max_rev') == '0') selected @endif >Min</option>
+                            <option value="{{ $stint->min_rev }}" @if(\Request::get('max_rev') == '0') selected @endif >{{ $stint->min_rev }}</option>
                             @for($i = 6500; $i <= 9000; $i=$i+100)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -307,18 +308,18 @@
 
             <div class="ml-2">
                 <x-label for="stint_info" value="コメント" class="mt-1"/>
-                <x-textarea row="5" id="stint_info" class="bg-gray-100 block mt-1 w-full" type="text" name="stint_info" >{{ old('stint_info')  }}</x-textarea>
+                <x-textarea row="5" id="stint_info" class="bg-gray-100 block mt-1 w-full" type="text" name="stint_info" >{{ $stint->stint_info }}</x-textarea>
             </div>
             <div class="px-2 md:w-2/1 mx-auto">
                 <div class="relative flex">
                 <div class="w-80 ml-2">
-                    <x-stint-thumbnail :filename="$stint->stint_photo1" />
+                    <x-stint-thumbnail :filename="$stint->photo1" />
                 </div>
                 <div class="w-80 ml-2">
-                    <x-stint-thumbnail :filename="$stint->stint_photo2" />
+                    <x-stint-thumbnail :filename="$stint->photo2" />
                 </div>
                 <div class="w-80 ml-2">
-                    <x-stint-thumbnail :filename="$stint->stint_photo3" />
+                    <x-stint-thumbnail :filename="$stint->photo3" />
                 </div>
                 </div>
             </div>

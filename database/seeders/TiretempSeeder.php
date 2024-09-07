@@ -82,10 +82,46 @@ class TiretempSeeder extends Seeder
             ],
             [
             'id' => 12,
-            'tiretemp_range' => '61℃ - ',
+            'roadtemp_range' => '61℃ - 65℃',
             'from' => 61,
+            'to' => 65
+            ],
+            ['id' => 13,
+            'roadtemp_range' => '66℃ - 70℃',
+            'from' => 66,
+            'to' => 70
+            ],
+            ['id' => 14,
+            'roadtemp_range' => '71℃ - 75℃',
+            'from' => 71,
+            'to' => 75
+            ],
+            ['id' => 15,
+            'roadtemp_range' => '76℃ - 80℃',
+            'from' => 76,
+            'to' => 80
+            ],
+            ['id' => 16,
+            'roadtemp_range' => '81℃ - 85℃',
+            'from' => 81,
+            'to' => 85
+            ],
+            ['id' => 17,
+            'roadtemp_range' => '86℃ - 90℃',
+            'from' => 86,
+            'to' => 90
+            ],
+            ['id' => 18,
+            'roadtemp_range' => '91℃ - 95℃',
+            'from' => 91,
+            'to' => 95
+            ],
+            ['id' => 19,
+            'roadtemp_range' => '96℃ - 100℃',
+            'from' => 96,
             'to' => 100
             ],
+
 
 
     ]);

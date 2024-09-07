@@ -36,7 +36,7 @@
     </x-slot>
 
     <div class="py-0 border">
-        <div class=" mx-auto sm:px-4 lg:px-4 border ">
+        <div class="md:w-2/3 sm:px-4 lg:px-4 border ">
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
@@ -52,10 +52,10 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-left"> {{ $user->id }} </td>
-                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-left"> {{ $user->area_name }} </td>
-                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-left text-indigo-500"><a href="{{ route('member_detail',['user'=>$user->id]) }}" >{{ Str::limit($user->name,30) }}</a></td>
-                        <td class="w-3/12 md:3/12 text-xs md:px-4 py-1 text-left">{{ Str::limit($user->user_info,28) }}</td>
+                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-center"> {{ $user->id }} </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-center"> {{ $user->area_name }} </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-center text-indigo-500"><a href="{{ route('member_detail',['user'=>$user->id]) }}" >{{ Str::limit($user->name,30) }}</a></td>
+                        <td class="w-3/12 md:3/12 text-xs md:px-4 py-1 text-center">{{ Str::limit($user->user_info,28) }}</td>
                         {{--  <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-center"><a href="{{ route('member_detail',['user'=>$user->id]) }}" class="w-20 h-8 text-indigo-500 ml-2 "  >詳細</a></td>  --}}
                     </tr>
                     @endforeach

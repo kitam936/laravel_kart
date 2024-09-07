@@ -236,7 +236,7 @@
                     <div>
                         <x-label for="max_rev" value="最高回転数" class="mt-0"/>
                         <select name="max_rev" class="w-24 mr-2 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('max_rev') == '0') selected @endif >Max</option>
+                            <option value="{{ $latest->max_rev }}" @if(\Request::get('max_rev') == '0') selected @endif >{{ $latest->max_rev }}</option>
                             @for($i = 13500; $i <= 15000; $i=$i+100)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor
@@ -245,7 +245,7 @@
                     <div class="mr-4">
                         <x-label for="min_rev" value="最低回転数" class="mt-0"/>
                         <select name="min_rev" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
-                            <option value="" @if(\Request::get('max_rev') == '0') selected @endif >Min</option>
+                            <option value="{{ $latest->min_rev }}" @if(\Request::get('min_rev') == '0') selected @endif >{{ $latest->min_rev }}</option>
                             @for($i = 6500; $i <= 9000; $i=$i+100)
                             <option value="{{$i}}">{{$i}}</option>
                             @endfor

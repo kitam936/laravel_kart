@@ -62,31 +62,6 @@ class TempSeeder extends Seeder
             'from' => 41,
             'to' => 45
             ],
-            [
-            'id' => 9,
-            'temp_range' => '46℃ - 50℃',
-            'from' => 46,
-            'to' => 50
-            ],
-            [
-            'id' => 10,
-            'temp_range' => '51℃ - 55℃',
-            'from' => 51,
-            'to' => 55
-            ],
-            [
-            'id' => 11,
-            'temp_range' => '56℃ - 60℃',
-            'from' => 56,
-            'to' => 60
-            ],
-            [
-            'id' => 12,
-            'temp_range' => '61℃ - ',
-            'from' => 61,
-            'to' => 100
-            ],
-
 
     ]);
     }
