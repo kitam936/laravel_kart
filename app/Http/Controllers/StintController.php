@@ -160,7 +160,7 @@ class StintController extends Controller
 
         $temps = DB::table('temps')
         ->where('temps.id','>',0)
-        ->where('temps.id','<',7)
+        ->where('temps.id','<',8)
         ->get();
 
         $road_temps = DB::table('roadtemps')
@@ -353,7 +353,7 @@ class StintController extends Controller
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
         // ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','users.name','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
-        'stints.laps','stints.max_rev','stints.min_rev')
+        'stints.laps','stints.max_rev','stints.min_rev','stints.cir_id')
         ->orderBy('stints.best_time')
         ->get();
 

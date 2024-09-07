@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Models\Circuit;
 use App\Models\Stint;
 use App\Models\Area;
+use App\Models\Favorite;
 use App\Models\User;
 
 class CircuitController extends Controller
@@ -45,6 +46,16 @@ class CircuitController extends Controller
 
         $user = User::findOrFail(Auth::id());
 
+        $favorite = DB::table('favorites')
+        ->where('favorites.user_id',Auth::id())
+        ->where('favorites.cir_id',$id)
+        ->first();
+
+        $isfavorite = DB::table('favorites')
+        ->where('favorites.user_id',Auth::id())
+        ->where('favorites.cir_id',$id)
+        ->exists();
+
         $stints = DB::table('stints')
         ->join('users','users.id','=','stints.user_id')
         ->join('my_engines','my_engines.id','=','stints.my_engine_id')
@@ -62,9 +73,9 @@ class CircuitController extends Controller
         ->orderBy('stints.best_time')
         ->get();
 
-        // dd($circuit,$user,$stints);
+        // dd($circuit,$user,$stints,$favorite,$isfavorite);
 
-        return view('circuit.circuit_detail',compact('circuit','user','stints'));
+        return view('circuit.circuit_detail',compact('circuit','user','stints','favorite','isfavorite'));
     }
 
     public function circuit_edit($id)
@@ -206,6 +217,57 @@ class CircuitController extends Controller
         return to_route('circuit_list')->with(['message'=>'Circuitが削除されました','status'=>'alert']);
     }
 
+    public function favorite_edit($id)
+    {
+        $circuit=DB::table('circuits')
+        ->where('circuits.id',$id)
+        // ->select(['circuits.id as cir_id','circuits.cir_name','circuits.area_id',
+        // 'circuits.length','circuits.url','circuits.cir_info','areas.area_name','circuits.photo1','circuits.photo2'])
+        ->first();
+
+        // dd($circuit);
+
+        return view('circuit.favorite_edit',compact('circuit'));
+    }
+
+    public function favorite_edit_of($id)
+    {
+        $circuit=DB::table('circuits')
+        ->where('circuits.id',$id)
+        // ->select(['circuits.id as cir_id','circuits.cir_name','circuits.area_id',
+        // 'circuits.length','circuits.url','circuits.cir_info','areas.area_name','circuits.photo1','circuits.photo2'])
+        ->first();
+
+        $favorite = DB::table('favorites')
+        ->where('favorites.user_id',Auth::id())
+        ->where('favorites.cir_id',$id)
+        ->first();
+
+        // dd($circuit,$favorite);
+
+        return view('circuit.favorite_edit_of',compact('circuit','favorite'));
+    }
+
+    public function favorite_store(Request $request)
+    {
+        // dd($request);
+
+        Favorite::create([
+            'user_id' => Auth::id(),
+            'cir_id' => $request['cir_id'],
+
+        ]);
+
+        return to_route('circuit_list')->with(['message'=>'ホームコースが登録されました','status'=>'info']);
+    }
+
+    public function favorite_destroy($id)
+    {
+
+        Favorite::findOrFail($id)->delete();
+
+        return to_route('circuit_list')->with(['message'=>'ホームコースが解除されました','status'=>'alert']);
+    }
 
 
 

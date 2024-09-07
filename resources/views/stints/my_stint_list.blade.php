@@ -103,12 +103,12 @@
                     @foreach ($stints as $stint)
 
                     <tr>
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-left"> {{ $stint->stint_id }} </td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-left"> {{ \Carbon\Carbon::parse($stint->start_date)->format("y/m/d H:i") }} </td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-left"> {{ $stint->cir_name }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-left"><a href="{{ route('my_stint_show',['stint'=>$stint->stint_id]) }}" > {{$stint->best_time}}</a> </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-left"> {{ $stint->max_rev }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-left"> {{ $stint->min_rev }} </td>
+                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->stint_id }} </td>
+                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($stint->start_date)->format("y/m/d H:i") }} </td>
+                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->cir_name }} </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('my_stint_show',['stint'=>$stint->stint_id]) }}" > {{$stint->best_time}}</a> </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->max_rev }} </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->min_rev }} </td>
                         {{--  <td class="w-2/13 md:2/13 text-sm text-indigo-500 md:px-4 py-1 text-center"><a href="{{ route('my_reservation_show',['resv'=>$reservation->id]) }}" >詳細</a></td>  --}}
                     </tr>
                     @endforeach

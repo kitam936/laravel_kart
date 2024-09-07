@@ -50,9 +50,14 @@ class UserController extends Controller
         ->where('users.id',$id)
         ->select('users.id','users.name','users.name_kana','users.email','users.role_id','roles.role_name','users.area_id','areas.area_name','users.user_info','users.photo1','users.photo2',)
         ->first();
+        $favorites = DB::table('favorites')
+        ->join('circuits','circuits.id','=','favorites.cir_id')
+        ->join('areas','areas.id','=','circuits.area_id')
+        ->where('favorites.user_id',$id)
+        ->paginate(20);
 
         // dd($login_user,$user,$user->id);
-        return view('user.member_detail',compact('login_user','user'));
+        return view('user.member_detail',compact('login_user','user','favorites'));
 
     }
 
@@ -292,7 +297,13 @@ class UserController extends Controller
         ->select('users.id','users.name','users.name_kana','users.email','users.role_id','roles.role_name','users.area_id','areas.area_name','users.user_info','users.photo1','users.photo2',)
         ->first();
 
-        return view('user.ac_info',compact('user','user2'));
+        $favorites = DB::table('favorites')
+        ->join('circuits','circuits.id','=','favorites.cir_id')
+        ->join('areas','areas.id','=','circuits.area_id')
+        ->where('favorites.user_id',Auth::id())
+        ->paginate(20);
+
+        return view('user.ac_info',compact('user','user2','favorites'));
         // dd($user2);
     }
 

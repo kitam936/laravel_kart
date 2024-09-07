@@ -82,9 +82,24 @@ class RoadtempSeeder extends Seeder
             ],
             [
             'id' => 12,
-            'roadtemp_range' => '61℃ - ',
+            'roadtemp_range' => '61℃ - 65℃',
             'from' => 61,
-            'to' => 100
+            'to' => 65
+            ],
+            ['id' => 13,
+            'roadtemp_range' => '66℃ - 70℃',
+            'from' => 66,
+            'to' => 70
+            ],
+            ['id' => 14,
+            'roadtemp_range' => '71℃ - 75℃',
+            'from' => 71,
+            'to' => 75
+            ],
+            ['id' => 15,
+            'roadtemp_range' => '76℃ - 80℃',
+            'from' => 76,
+            'to' => 80
             ],
 
 

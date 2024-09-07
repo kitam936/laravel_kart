@@ -70,6 +70,10 @@ Route::post('circuit_update/{circuit}', [CircuitController::class, 'circuit_upda
 Route::get('circuit_create', [CircuitController::class, 'circuit_create'])->name('circuit_create');
 Route::post('circuit_store', [CircuitController::class, 'circuit_store'])->name('circuit_store');
 Route::post('circuit_destroy/{circuit}', [CircuitController::class, 'circuit_destroy'])->name('circuit_destroy');
+Route::get('favorite_edit/{circuit}', [CircuitController::class, 'favorite_edit'])->name('favorite_edit');
+Route::get('favorite_edit_of/{circuit}', [CircuitController::class, 'favorite_edit_of'])->name('favorite_edit_of');
+Route::post('favorite_store', [CircuitController::class, 'favorite_store'])->name('favorite_store');
+Route::post('favorite_destroy/{id}', [CircuitController::class, 'favorite_destroy'])->name('favorite_destroy');
 });
 
 require __DIR__.'/auth.php';

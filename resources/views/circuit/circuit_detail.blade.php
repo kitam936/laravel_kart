@@ -9,33 +9,48 @@
 
         <input type="hidden" id="user_id" name="user_id" value="{{ $user->id }}" />
         <input type="hidden" id="circuit_id" name="circuit_id" value="{{ $circuit->cir_id }}" />
+
         <div class="flex ml-0 ">
         <div class="ml-2 mb-2 md:mb-0">
             <button type="button" onclick="location.href='{{ route('circuit_list') }}'" class="w-32 h-8 text-center text-sm text-white bg-indigo-400 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded ">Circuit_List</button>
         </div>
-
-
         {{-- @foreach ($users as $user) --}}
 
-        <div class="flex md:ml-32">
-        <div class="ml-2 mb-2 md:mb-0">
-            <button type="button" onclick="location.href='{{ route('circuit_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-green-500 border-0 py-1 px-2 focus:outline-none hover:bg-green-600 rounded ">編集</button>
+
         </div>
-        @if(($user->role_id == 1))
-        <form id="delete_{{$circuit->cir_id}}" method="POST" action="{{ route('circuit_destroy',['circuit'=>$circuit->cir_id]) }}">
-            @csrf
-            {{-- @method('delete') --}}
-            <div class="ml-2 mt-0 md:ml-4 md:mt-0">
-                <div  class="w-32  h-8 text-center text-sm text-white bg-red-500 border-0 py-1 px-2 focus:outline-none hover:bg-red-600 rounded ">
-                <a href="#" data-id="{{ $circuit->cir_id }}" onclick="deletePost(this)" >削除</a>
+        <div class="flex md:ml-2 mt-2">
+            <div class="flex md:ml-0">
+                @if(!($favorite))
+                <div class="ml-2 mb-2 md:ml-0">
+                    <button type="button" onclick="location.href='{{ route('favorite_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-blue-300 border-0 py-1 px-2 focus:outline-none hover:bg-blue-400 rounded ">ホームコース登録</button>
                 </div>
+                @else
+                <div class="ml-2 mb-2 md:ml-0">
+                    <button type="button" onclick="location.href='{{ route('favorite_edit_of',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-pink-400 border-0 py-1 px-2 focus:outline-none hover:bg-pink-500 rounded ">ホームコース解除</button>
+                </div>
+                @endif
             </div>
-        </form>
+            <div class="ml-2 mb-2 md:ml-32">
+                <button type="button" onclick="location.href='{{ route('circuit_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-green-500 border-0 py-1 px-2 focus:outline-none hover:bg-green-600 rounded ">編集</button>
+            </div>
+            @if(($user->role_id == 1))
+            <form id="delete_{{$circuit->cir_id}}" method="POST" action="{{ route('circuit_destroy',['circuit'=>$circuit->cir_id]) }}">
+                @csrf
+                {{-- @method('delete') --}}
+                <div class="ml-2 mt-0 md:ml-4 md:mt-0">
+                    <div  class="w-32  h-8 text-center text-sm text-white bg-red-500 border-0 py-1 px-2 focus:outline-none hover:bg-red-600 rounded ">
+                    <a href="#" data-id="{{ $circuit->cir_id }}" onclick="deletePost(this)" >削除</a>
+                    </div>
+                </div>
+            </form>
+            @endif
         </div>
-        @endif
+        <span class="text-indigo-600 ml-4">ホームコース登録するとStintDataの新着お知らせメールが届きます。     </span>
+        <br>
+        <span class="text-indigo-600 ml-4">ホームコースはアカウント情報で確認できます。     </span>
 
 
-        </div>
+
 
     </x-slot>
 
@@ -121,6 +136,7 @@
 
         <div class="py-0 border">
             <div class=" mx-auto sm:px-4 lg:px-4 border ">
+                LapList
                 {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
                 <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                     <thead>
@@ -139,11 +155,11 @@
                         @foreach ($stints as $stint)
 
                         <tr>
-                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-left"> {{ $stint->id }} </td>
-                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-left"> {{ $stint->engine_name }} </td>
-                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-left"> {{ $stint->tire_name }} </td>
-                            <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-left"><a href="{{ route('member_detail',['user'=>$stint->user_id]) }}" > {{ $stint->user_name }}  </a></td>
-                            <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-indigo-500 text-left"><a href="{{ route('stint_show',['stint'=>$stint->id]) }}" > {{ $stint->best_time }} </a></td>
+                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->id }} </td>
+                            <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"><a href="{{ route('member_detail',['user'=>$stint->user_id]) }}" > {{ $stint->user_name }}  </a></td>
+                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->engine_name }} </td>
+                            <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->tire_name }} </td>
+                            <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('stint_show',['stint'=>$stint->id]) }}" > {{ $stint->best_time }} </a></td>
 
 
                             {{--  <td class="w-2/13 md:2/13 text-sm text-indigo-500 md:px-4 py-1 text-center"><a href="{{ route('my_reservation_show',['resv'=>$reservation->id]) }}" >詳細</a></td>  --}}

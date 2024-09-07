@@ -42,7 +42,7 @@
     </x-slot>
 
     <div class="py-0 border">
-        <div class=" mx-auto sm:px-4 lg:px-4 border ">
+        <div class="md:w-2/3 sm:px-4 lg:px-4 border ">
             {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
@@ -50,7 +50,6 @@
                         <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Area</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">サーキット</th>
-
                         {{--  <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>  --}}
                     </tr>
                 </thead>
@@ -59,9 +58,9 @@
                     @foreach ($circuits as $circuit)
 
                     <tr>
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-left"> {{ $circuit->cir_id }} </td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-left"> {{ $circuit->area_name }} </a></td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-indigo-500 text-left"><a href="{{ route('circuit_detail',['circuit'=>$circuit->cir_id]) }}" > {{ $circuit->cir_name }} </a></td>
+                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $circuit->cir_id }} </td>
+                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $circuit->area_name }} </a></td>
+                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('circuit_detail',['circuit'=>$circuit->cir_id]) }}" > {{ $circuit->cir_name }} </a></td>
 
 
                         {{--  <td class="w-2/13 md:2/13 text-sm text-indigo-500 md:px-4 py-1 text-center"><a href="{{ route('my_reservation_show',['resv'=>$reservation->id]) }}" >詳細</a></td>  --}}
