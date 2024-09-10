@@ -7,6 +7,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\StintController;
 use App\Http\Controllers\MainteContoroller;
+use App\Http\Controllers\MyKartController;
+use App\Http\Controllers\MakerController;
+use App\Http\Controllers\MyEngineController;
+use App\Http\Controllers\EngineController;
+use App\Http\Controllers\MyTireController;
+use App\Http\Controllers\TireController;
 use App\Models\Circuit;
 
 /*
@@ -74,6 +80,60 @@ Route::get('favorite_edit/{circuit}', [CircuitController::class, 'favorite_edit'
 Route::get('favorite_edit_of/{circuit}', [CircuitController::class, 'favorite_edit_of'])->name('favorite_edit_of');
 Route::post('favorite_store', [CircuitController::class, 'favorite_store'])->name('favorite_store');
 Route::post('favorite_destroy/{id}', [CircuitController::class, 'favorite_destroy'])->name('favorite_destroy');
+
+Route::get('chassis_index', [MyKartController::class, 'index'])->name('chassis_index');
+Route::get('chassis_create', [MyKartController::class, 'create'])->name('chassis_create');
+Route::get('chassis_show/{chassis}', [MyKartController::class, 'show'])->name('chassis_show');
+Route::get('chassis_edit/{chassis}', [MyKartController::class, 'edit'])->name('chassis_edit');
+Route::post('chassis_update/{chassis}', [MyKartController::class, 'update'])->name('chassis_update');
+Route::post('chassis_store', [MyKartController::class, 'store'])->name('chassis_store');
+Route::post('chassis_destroy/{chassis}', [MyKartController::class, 'destroy'])->name('chassis_destroy');
+
+Route::get('maker_index', [MakerController::class, 'index'])->name('maker_index');
+Route::get('maker_create', [MakerController::class, 'create'])->name('maker_create');
+Route::get('maker_show/{maker}', [MakerController::class, 'show'])->name('maker_show');
+Route::get('maker_edit/{maker}', [MakerController::class, 'edit'])->name('maker_edit');
+Route::post('maker_update/{maker}', [MakerController::class, 'update'])->name('maker_update');
+Route::post('maker_store', [MakerController::class, 'store'])->name('maker_store');
+Route::post('maker_destroy/{maker}', [MakerController::class, 'destroy'])->name('maker_destroy');
+
+Route::get('myengine_index', [MyEngineController::class, 'index'])->name('myengine_index');
+Route::get('myengine_create', [MyEngineController::class, 'create'])->name('myengine_create');
+Route::get('myengine_show/{engine}', [MyEngineController::class, 'show'])->name('myengine_show');
+Route::get('myengine_edit/{engine}', [MyEngineController::class, 'edit'])->name('myengine_edit');
+Route::post('myengine_update/{engine}', [MyEngineController::class, 'update'])->name('myengine_update');
+Route::post('myengine_store', [MyEngineController::class, 'store'])->name('myengine_store');
+Route::post('myengine_destroy/{engine}', [MyEngineController::class, 'destroy'])->name('myengine_destroy');
+
+Route::get('engine_index', [EngineController::class, 'index'])->name('engine_index');
+Route::get('engine_create', [EngineController::class, 'create'])->name('engine_create');
+Route::get('engine_show/{engine}', [EngineController::class, 'show'])->name('engine_show');
+Route::get('engine_edit/{engine}', [EngineController::class, 'edit'])->name('engine_edit');
+Route::post('engine_update/{engine}', [EngineController::class, 'update'])->name('engine_update');
+Route::post('engine_store', [EngineController::class, 'store'])->name('engine_store');
+Route::post('engine_destroy/{engine}', [EngineController::class, 'destroy'])->name('engine_destroy');
+
+Route::get('mytire_index', [MyTireController::class, 'index'])->name('mytire_index');
+Route::get('mytire_create', [MyTireController::class, 'create'])->name('mytire_create');
+Route::get('mytire_show/{tire}', [MyTireController::class, 'show'])->name('mytire_show');
+Route::get('myetireedit/{tire}', [MyTireController::class, 'edit'])->name('mytire_edit');
+Route::post('myetireupdate/{tire}', [MyTireController::class, 'update'])->name('mytire_update');
+Route::post('mytire_store', [MyTireController::class, 'store'])->name('mytire_store');
+Route::post('mytire_destroy/{tire}', [MyTireController::class, 'destroy'])->name('mytire_destroy');
+
+Route::get('tire_index', [TireController::class, 'index'])->name('tire_index');
+Route::get('tire_create', [TireController::class, 'create'])->name('tire_create');
+Route::get('tire_show/{tire}', [TireController::class, 'show'])->name('tire_show');
+Route::get('tire_edit/{tire}', [TireController::class, 'edit'])->name('tire_edit');
+Route::post('tire_update/{tire}', [TireController::class, 'update'])->name('tire_update');
+Route::post('tire_store', [TireController::class, 'store'])->name('tire_store');
+Route::post('tire_destroy/{tire}', [TireController::class, 'destroy'])->name('tire_destroy');
+
+Route::get('role_list', [UserController::class, 'role_list'])->name('role_list');
+Route::get('role_edit/{user}', [UserController::class, 'role_edit'])->name('role_edit');
+Route::get('role_update/{user}', [UserController::class, 'role_update'])->name('role_update');
+Route::post('role_update/{user}', [UserController::class, 'role_update'])->name('role_update');
+Route::post('user_destroy/{user}', [UserController::class, 'user_destroy'])->name('user_destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -11,6 +11,7 @@ class Engine extends Model
 
     protected $fillable = [
         'id',
+        'engine_maker_name',
         'engine_name',
         'engine_info',
         'sort_order'

@@ -38,3 +38,10 @@ flatpickr("#start_date", {
 
 flatpickr("#start_time", setting);
 
+flatpickr("#purchase_date", {
+    "locale": Japanese,
+    // minDate: "today",
+    minDate: "2020-01",
+    maxDate: new Date().fp_incr(30)
+    });
+
