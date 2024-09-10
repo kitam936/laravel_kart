@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tires', function (Blueprint $table) {
             $table->id();
+            $table->string('tire_maker_name');
             $table->string('tire_name');
             $table->string('tire_info')->nullable();
             $table->integer('sort_order')->nullable();

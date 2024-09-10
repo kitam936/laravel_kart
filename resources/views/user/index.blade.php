@@ -29,6 +29,12 @@
                 <div class="ml-2 md:ml-4">
                     <button type="button" class="w-20 h-8 text-sm  bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('memberlist') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
                 </div>
+                @if($login_user->role_id == 1)
+                <div class="ml-2 md:ml-4">
+                    <button type="button" class="w-20 h-8 text-sm  bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('role_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">Role</button>
+                </div>
+                @endif
+
 
             </div>
             </div>

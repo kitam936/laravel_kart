@@ -170,7 +170,8 @@ return [
         'laps'=>'Lap数',
         'upper_of_time'=>'タイム（秒）',
         'bottom_of_time'=>'タイム（秒以下）',
-
-
+        'purchase_date' => '購入日',
+        'maker_id' => 'メイクス',
+        'model_year' => 'Model_Year',
     ]
 ];

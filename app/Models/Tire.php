@@ -11,7 +11,9 @@ class Tire extends Model
 
     protected $fillable = [
         'id',
+        'tire_maker_name',
         'tire_name',
+        'tire_info',
         'sort_order'
     ];
 }

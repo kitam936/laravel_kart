@@ -18,12 +18,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('ac_info') }}" :active="request()->routeIs('ac_info')">
-                       アカウント
+                       My Account
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link href="{{ route('mykart.index') }}" :active="request()->routeIs('mykart.index')">
-                       My kart
+                       My Kart
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('stint_list') }}" :active="request()->routeIs('mykart.index')">
+                    <x-nav-link href="{{ route('stint_list') }}" :active="request()->routeIs('stint_list')">
                        Stint List
                     </x-nav-link>
                 </div>
@@ -104,7 +104,7 @@
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="{{ route('ac_info') }}" :active="request()->routeIs('ac_info')">
-                アカウント
+                My Account
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">

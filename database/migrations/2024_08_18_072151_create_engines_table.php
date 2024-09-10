@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('engines', function (Blueprint $table) {
             $table->id();
+            $table->string('engine_maker_name');
             $table->string('engine_name');
             $table->string('engine_info')->nullable();
             $table->integer('sort_order')->nullable();

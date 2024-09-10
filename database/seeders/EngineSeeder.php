@@ -16,18 +16,21 @@ class EngineSeeder extends Seeder
         DB::table('engines')->insert([
             [
             'id' => 1,
+            'engine_maker_name'=> 'YAMAHA',
             'engine_name' => 'KT100SEC',
             'engine_info' => 'KT100セル付き',
             'sort_order' => 1
             ],
             [
             'id' => 2,
+            'engine_maker_name'=> 'YAMAHA',
             'engine_name' => 'KT100',
             'engine_info' => 'KT100ダイレクト',
             'sort_order' => 2
             ],
             [
             'id' => 3,
+            'engine_maker_name'=> 'ROTAX',
             'engine_name' => 'MAX',
             'engine_info' => 'MAX',
             'sort_order' => 3

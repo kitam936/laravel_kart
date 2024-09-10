@@ -20,6 +20,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $attributes = [
+        'role_id' => 9,
+        'area_id' => 9,
+    ];
+
 
     protected $fillable = [
         'name',

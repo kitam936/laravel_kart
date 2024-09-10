@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('photo1')->nullable();
             $table->string('photo2')->nullable();
             $table->text('user_info')->nullable();
-            $table->tinyInteger('role_id');
+            $table->tinyInteger('role_id')->nullable();
             $table->integer('area_id')->nullable();
             $table->rememberToken();
             $table->timestamps();

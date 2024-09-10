@@ -35,9 +35,11 @@ class UserController extends Controller
         ->where('users.role_id','LIKE','%'.($request->role_id).'%')
         ->where('users.name','LIKE','%'.($request->user_name).'%')
         ->paginate(30);
-        // dd($companies,$areas,$shops);
+        $login_user = User::findOrFail(Auth::id());
 
-        return view('user.index',compact('roles','areas','users'));
+                // dd($companies,$areas,$shops);
+
+        return view('user.index',compact('roles','areas','users','login_user'));
         // dd($roles,$areas,$users);
     }
 
@@ -218,19 +220,19 @@ class UserController extends Controller
         $login_user=User::findOrFail(Auth::id());
 
         $changeable_roles = DB::table('roles')
-        ->where('roles.id','>',$login_user->role_id)
+        ->where('roles.id','>=',$login_user->role_id)
         ->select('roles.id','roles.role_name')
         ->get();
 
         $changeable_users = DB::table('users')
         ->join('areas','areas.id','=','users.area_id')
         ->join('roles','roles.id','=','users.role_id')
-        ->where('users.role_id','>',$login_user->role_id)
+        ->where('users.role_id','>=',$login_user->role_id)
         ->select('users.id','users.name','users.role_id','roles.role_name','users.area_id','areas.area_name','users.user_info')
         ->get();
         // dd($login_user,$changeable_users,$changeable_roles);
 
-        return view('manager.role.role_list',compact('roles','areas','users','changeable_users','changeable_roles'));
+        return view('role.role_list',compact('roles','areas','users','changeable_users','changeable_roles'));
         // dd($roles,$areas,$users);
     }
 
@@ -253,7 +255,7 @@ class UserController extends Controller
         $login_user2=User::findOrFail(Auth::id());
 
         $changeable_roles = DB::table('roles')
-        ->where('roles.id','>',$login_user2->role_id)
+        ->where('roles.id','>=',$login_user2->role_id)
         ->groupBy('roles.id','role_name')
         ->select('roles.id','roles.role_name')
         ->get();
@@ -261,12 +263,12 @@ class UserController extends Controller
         $changeable_users = DB::table('users')
         ->join('areas','areas.id','=','users.area_id')
         ->join('roles','roles.id','=','users.role_id')
-        ->where('users.role_id','>',$login_user2->role_id)
+        ->where('users.role_id','>=',$login_user2->role_id)
         ->select('users.id','users.name','users.role_id','roles.role_name','users.area_id','areas.area_name','users.user_info')
         ->get();
         // dd($login_user,$changeable_users,$changeable_roles);
 
-        return view('manager.role.role_edit',compact('login_user','user','areas','roles','changeable_users','changeable_roles'));
+        return view('role.role_edit',compact('login_user','user','areas','roles','changeable_users','changeable_roles'));
         // dd($login_user,$user);
     }
 

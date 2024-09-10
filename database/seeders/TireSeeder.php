@@ -16,18 +16,21 @@ class TireSeeder extends Seeder
         DB::table('tires')->insert([
             [
             'id' => 1,
+            'tire_maker_name' => 'DL',
             'tire_name' => 'SL22',
             'tire_info' => 'SL22',
             'sort_order' => 1
             ],
             [
             'id' => 2,
+            'tire_maker_name' => 'BS',
             'tire_name' => 'SL17',
             'tire_info' => 'SL17',
             'sort_order' => 2
             ],
             [
             'id' => 3,
+            'tire_maker_name' => 'Mojo',
             'tire_name' => 'Mojo',
             'tire_info' => 'Mojo',
             'sort_order' => 3
