@@ -8,7 +8,7 @@
         <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $engine->id }}"/>
         <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $engine->id }}"/>
         <div class="ml-0 md:ml-4">
-            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('engine_index') }}'" >Engine_List</button>
+            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('engine_index') }}'" >Engine List</button>
         </div>
 
         </div>

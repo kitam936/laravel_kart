@@ -95,7 +95,7 @@
                         <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">BestTime</th>
                         <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">最高回転</th>
                         <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">最低回転</th>
-                        {{--  <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>  --}}
+                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Laps</th>
                     </tr>
                 </thead>
 
@@ -109,7 +109,7 @@
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('my_stint_show',['stint'=>$stint->stint_id]) }}" > {{$stint->best_time}}</a> </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->max_rev }} </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->min_rev }} </td>
-                        {{--  <td class="w-2/13 md:2/13 text-sm text-indigo-500 md:px-4 py-1 text-center"><a href="{{ route('my_reservation_show',['resv'=>$reservation->id]) }}" >詳細</a></td>  --}}
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->laps }} </td>
                     </tr>
                     @endforeach
 

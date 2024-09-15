@@ -5,10 +5,10 @@
         </h2>
         <div class="flex">
             <div class="ml-2 ">
-                <button type="button" class="w-32 h-8 bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >My_Kart</button>
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
             <div class="ml-2 md:ml-2">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white hover:bg-indigo-600 rounded" onclick="location.href='{{ route('engine_index') }}'" >Engine_List</button>
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white hover:bg-indigo-600 rounded" onclick="location.href='{{ route('engine_index') }}'" >Engine List</button>
             </div>
             <div class="ml-2 ">
                 <button type="button" class="w-32 h-8 bg-green-500 text-white ml-0 hover:bg-green-600 rounded" onclick="location.href='{{ route('myengine_create') }}'" >新規登録</button>
@@ -16,7 +16,8 @@
         </div>
         <br>
         <div class="ml-4 md:ml-13 text-indigo-500">
-            ※”No”・”Name”をクリックすると詳細の確認ができます。
+            ※”Engine No”をクリックするとMyEngine詳細の確認ができます。<br>
+            ※”Name”をクリックするとEngine詳細の確認ができます。
         </div>
 
 
@@ -29,7 +30,7 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
+                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Engine No</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
                         <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>

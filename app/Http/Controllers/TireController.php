@@ -78,7 +78,7 @@ class TireController extends Controller
 
     public function update(Request $request,$id)
     {
-        $tire = Tire::findOr($id);
+        $tire = Tire::findOrFail($id);
         $tire->tire_maker_name = $request['tire_maker'];
         $tire->tire_name = $request['tire_name'];
         $tire->tire_info = $request['tire_info'];
