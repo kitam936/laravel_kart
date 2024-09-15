@@ -173,5 +173,11 @@ return [
         'purchase_date' => '購入日',
         'maker_id' => 'メイクス',
         'model_year' => 'Model_Year',
+        'maint_date' => '実施日',
+        'eg_maint_category_id' =>'メンテナンスカテゴリー',
+        'eg_maint_info' => 'メンテナンス内容',
+        'ch_maint_category_id' =>'メンテナンスカテゴリー',
+        'maint_info' => 'メンテナンス内容',
+
     ]
 ];

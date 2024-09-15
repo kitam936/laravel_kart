@@ -6,6 +6,8 @@ use App\Http\Requests\StoreKartRequest;
 use App\Http\Requests\UpdateKartRequest;
 use InterventionImage;
 use App\Models\My_kart;
+use App\Models\ChMaint;
+use App\Models\ChMaintCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -41,7 +43,7 @@ class MyKartController extends Controller
 
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $kart = DB::table('my_karts')
         ->join('makers','makers.id','=','my_karts.maker_id')
@@ -53,9 +55,60 @@ class MyKartController extends Controller
         $makers = DB::table('makers')
         ->get();
 
-        // dd($karts);
+        $stints = DB::table('stints')
+        ->join('my_karts','my_karts.id','=','stints.my_kart_id')
+        ->join('makers','makers.id','=','my_karts.maker_id')
+        ->where('stints.my_kart_id' ,$id)
+        ->select('stints.id','stints.start_date','stints.my_kart_id','my_karts.maker_id','makers.maker_name','stints.laps','stints.distance')
+        ->get();
 
-        return view('mykart.chassis_show',compact('kart','makers'));
+        $first_date = DB::table('ch_maints')
+        ->where('ch_maints.my_kart_id' ,$id)
+        ->select('ch_maints.my_kart_id')
+        ->selectRaw('min(maint_date) as latest')
+        ->groupBy('ch_maints.my_kart_id')
+        ->first();
+
+        $max_date = DB::table('ch_maints')
+        ->where('ch_maints.my_kart_id' ,$id)
+        ->where('ch_maints.ch_maint_category_id','LIKE','%'.($request->category_id).'%')
+        ->select('ch_maints.my_kart_id','ch_maints.ch_maint_category_id')
+        ->selectRaw('max(maint_date) as latest')
+        ->groupBy('ch_maints.my_kart_id','ch_maints.ch_maint_category_id')
+        ->first();
+
+        if(is_null($request->category_id) | is_null($max_date)){
+            $maint_date = $first_date;
+        }else{
+            $maint_date = $max_date;
+        };
+
+
+        $stints_total = DB::table('stints')
+        ->where('stints.my_kart_id' ,$id)
+        ->wheredate('stints.start_date' ,'>=',$maint_date->latest)
+        ->select('stints.my_kart_id')
+        ->selectRaw('SUM(stints.laps) as laps')
+        ->selectRaw('SUM(stints.distance) as distance')
+        ->groupBy('stints.my_kart_id')
+        ->first();
+
+        $maints = DB::table('ch_maints')
+        ->join('my_karts','my_karts.id','=','ch_maints.my_kart_id')
+        ->join('makers','makers.id','=','my_karts.maker_id')
+        ->join('ch_maint_categories','ch_maint_categories.id','=','ch_maints.ch_maint_category_id')
+        ->where('ch_maints.my_kart_id' ,$id)
+        ->where('ch_maints.ch_maint_category_id','LIKE','%'.($request->category_id).'%')
+        ->select('ch_maints.id as maint_id','ch_maints.maint_date','ch_maint_categories.ch_maint_name','ch_maints.maint_info','ch_maints.ch_maint_category_id')
+        ->orderBy('maint_date','desc')
+        ->get();
+
+        $maint_categories = DB::table('ch_maint_categories')->get();
+
+
+        // dd($kart,$makers,$stints,$stints_total);
+
+        return view('mykart.chassis_show',compact('kart','makers','stints','stints_total','maints','maint_categories'));
 
     }
 

@@ -8,7 +8,7 @@
         <x-input type="hidden" id="tire_id" name="tire_id" value="{{ $tire->id }}"/>
         <x-input type="hidden" id="tire_id" name="tire_id" value="{{ $tire->id }}"/>
         <div class="ml-0 md:ml-4">
-            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('tire_index') }}'" >Tire_List</button>
+            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('tire_index') }}'" >Tire List</button>
         </div>
 
         </div>

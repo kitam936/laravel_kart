@@ -18,9 +18,21 @@ class MyTireController extends Controller
         ->orderBy('my_tires.purchase_date','desc')
         ->get();
 
-        // dd($tires);
+        $tires2 = DB::table('my_tires')
+        ->leftjoin('stints','stints.my_tire_id','=','my_tires.id')
+        ->join('tires','tires.id','=','my_tires.tire_id')
+        ->where('my_tires.user_id',Auth::id())
+        ->select('my_tires.id','stints.my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date')
+        ->selectRaw('SUM(laps) as laps')
+        ->selectRaw('SUM(stints.distance) as distance')
+        ->groupBy('my_tires.id','stints.my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date')
+        // ->select('my_tires.id as my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date','laps')
+        ->orderBy('my_tires.purchase_date','desc')
+        ->get();
 
-        return view('mykart.mytire_list',compact('tires'));
+        // dd($tires,$tires2);
+
+        return view('mykart.mytire_list',compact('tires','tires2'));
         // dd($roles,$areas,$users);
 
     }
@@ -50,9 +62,26 @@ class MyTireController extends Controller
         $tires = DB::table('tires')
         ->get();
 
-        // dd($tires);
+        $stints = DB::table('stints')
+        ->join('my_tires','my_tires.id','=','stints.my_tire_id')
+        ->join('tires','tires.id','=','my_tires.tire_id')
+        ->join('circuits','circuits.id','=','stints.cir_id')
+        ->where('stints.my_tire_id' ,$id)
+        ->select('stints.id','stints.start_date','stints.my_tire_id','my_tires.tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.distance','stints.best_time','circuits.cir_name')
+        ->get();
 
-        return view('mykart.mytire_show',compact('mytire','tires'));
+        $stints_total = DB::table('stints')
+        ->where('stints.my_tire_id' ,$id)
+        ->select('stints.my_tire_id')
+        ->selectRaw('SUM(stints.laps) as laps')
+        ->selectRaw('SUM(stints.distance) as distance')
+        ->groupBy('stints.my_tire_id')
+        ->first();
+
+
+        // dd($tires,$stints,$stints_total);
+
+        return view('mykart.mytire_show',compact('mytire','tires','stints','stints_total'));
 
     }
 
@@ -91,7 +120,7 @@ class MyTireController extends Controller
 
     public function update(Request $request,$id)
     {
-        $my_tire = My_tire::findOr($id);
+        $my_tire = My_tire::findOrFail($id);
 
         $my_tire->user_id = Auth::id();
         $my_tire->tire_id = $request['tire_id'];

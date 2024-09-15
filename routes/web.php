@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\BasedataController;
 use App\Http\Controllers\CircuitController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EgMaintController;
+use App\Http\Controllers\ChMaintController;
 use App\Http\Controllers\StintController;
 use App\Http\Controllers\MainteContoroller;
 use App\Http\Controllers\MyKartController;
@@ -134,6 +137,38 @@ Route::get('role_edit/{user}', [UserController::class, 'role_edit'])->name('role
 Route::get('role_update/{user}', [UserController::class, 'role_update'])->name('role_update');
 Route::post('role_update/{user}', [UserController::class, 'role_update'])->name('role_update');
 Route::post('user_destroy/{user}', [UserController::class, 'user_destroy'])->name('user_destroy');
+
+Route::get('eg_maint_create/{eg}', [EgMaintController::class, 'create'])->name('eg_maint_create');
+Route::get('eg_maint_show/{maint}', [EgMaintController::class, 'show'])->name('eg_maint_show');
+Route::get('eg_maint_edit/{maint}', [EgMaintController::class, 'edit'])->name('eg_maint_edit');
+Route::post('eg_maint_update/{maint}', [EgMaintController::class, 'update'])->name('eg_maint_update');
+Route::post('eg_maint_store', [EgMaintController::class, 'store'])->name('eg_maint_store');
+Route::post('eg_maint_destroy/{maint}', [EgMaintController::class, 'destroy'])->name('eg_maint_destroy');
+
+Route::get('ch_maint_create/{ch}', [ChMaintController::class, 'create'])->name('ch_maint_create');
+Route::get('ch_maint_show/{maint}', [ChMaintController::class, 'show'])->name('ch_maint_show');
+Route::get('ch_maint_edit/{maint}', [ChMaintController::class, 'edit'])->name('ch_maint_edit');
+Route::post('ch_maint_update/{maint}', [ChMaintController::class, 'update'])->name('ch_maint_update');
+Route::post('ch_maint_store', [ChMaintController::class, 'store'])->name('ch_maint_store');
+Route::post('ch_maint_destroy/{maint}', [ChMaintController::class, 'destroy'])->name('ch_maint_destroy');
+
+Route::get('category_index', [MainteContoroller::class, 'category_index'])->name('category_index');
+
+Route::get('ch_category_index', [MainteContoroller::class, 'ch_index'])->name('ch_category_index');
+Route::get('ch_category_create', [MainteContoroller::class, 'ch_create'])->name('ch_category_create');
+Route::get('ch_category_show/{category}', [MainteContoroller::class, 'ch_show'])->name('ch_category_show');
+Route::get('ch_category_edit/{category}', [MainteContoroller::class, 'ch_edit'])->name('ch_category_edit');
+Route::post('ch_category_update/{category}', [MainteContoroller::class, 'ch_update'])->name('ch_category_update');
+Route::post('ch_category_store', [MainteContoroller::class, 'ch_store'])->name('ch_category_store');
+Route::post('ch_category_destroy/{category}', [MainteContoroller::class, 'ch_destroy'])->name('ch_category_destroy');
+
+Route::get('eg_category_index', [MainteContoroller::class, 'eg_index'])->name('eg_category_index');
+Route::get('eg_category_create', [MainteContoroller::class, 'eg_create'])->name('eg_category_create');
+Route::get('eg_category_show/{category}', [MainteContoroller::class, 'eg_show'])->name('eg_category_show');
+Route::get('eg_category_edit/{category}', [MainteContoroller::class, 'eg_edit'])->name('eg_category_edit');
+Route::post('eg_category_update/{category}', [MainteContoroller::class, 'eg_update'])->name('eg_category_update');
+Route::post('eg_category_store', [MainteContoroller::class, 'eg_store'])->name('eg_category_store');
+Route::post('eg_category_destroy/{category}', [MainteContoroller::class, 'eg_destroy'])->name('eg_category_destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\ChMaint;
+use App\Models\EgMaint;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +31,11 @@ class DatabaseSeeder extends Seeder
             MyTireSeeder::class,
             MyEngineSeeder::class,
             StintSeeder::class,
+            EgMaintCategorySeeder::class,
+            ChMaintCategorySeeder::class,
+            EgMaintSeeder::class,
+            ChMaintSeeder::class,
+
             // CategorySeeder::class,
             // subCategorySeeder::class,
             // StatusSeeder::class,

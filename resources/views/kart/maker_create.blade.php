@@ -7,7 +7,7 @@
         <div class="flex mt-4 ml-8">
 
         <div class="ml-12 md:ml-12">
-            <button type="button" class="w-32 h-8 bg-indigo-500 text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('maker_index') }}'" >Maker_List</button>
+            <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('maker_index') }}'" >Maker List</button>
         </div>
         </div>
 

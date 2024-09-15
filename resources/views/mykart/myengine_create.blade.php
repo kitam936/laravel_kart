@@ -48,8 +48,7 @@
                     </div>
                 </div>
                 <div class="mt-1 ">
-                <div class="flex">
-
+                    <div class="flex">
                     <div class="ml-2">
                         <x-label for="purchase_date" value="購入日" />
                         <x-input id="purchase_date" class="bg-gray-100 text-gray-800 block mt-1 w-full" id="purchase_date" type="text" name="purchase_date" :value="old('purchase_date')" required  />

@@ -79,7 +79,7 @@ class EngineController extends Controller
 
     public function update(Request $request,$id)
     {
-        $engine = Engine::findOr($id);
+        $engine = Engine::findOrFail($id);
         $engine->engine_maker_name = $request['engine_maker'];
         $engine->engine_name = $request['engine_name'];
         $engine->engine_info = $request['engine_info'];

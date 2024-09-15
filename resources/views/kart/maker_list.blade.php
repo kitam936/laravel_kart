@@ -5,10 +5,10 @@
         </h2>
         <div class="flex">
             <div class="ml-2 ">
-                <button type="button" class="w-32 h-8 bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >My_Kart</button>
+                <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
             <div class="ml-2 ">
-                <button type="button" class="w-32 h-8 bg-green-500 text-white ml-0 hover:bg-green-600 rounded" onclick="location.href='{{ route('maker_create') }}'" >新規登録</button>
+                <button type="button" class="w-32 h-8 bg-green-500 text-sm text-white ml-0 hover:bg-green-600 rounded" onclick="location.href='{{ route('maker_create') }}'" >新規登録</button>
             </div>
         </div>
         <br>

@@ -77,7 +77,7 @@ class MakerController extends Controller
 
     public function update(Request $request,$id)
     {
-        $maker = Maker::findOr($id);
+        $maker = Maker::findOrfail($id);
         $maker->maker_name = $request['maker_name'];
         $maker->maker_info = $request['maker_info'];
         $maker->sort_order = $request['sort_order'];
