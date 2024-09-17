@@ -8,10 +8,13 @@
         <form>
             <div class="md:flex md:ml-20">
             <x-input type="hidden" id="mykart_id" name="mykart_id" value="{{ $kart->kart_id }}"/>
-
-            <div class="ml-0 md:ml-4">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_index') }}'" >Chassis_List</button>
+            <div class="ml-2 ">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
+
+            {{-- <div class="ml-0 md:ml-4">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_index') }}'" >Chassis_List</button>
+            </div> --}}
             <div class="mt-2 md:mt-0 md:ml-2 ">
                 <button type="button" class="w-32 h-8 text-sm bg-pink-500 text-white ml-2 hover:bg-pink-600 rounded" onclick="location.href='{{ route('ch_maint_create',['ch'=>$kart->kart_id])}}'" >メンテナンス登録</button>
             </div>
@@ -157,7 +160,7 @@
         <div class="bg-white mt-4">
             <span class="text-ml ml-24"> メンテナンス履歴</span><span class="text-sm">　　※IDクリックで詳細表示</span>
         </div>
-
+        @if(!empty($maints))
         <div class=" mx-auto sm:px-4 lg:px-4 border ">
             {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
@@ -186,7 +189,7 @@
             </table>
             {{-- {{  $users->links()}} --}}
         </div>
-
+        @endif
 
 
     <script>

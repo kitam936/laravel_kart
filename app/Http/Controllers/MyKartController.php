@@ -62,11 +62,12 @@ class MyKartController extends Controller
         ->select('stints.id','stints.start_date','stints.my_kart_id','my_karts.maker_id','makers.maker_name','stints.laps','stints.distance')
         ->get();
 
-        $first_date = DB::table('ch_maints')
-        ->where('ch_maints.my_kart_id' ,$id)
-        ->select('ch_maints.my_kart_id')
-        ->selectRaw('min(maint_date) as latest')
-        ->groupBy('ch_maints.my_kart_id')
+
+        $first_date = DB::table('stints')
+        ->where('stints.my_kart_id' ,$id)
+        ->select('stints.my_kart_id')
+        ->selectRaw('min(start_date) as latest')
+        ->groupBy('stints.my_kart_id')
         ->first();
 
         $max_date = DB::table('ch_maints')
@@ -82,7 +83,7 @@ class MyKartController extends Controller
         }else{
             $maint_date = $max_date;
         };
-
+        // dd( $id,$first_date,$max_date,$maint_date);
 
         $stints_total = DB::table('stints')
         ->where('stints.my_kart_id' ,$id)
@@ -106,7 +107,7 @@ class MyKartController extends Controller
         $maint_categories = DB::table('ch_maint_categories')->get();
 
 
-        // dd($kart,$makers,$stints,$stints_total);
+        // dd($kart,$makers,$stints,$stints_total,$maint_date);
 
         return view('mykart.chassis_show',compact('kart','makers','stints','stints_total','maints','maint_categories'));
 

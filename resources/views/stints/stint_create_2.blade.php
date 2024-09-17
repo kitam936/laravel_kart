@@ -177,7 +177,7 @@
                     <x-label for="fr_tread" value="フロントトレッド" class="mt-0"/>
                     <select name="fr_tread" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                         <option value="{{ $latest->fr_tread }}" @if(\Request::get('fr_tread') == '0') selected @endif >{{ $latest->fr_tread }}</option>
-                        @for($i = 1; $i <= 5; $i++)
+                        @for($i = 5; $i <= 25; $i=$i+5)
                         <option value="{{$i}}">{{$i}}</option>
                         @endfor
                     </select>

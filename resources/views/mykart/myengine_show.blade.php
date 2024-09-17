@@ -8,9 +8,12 @@
             <div class="ml-2 md:flex md:ml-20">
             <x-input type="hidden" id="my_engine_id" name="my_engine_id" value="{{ $myengine->my_engine_id }}"/>
             <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $myengine->engine_id }}"/>
-            <div class="ml-0 md:ml-4">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >MyEngine List</button>
+            <div class="ml-2 ">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
+            {{-- <div class="ml-0 md:ml-4">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >MyEngine List</button>
+            </div> --}}
             <div class="mt-2 md:mt-0 md:ml-2 ">
                 <button type="button" class="w-32 h-8 text-sm bg-pink-500 text-white ml-2 hover:bg-pink-600 rounded" onclick="location.href='{{ route('eg_maint_create',['eg'=>$myengine->my_engine_id])}}'" >メンテナンス登録</button>
             </div>

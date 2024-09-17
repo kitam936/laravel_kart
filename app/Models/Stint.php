@@ -47,16 +47,16 @@ class Stint extends Model
         'filename',
     ];
 
-    protected function startDate(): Attribute
-    { return new Attribute(
-    get: fn () => Carbon::parse($this->start_date)->format('Y年m月d日'),);}
-    protected function startTime(): Attribute
-    { return new Attribute(
-    get: fn () => Carbon::parse($this->start_date)->format('H時i分'), ); }
-    protected function editStartDate(): Attribute
-    { return new Attribute(
-    get: fn () => Carbon::parse($this->start_date)->format('Y-m-d'),
-    );}
+    // protected function startDate(): Attribute
+    // { return new Attribute(
+    // get: fn () => Carbon::parse($this->start_date)->format('Y年m月d日'),);}
+    // protected function startTime(): Attribute
+    // { return new Attribute(
+    // get: fn () => Carbon::parse($this->start_date)->format('H時i分'), ); }
+    // protected function editStartDate(): Attribute
+    // { return new Attribute(
+    // get: fn () => Carbon::parse($this->start_date)->format('Y-m-d'),
+    // );}
 
     public function circuit()
     {

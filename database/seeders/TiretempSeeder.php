@@ -121,6 +121,11 @@ class TiretempSeeder extends Seeder
             'from' => 96,
             'to' => 100
             ],
+            ['id' => 99,
+            'roadtemp_range' => '',
+            'from' => 0,
+            'to' => 100
+            ],
 
 
 

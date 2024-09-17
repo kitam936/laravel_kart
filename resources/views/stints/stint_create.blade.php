@@ -68,7 +68,7 @@
                         <option value="" @if(\Request::get('kart_id') == '0') selected @endif >kart選択</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($karts as $kart)
-                            <option value="{{ $kart->id }}"  >{{ $kart->id }}_{{ $kart->maker_name }}_{{ $kart->model_year }}</option>
+                            <option value="{{ $kart->mykart_id }}"  >{{ $kart->mykart_id }}_{{ $kart->maker_name }}_{{ $kart->model_year }}</option>
                         @endforeach
                         </select>
                     </div>
@@ -81,7 +81,7 @@
                         <option value="" @if(\Request::get('engine_id') == '0') selected @endif >エンジン選択</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($engines as $engine)
-                            <option value="{{ $engine->id }}"  >{{ $engine->id }}_{{ $engine->engine_name }}_{{ \Carbon\Carbon::parse($engine->purchase_date)->format('y-m') }}</option>
+                            <option value="{{ $engine->myengine_id }}"  >{{ $engine->myengine_id }}_{{ $engine->engine_name }}_{{ \Carbon\Carbon::parse($engine->purchase_date)->format('y-m') }}</option>
                         @endforeach
                         </select>
                     </div>
@@ -91,7 +91,7 @@
                         <option value="" @if(\Request::get('tire_id') == '0') selected @endif >タイヤ選択</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($tires as $tire)
-                            <option value="{{ $tire->id }}"  >{{ $tire->id }}_{{ $tire->tire_name }}_{{ \Carbon\Carbon::parse($tire->purchase_date)->format('y-m') }}</option>
+                            <option value="{{ $tire->mytire_id }}"  >{{ $tire->mytire_id }}_{{ $tire->tire_name }}_{{ \Carbon\Carbon::parse($tire->purchase_date)->format('y-m') }}</option>
                         @endforeach
                         </select>
                     </div>
@@ -111,7 +111,7 @@
                     <div>
                         <x-label for="temp_id" value="気温" class="mt-0"/>
                         <select class="w-32 bg-gray-100 border-gray-300 ml-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="temp_id" name="temp_id" type="text" >
-                            <option value="" @if(\Request::get('temp_id') == '0') selected @endif >気温</option>
+                            <option value="99" @if(\Request::get('temp_id') == '0') selected @endif >気温</option>
                             @foreach ($temps as $temp)
                                 <option value="{{ $temp->id }}" @if(\Request::get('temp_id') == $temp->id ) selected @endif >{{ $temp->temp_range  }}</option>
                             @endforeach
@@ -120,7 +120,7 @@
                     <div>
                         <x-label for="humi_id" value="湿度" class="mt-0"/>
                         <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="humi_id" name="humi_id" type="text" >
-                            <option value="" @if(\Request::get('humi_id') == '0') selected @endif >湿度</option>
+                            <option value="99" @if(\Request::get('humi_id') == '0') selected @endif >湿度</option>
                             @foreach ($humis as $humi)
                                 <option value="{{ $humi->id }}" @if(\Request::get('humi_id') == $humi->id ) selected @endif >{{ $humi->humi_range  }}</option>
                             @endforeach
@@ -142,7 +142,7 @@
                     <div>
                         <x-label for="road_temp_id" value="路面温度" class="mt-0"/>
                         <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="road_temp_id" name="road_temp_id" type="text" >
-                            <option value="" @if(\Request::get('road_temp_id') == '0') selected @endif >路面温度</option>
+                            <option value="99" @if(\Request::get('road_temp_id') == '0') selected @endif >路面温度</option>
                             @foreach ($road_temps as $road_temp)
                                 <option value="{{ $road_temp->id }}" @if(\Request::get('road_temp_id') == $road_temp->id ) selected @endif >{{ $road_temp->roadtemp_range  }}</option>
                             @endforeach
@@ -164,7 +164,7 @@
                     <div>
                         <x-label for="tire_temp_id" value="タイヤ温度" class="mt-0"/>
                         <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="tire_temp_id" name="tire_temp_id" type="text" >
-                            <option value="" @if(\Request::get('tire_temp_id') == '0') selected @endif >タイヤ温度</option>
+                            <option value="99" @if(\Request::get('tire_temp_id') == '0') selected @endif >タイヤ温度</option>
                             @foreach ($tire_temps as $tire_temp)
                                 <option value="{{ $tire_temp->id }}" @if(\Request::get('tire_temp_id') == $tire_temp->id ) selected @endif >{{ $tire_temp->tiretemp_range  }}</option>
                             @endforeach
@@ -177,7 +177,7 @@
                     <x-label for="fr_tread" value="フロントトレッド(内側)" class="mt-0"/>
                     <select name="fr_tread" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                         <option value="" @if(\Request::get('fr_tread') == '0') selected @endif >前トレッド</option>
-                        @for($i = 5; $i <= 20; $i=$i+5)
+                        @for($i = 5; $i <= 25; $i=$i+5)
                         <option value="{{$i}}">{{$i}}</option>
                         @endfor
                     </select>

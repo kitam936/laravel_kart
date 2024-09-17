@@ -5,10 +5,13 @@
         </h2>
 
         <div class="flex mt-4 ml-8">
-
-        <div class="ml-12 md:ml-12">
-            <button type="button" class="w-32 h-8 bg-indigo-500 text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >My_Engine_List</button>
+        <div class="ml-2 ">
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
         </div>
+
+        {{-- <div class="ml-12 md:ml-12">
+            <button type="button" class="w-32 h-8 bg-indigo-500 text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >My_Engine_List</button>
+        </div> --}}
         </div>
 
     </x-slot>

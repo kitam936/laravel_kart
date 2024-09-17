@@ -8,9 +8,13 @@
             <div class="md:flex md:ml-20">
             <x-input type="hidden" id="my_tire_id" name="my_tire_id" value="{{ $mytire->my_tire_id }}"/>
             <x-input type="hidden" id="tire_id" name="tire_id" value="{{ $mytire->tire_id }}"/>
-            <div class="ml-0 md:ml-4">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mytire_index') }}'" >My_tire_List</button>
+
+            <div class="ml-2 ">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
+            {{-- <div class="ml-0 md:ml-4">
+                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mytire_index') }}'" >My_tire_List</button>
+            </div> --}}
 
             </div>
         </form>

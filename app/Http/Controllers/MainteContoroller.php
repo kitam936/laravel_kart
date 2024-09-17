@@ -15,7 +15,42 @@ class MainteContoroller extends Controller
     public function index()
     {
         $login_user = User::findOrFail(Auth::id());
-        return view('mykart.index',compact('login_user'));
+
+        $karts = DB::table('my_karts')
+        ->join('makers','makers.id','=','my_karts.maker_id')
+        ->where('my_karts.user_id',Auth::id())
+        ->select('my_karts.id as kart_id','my_karts.maker_id','my_karts.model_year','makers.maker_name','my_karts.purchase_date')
+        ->orderBy('my_karts.purchase_date','desc')
+        ->get();
+
+        $engines = DB::table('my_engines')
+        ->join('engines','engines.id','=','my_engines.engine_id')
+        ->where('my_engines.user_id',Auth::id())
+        ->select('my_engines.id as my_engine_id','my_engines.engine_id','engines.engine_name','engines.engine_maker_name','my_engines.purchase_date')
+        ->orderBy('my_engines.purchase_date','desc')
+        ->get();
+
+        $tires = DB::table('my_tires')
+        ->join('tires','tires.id','=','my_tires.tire_id')
+        ->where('my_tires.user_id',Auth::id())
+        ->select('my_tires.id as my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date')
+        ->orderBy('my_tires.purchase_date','desc')
+        ->get();
+
+        $tires2 = DB::table('my_tires')
+        ->leftjoin('stints','stints.my_tire_id','=','my_tires.id')
+        ->join('tires','tires.id','=','my_tires.tire_id')
+        ->where('my_tires.user_id',Auth::id())
+        ->select('my_tires.id','stints.my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date')
+        ->selectRaw('SUM(laps) as laps')
+        ->selectRaw('SUM(stints.distance) as distance')
+        ->groupBy('my_tires.id','stints.my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date')
+        // ->select('my_tires.id as my_tire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date','laps')
+        ->orderBy('my_tires.purchase_date','desc')
+        ->get();
+
+
+        return view('mykart.index',compact('login_user','karts','engines','tires','tires2'));
 
     }
 

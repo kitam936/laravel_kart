@@ -14,7 +14,11 @@ use Carbon\Carbon;
 use InterventionImage;
 use App\Http\Requests\StoreStintRequest;
 use App\Http\Requests\UpdateStintRequest;
-
+use App\Jobs\SendStintMail;
+use App\Jobs\SendTestMail;
+use App\Models\Circuit;
+use App\Models\Favorite;
+use Illuminate\Mail\SendQueuedMailable;
 
 class StintController extends Controller
 {
@@ -37,7 +41,7 @@ class StintController extends Controller
         ->where('stints.temp','LIKE','%'.($request->temp_id).'%')
         ->where('stints.road_temp','LIKE','%'.($request->road_temp_id).'%')
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
-        // ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
+        ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
         'stints.laps','stints.max_rev','stints.min_rev')
         ->orderBy('stints.best_time')
@@ -69,12 +73,12 @@ class StintController extends Controller
 
 
         $num_of_laps = DB::table('stints')
-        ->join('my_karts','my_karts.id','=','stints.my_kart_id')
-        ->join('makers','makers.id','=','my_karts.maker_id')
-        ->join('my_tires','my_tires.id','=','stints.my_tire_id')
-        ->join('tires','tires.id','=','my_tires.tire_id')
-        ->join('my_engines','my_engines.id','=','stints.my_engine_id')
-        ->join('engines','engines.id','=','my_engines.engine_id')
+        ->leftjoin('my_karts','my_karts.id','=','stints.my_kart_id')
+        ->leftjoin('makers','makers.id','=','my_karts.maker_id')
+        ->leftjoin('my_tires','my_tires.id','=','stints.my_tire_id')
+        ->leftjoin('tires','tires.id','=','my_tires.tire_id')
+        ->leftjoin('my_engines','my_engines.id','=','stints.my_engine_id')
+        ->leftjoin('engines','engines.id','=','my_engines.engine_id')
         ->where('stints.user_id',Auth::id())
         ->where('stints.cir_id','LIKE','%'.($request->cir_id).'%')
         ->where('makers.id','LIKE','%'.($request->kart_id).'%')
@@ -143,18 +147,21 @@ class StintController extends Controller
         $karts = DB::table('my_karts')
         ->join('makers','makers.id','=','my_karts.maker_id')
         ->where('my_karts.user_id',Auth::id())
+        ->select('my_karts.id as mykart_id','makers.maker_name','my_karts.purchase_date','my_karts.model_year')
         ->orderBy('my_karts.id','desc')
         ->get();
 
         $tires = DB::table('my_tires')
         ->join('tires','tires.id','=','my_tires.tire_id')
         ->where('my_tires.user_id',Auth::id())
-        ->orderBy('my_tires.id','desc')
+        ->select('my_tires.id as mytire_id','tires.tire_name','my_tires.purchase_date')
+        ->orderBy('mytire_id','desc')
         ->get();
 
         $engines = DB::table('my_engines')
         ->join('engines','engines.id','=','my_engines.engine_id')
         ->where('my_engines.user_id',Auth::id())
+        ->select('my_engines.id as myengine_id','engines.engine_name','my_engines.purchase_date')
         ->orderBy('my_engines.id','desc')
         ->get();
 
@@ -172,7 +179,7 @@ class StintController extends Controller
         $humis = DB::table('humidities')
         ->get();
 
-        // dd($road_temps);
+        // dd($tires);
         // dd($latest_stint,$engines,$karts,$tires,$cirs,$user);
         return view('stints.stint_create',compact('latest','tire_temps','temps','road_temps','humis','cirs','karts','tires','engines','user'));
     }
@@ -296,6 +303,25 @@ class StintController extends Controller
         };
     //    dd($startDate,$pastlaps,$request,$fileNameToStore1,$fileNameToStore2,$fileNameToStore3);
 
+    // mail test
+        // $users = Favorite::with('user:id,name,email')
+        // ->where('cir_id',$request['cir_id'])
+        // ->distinct()
+        // ->select('user_id')
+        // ->get()
+        // ->toArray();
+
+        // $circuit2 = Circuit::findOrFail($request['cir_id'])
+        // ->toArray();
+
+
+        // foreach($users as $user){
+        //     $user = $user['user'];
+        //     SendStintMail::dispatch($circuit2,$user);
+        // }
+
+        // dd($user,$circuit);
+
         Stint::create([
             'user_id' => Auth::id(),
             'my_kart_id' => $request['kart_id'],
@@ -328,6 +354,22 @@ class StintController extends Controller
             'photo2' => $fileNameToStore2,
             'photo3' => $fileNameToStore3,
         ]);
+
+        $users = Favorite::with('user:id,name,email')
+        ->where('cir_id',$request['cir_id'])
+        ->distinct()
+        ->select('user_id')
+        ->get()
+        ->toArray();
+
+        $circuit2 = Circuit::findOrFail($request['cir_id'])
+        ->toArray();
+
+
+        foreach($users as $user){
+            $user = $user['user'];
+            SendStintMail::dispatch($circuit2,$user);
+        }
 
         return to_route('my_stint')->with(['message'=>'Stintが登録されました','status'=>'info']);
 

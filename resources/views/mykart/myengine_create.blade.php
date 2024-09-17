@@ -5,10 +5,13 @@
         </h2>
 
         <div class="flex mt-4 ml-8">
-
-        <div class="ml-12 md:ml-12">
-            <button type="button" class="w-32 h-8 bg-indigo-500 text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >My_Engine_List</button>
+        <div class="ml-2 ">
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
         </div>
+
+        {{-- <div class="ml-12 md:ml-12">
+            <button type="button" class="w-32 h-8 bg-indigo-500 text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >My_Engine_List</button>
+        </div> --}}
         </div>
 
     </x-slot>
@@ -40,7 +43,7 @@
                                 <select  id="engine_id" name="engine_id"  class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                 <option value="" @if(\Request::get('engine_id') == '0') selected @endif >エンジン選択</option>
                                 @foreach ($engines as $engine)
-                                    <option value="{{ $engine->id }}" @if(\Request::get('engine_id') == $engine->id) selected @endif >{{ $engine->engine_name }}</option>
+                                    <option value="{{ $engine->id }}" @if(\Request::get('engine_id') == $engine->id) selected @endif >{{ $engine->engine_maker_name }}___{{ $engine->engine_name }}___{{ $engine->engine_info }}</option>
                                 @endforeach
                                 </select>
                         </div>
