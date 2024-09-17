@@ -32,8 +32,29 @@ class EngineSeeder extends Seeder
             'id' => 3,
             'engine_maker_name'=> 'ROTAX',
             'engine_name' => 'MAX',
-            'engine_info' => 'MAX',
+            'engine_info' => '水冷125cc',
             'sort_order' => 3
+            ],
+            [
+            'id' => 4,
+            'engine_maker_name'=> 'VORTEX',
+            'engine_name' => 'VORTEX',
+            'engine_info' => 'VORTEX',
+            'sort_order' => 4
+            ],
+            [
+            'id' => 5,
+            'engine_maker_name'=> 'IAME',
+            'engine_name' => 'X30',
+            'engine_info' => '水冷125cc',
+            'sort_order' => 5
+            ],
+            [
+            'id' => 99,
+            'engine_maker_name'=> 'Others',
+            'engine_name' => 'Others',
+            'engine_info' => 'その他',
+            'sort_order' => 99
             ],
     ]);
 

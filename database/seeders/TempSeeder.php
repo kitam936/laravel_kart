@@ -62,6 +62,12 @@ class TempSeeder extends Seeder
             'from' => 41,
             'to' => 45
             ],
+            [
+            'id' => 99,
+            'temp_range' => '',
+            'from' => 41,
+            'to' => 45
+            ],
 
     ]);
     }

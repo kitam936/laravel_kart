@@ -35,6 +35,27 @@ class TireSeeder extends Seeder
             'tire_info' => 'Mojo',
             'sort_order' => 3
             ],
+            [
+            'id' => 10,
+            'tire_maker_name' => 'DL FD',
+            'tire_name' => 'DL FD',
+            'tire_info' => 'DL FD',
+            'sort_order' => 10
+            ],
+            [
+            'id' => 21,
+            'tire_maker_name' => 'DL',
+            'tire_name' => 'SL WET',
+            'tire_info' => 'SL WET',
+            'sort_order' => 21
+            ],
+            [
+            'id' => 99,
+            'tire_maker_name' => 'Others',
+            'tire_name' => 'Others',
+            'tire_info' => 'その他',
+            'sort_order' => 99
+            ],
     ]);
     }
 }

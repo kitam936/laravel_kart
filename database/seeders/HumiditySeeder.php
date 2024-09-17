@@ -68,6 +68,12 @@ class HumiditySeeder extends Seeder
             'from' => 91,
             'to' => 100
             ],
+            [
+            'id' => 99,
+            'humi_range' => '',
+            'from' => 0,
+            'to' => 100
+            ],
 
     ]);
     }

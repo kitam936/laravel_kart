@@ -5,10 +5,13 @@
         </h2>
 
         <div class="flex mt-4 ml-8">
-
-        <div class="ml-12 md:ml-12">
-            <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_index') }}'" >Chassis List</button>
+        <div class="ml-2 ">
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
         </div>
+
+        {{-- <div class="ml-12 md:ml-12">
+            <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_index') }}'" >Chassis List</button>
+        </div> --}}
         </div>
 
     </x-slot>
@@ -43,7 +46,7 @@
                                 {{-- <option value="" @if(\Request::get('area_id') == '0') selected @endif >エリア</option> --}}
                                 <option value="" @if(\Request::get('maker_id') == '0') selected @endif >メイクス選択</option>
                                 @foreach ($makers as $maker)
-                                    <option value="{{ $maker->id }}" @if(\Request::get('maker_id') == $maker->id) selected @endif >{{ $maker->maker_name }}</option>
+                                    <option value="{{ $maker->id }}" @if(\Request::get('maker_id') == $maker->id) selected @endif >{{ $maker->maker_name }}___{{ $maker->maker_info }}</option>
                                 @endforeach
                                 </select>
                         </div>

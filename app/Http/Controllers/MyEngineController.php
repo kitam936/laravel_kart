@@ -61,11 +61,11 @@ class MyEngineController extends Controller
         ->select('stints.id','stints.start_date','stints.my_engine_id','my_engines.engine_id','my_engines.engine_id','engines.engine_name','stints.laps','stints.distance','stints.best_time','circuits.cir_name')
         ->get();
 
-        $first_date = DB::table('eg_maints')
-        ->where('eg_maints.my_engine_id' ,$id)
-        ->select('eg_maints.my_engine_id')
-        ->selectRaw('min(maint_date) as latest')
-        ->groupBy('eg_maints.my_engine_id')
+        $first_date = DB::table('stints')
+        ->where('stints.my_kart_id' ,$id)
+        ->select('stints.my_kart_id')
+        ->selectRaw('min(start_date) as latest')
+        ->groupBy('stints.my_kart_id')
         ->first();
 
         $max_date = DB::table('eg_maints')
