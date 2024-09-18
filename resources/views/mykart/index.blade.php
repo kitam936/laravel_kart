@@ -40,11 +40,12 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Tire No</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Laps</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">距離</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Tire No</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
+                        <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Laps</th>
+                        {{-- <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">距離</th> --}}
                     </tr>
                 </thead>
 
@@ -52,24 +53,25 @@
                     {{-- @foreach ($tires as $tire)
 
                     <tr>
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('mytire_show',['tire'=>$tire->my_tire_id]) }}" >{{ $tire->my_tire_id }} </a></td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($tire->purchase_date)->format("y/m/d") }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('tire_show',['tire'=>$tire->tire_id]) }}" > {{$tire->tire_name}}</a> </td>
+                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('mytire_show',['tire'=>$tire->my_tire_id]) }}" >{{ $tire->my_tire_id }} </a></td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($tire->purchase_date)->format("y/m/d") }} </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('tire_show',['tire'=>$tire->tire_id]) }}" > {{$tire->tire_name}}</a> </td>
 
                     @endforeach --}}
 
                     @foreach ($tires2 as $tire)
 
                     <tr>
-                        @if(!Empty($tire->laps))
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('mytire_show',['tire'=>$tire->id]) }}" >{{ $tire->id }} </a></td>
-                        @else
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $tire->id }} </td>
-                        @endif
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($tire->purchase_date)->format("y/m/d") }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('tire_show',['tire'=>$tire->tire_id]) }}" > {{$tire->tire_name}}</a> </td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $tire->laps }} </td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $tire->distance }} </td>
+                        {{-- @if(!Empty($tire->laps)) --}}
+                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('mytire_show',['tire'=>$tire->id]) }}" >{{ $tire->id }} </a></td>
+                        {{-- @else --}}
+                        {{-- <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-center"> {{ $tire->id }} </td> --}}
+                        {{-- @endif --}}
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($tire->purchase_date)->format("y/m/d") }} </td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center">{{$tire->tire_maker_name}}</td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('tire_show',['tire'=>$tire->tire_id]) }}" > {{$tire->tire_name}}</a> </td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ $tire->laps }} </td>
+                        {{-- <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ $tire->distance }} </td> --}}
                     @endforeach
 
                 </tbody>
@@ -87,10 +89,11 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Chassis No</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
-                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Model_Year</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Chassis No</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
+                        <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Model_Year</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Info</th>
                     </tr>
                 </thead>
 
@@ -98,10 +101,11 @@
                     @foreach ($karts as $kart)
 
                     <tr>
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('chassis_show',['chassis'=>$kart->kart_id]) }}" >{{ $kart->kart_id }} </a></td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($kart->purchase_date)->format("y/m/d") }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('maker_show',['maker'=>$kart->maker_id]) }}" > {{$kart->maker_name}}</a> </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $kart->model_year }} </td>
+                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('chassis_show',['chassis'=>$kart->kart_id]) }}" >{{ $kart->kart_id }} </a></td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($kart->purchase_date)->format("y/m/d") }} </td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('maker_show',['maker'=>$kart->maker_id]) }}" > {{$kart->maker_name}}</a> </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1  text-center"> {{ $kart->model_year }} </td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1  text-center"> {{ $kart->my_kart_info }} </td>
                     </tr>
                     @endforeach
 
@@ -119,10 +123,11 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Engine No</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
-                        <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
-                        <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Engine No</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
+                        <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
+                        <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Info</th>
 
                     </tr>
                 </thead>
@@ -131,11 +136,11 @@
                     @foreach ($engines as $engine)
 
                     <tr>
-                        <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('myengine_show',['engine'=>$engine->my_engine_id]) }}" >{{ $engine->my_engine_id }} </a></td>
-                        <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($engine->purchase_date)->format("y/m/d") }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-center"> {{$engine->engine_maker_name}}</td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('engine_show',['engine'=>$engine->engine_id]) }}" > {{$engine->engine_name}}</a> </td>
-
+                        <td class="w-1/12 md:1/12 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('myengine_show',['engine'=>$engine->my_engine_id]) }}" >{{ $engine->my_engine_id }} </a></td>
+                        <td class="w-3/12 md:3/12 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($engine->purchase_date)->format("y/m/d") }} </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-center"> {{$engine->engine_maker_name}}</td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('engine_show',['engine'=>$engine->engine_id]) }}" > {{$engine->engine_name}}</a> </td>
+                        <td class="w-2/12 md:2/12 text-sm md:px-4 py-1  text-center"> {{ $engine->my_engine_info }} </td>
                     @endforeach
 
                 </tbody>

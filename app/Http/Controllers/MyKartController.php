@@ -63,11 +63,11 @@ class MyKartController extends Controller
         ->get();
 
 
-        $first_date = DB::table('stints')
-        ->where('stints.my_kart_id' ,$id)
-        ->select('stints.my_kart_id')
-        ->selectRaw('min(start_date) as latest')
-        ->groupBy('stints.my_kart_id')
+        $first_date = DB::table('my_karts')
+        ->where('my_karts.id' ,$id)
+        ->select('my_karts.id')
+        ->selectRaw('min(purchase_date) as latest')
+        ->groupBy('my_karts.id')
         ->first();
 
         $max_date = DB::table('ch_maints')
@@ -149,7 +149,7 @@ class MyKartController extends Controller
 
         ]);
 
-        return to_route('chassis_index')->with(['message'=>'Chassisが登録されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'Chassisが登録されました','status'=>'info']);
 
 
     }
@@ -218,7 +218,7 @@ class MyKartController extends Controller
 
         $kart->save();
 
-        return to_route('chassis_index')->with(['message'=>'Chassisが更新されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'Chassisが更新されました','status'=>'info']);
 
     }
 
@@ -242,6 +242,6 @@ class MyKartController extends Controller
 
         My_kart::findOrFail($id)->delete();
 
-        return to_route('chassis_index')->with(['message'=>'Chassisが削除されました','status'=>'alert']);
+        return to_route('mykart.index')->with(['message'=>'Chassisが削除されました','status'=>'alert']);
     }
 }

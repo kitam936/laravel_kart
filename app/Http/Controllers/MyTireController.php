@@ -94,7 +94,7 @@ class MyTireController extends Controller
             'my_tire_info' => $request['my_tire_info'],
         ]);
 
-        return to_route('mytire_index')->with(['message'=>'MyTTireが登録されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'MyTireが登録されました','status'=>'info']);
     }
 
 
@@ -131,7 +131,7 @@ class MyTireController extends Controller
 
         $my_tire->save();
 
-        return to_route('mytire_index')->with(['message'=>'MyTireが更新されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'MyTireが更新されました','status'=>'info']);
 
     }
 
@@ -141,6 +141,6 @@ class MyTireController extends Controller
 
         My_tire::findOrFail($id)->delete();
 
-        return to_route('mytire_index')->with(['message'=>'MyTireが削除されました','status'=>'alert']);
+        return to_route('mykart.index')->with(['message'=>'MyTireが削除されました','status'=>'alert']);
     }
 }
