@@ -61,13 +61,13 @@ class MyEngineController extends Controller
         ->select('stints.id','stints.start_date','stints.my_engine_id','my_engines.engine_id','my_engines.engine_id','engines.engine_name','stints.laps','stints.distance','stints.best_time','circuits.cir_name')
         ->get();
 
-        $first_date = DB::table('stints')
-        ->where('stints.my_kart_id' ,$id)
-        ->select('stints.my_kart_id')
-        ->selectRaw('min(start_date) as latest')
-        ->groupBy('stints.my_kart_id')
+        $first_date = DB::table('my_engines')
+        ->where('my_engines.id' ,$id)
+        ->select('my_engines.id')
+        ->selectRaw('min(purchase_date) as latest')
+        ->groupBy('my_engines.id')
         ->first();
-
+        // dd($first_date);
         $max_date = DB::table('eg_maints')
         ->where('eg_maints.my_engine_id' ,$id)
         ->where('eg_maints.eg_maint_category_id','LIKE','%'.($request->category_id).'%')
@@ -120,7 +120,7 @@ class MyEngineController extends Controller
             'my_engine_info' => $request['my_engine_info'],
         ]);
 
-        return to_route('myengine_index')->with(['message'=>'MyEngineが登録されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'MyEngineが登録されました','status'=>'info']);
     }
 
 
@@ -157,7 +157,7 @@ class MyEngineController extends Controller
 
         $my_engine->save();
 
-        return to_route('myengine_index')->with(['message'=>'MyEngineが更新されました','status'=>'info']);
+        return to_route('mykart.index')->with(['message'=>'MyEngineが更新されました','status'=>'info']);
 
     }
 
@@ -167,6 +167,6 @@ class MyEngineController extends Controller
 
         My_Engine::findOrFail($id)->delete();
 
-        return to_route('myengine_index')->with(['message'=>'MyEngineが削除されました','status'=>'alert']);
+        return to_route('mykart.index')->with(['message'=>'MyEngineが削除されました','status'=>'alert']);
     }
 }

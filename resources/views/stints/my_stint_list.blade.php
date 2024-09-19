@@ -7,6 +7,8 @@
             ※”ベストタイム”をクリックすると<br>Stint内容の確認、Dataダウンロードができます。
         </div>
 
+
+
         <form method="get" action="{{ route('my_stint')}}" class="mt-1">
             <x-flash-message status="session('status')"/>
             <span class="items-center text-sm mt-2 text-gray-800 dark:text-gray-200 leading-tight" >※サーキットを選択してください　　　</span>
@@ -67,6 +69,9 @@
             </div>
             <div class="ml-0 mt-2 md:ml-4 md:mt-0">
                 <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_create') }}'" >Stint登録</button>
+            </div>
+            <div class="ml-0 mt-2 md:ml-4 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('myStintCSV_download') }}'" >MyStintDataDL</button>
             </div>
 
         </div>

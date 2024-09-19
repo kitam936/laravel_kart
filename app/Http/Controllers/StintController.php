@@ -211,7 +211,7 @@ class StintController extends Controller
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
                 'stints.cab_lo','stints.photo1','stints.photo2','stints.photo3','stints.created_at')
-        ->latest()->first();
+        ->latest()->orderBy('stints.created_at', 'DESC')->first();
 
         $user = User::findOrFail(Auth::id());
 
@@ -220,19 +220,22 @@ class StintController extends Controller
         $karts = DB::table('my_karts')
         ->join('makers','makers.id','=','my_karts.maker_id')
         ->where('my_karts.user_id',Auth::id())
-        ->orderBy('my_karts.id','desc')
+        ->select('my_karts.id as mykart_id','my_karts.maker_id','makers.maker_name','my_karts.model_year',)
+        ->orderBy('mykart_id','desc')
         ->get();
 
         $tires = DB::table('my_tires')
         ->join('tires','tires.id','=','my_tires.tire_id')
         ->where('my_tires.user_id',Auth::id())
-        ->orderBy('my_tires.id','desc')
+        ->select('my_tires.id as mytire_id','my_tires.tire_id','tires.tire_name','my_tires.purchase_date',)
+        ->orderBy('mytire_id','desc')
         ->get();
 
         $engines = DB::table('my_engines')
         ->join('engines','engines.id','=','my_engines.engine_id')
         ->where('my_engines.user_id',Auth::id())
-        ->orderBy('my_engines.id','desc')
+        ->select('my_engines.id as myengine_id','my_engines.engine_id','engines.engine_maker_name','my_engines.purchase_date','engines.engine_name')
+        ->orderBy('myengine_id','desc')
         ->get();
 
         $temps = DB::table('temps')

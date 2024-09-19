@@ -96,11 +96,11 @@
         </div>
 
         <div class=" max-w-2xl mt-2 mx-auto sm:px-6 lg:px-8 rounded">
-            {{-- @foreach ($stint_total as $resv) --}}
+            @if(!empty($stints_total->laps))
             <div class='border bg-gray-100 h-6'>
                 　　　Lap数　：　{{ ($stints_total->laps) }}　周　　　走行距離　：　{{ ($stints_total->distance)/1000  }}Km　
             </div>
-            {{-- @endforeach --}}
+            @endif
         </div>
 
 
