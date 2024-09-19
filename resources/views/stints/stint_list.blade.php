@@ -73,11 +73,14 @@
                     <x-input id="to_date" class="block mt-1 w-full" id="to_date" type="text" name="to_date" :value="old('to_date')" required  />
                 </div>
             </div> --}}
-        <div>
+        <div class="flex">
             <div class="ml-0 ">
                 <button type="button" class="w-20 h-8 bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('stint_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
             </div>
+            <div class="ml-24 mt-2 md:ml-24 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('StintCSV_download') }}'" >StintDataDL</button>
             </div>
+        </div>
         </form>
 
 

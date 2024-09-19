@@ -16,6 +16,7 @@ use App\Http\Controllers\MyEngineController;
 use App\Http\Controllers\EngineController;
 use App\Http\Controllers\MyTireController;
 use App\Http\Controllers\TireController;
+use App\Http\Controllers\DataController;
 use App\Models\Circuit;
 
 /*
@@ -169,6 +170,9 @@ Route::get('eg_category_edit/{category}', [MainteContoroller::class, 'eg_edit'])
 Route::post('eg_category_update/{category}', [MainteContoroller::class, 'eg_update'])->name('eg_category_update');
 Route::post('eg_category_store', [MainteContoroller::class, 'eg_store'])->name('eg_category_store');
 Route::post('eg_category_destroy/{category}', [MainteContoroller::class, 'eg_destroy'])->name('eg_category_destroy');
+
+Route::get('myStintCSV_download', [DataController::class, 'myStintCSV_download'])->name('myStintCSV_download');
+Route::get('StintCSV_download', [DataController::class, 'StintCSV_download'])->name('StintCSV_download');
 });
 
 require __DIR__.'/auth.php';

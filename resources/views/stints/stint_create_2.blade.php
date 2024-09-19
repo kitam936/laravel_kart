@@ -316,15 +316,18 @@
                         <x-label for="stabilizer" value="スタビ" class="mt-00"/>
                         <select name="stabilizer" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $latest->stabilizer }}">{{ $latest->stabilizer }}</option>
+                            <option value="--" @if(old('stabilizer') == "--") selected @endif>なし</option>
                             {{-- <option value="なし">なし</option> --}}
                             {{-- <option value="0度">0度</option> --}}
-                            <option value="0度" @if(old('stabilizer') == "0度") selected @endif>0度</option>
+                            <option value="0°" @if(old('stabilizer') == "0°") selected @endif>0°</option>
                             {{-- <option value="30度">30度</option> --}}
-                            <option value="30度" @if(old('stabilizer') == "30度") selected @endif>30度</option>
+                            <option value="30°" @if(old('stabilizer') == "30°") selected @endif>30°</option>
+                            <option value="45°" @if(old('stabilizer') == "45°") selected @endif>45°</option>
                             {{-- <option value="60度">60度</option> --}}
-                            <option value="60度" @if(old('stabilizer') == "60度") selected @endif>60度</option>
+                            <option value="60°" @if(old('stabilizer') == "60°") selected @endif>60°</option>
+                            <option value="75°" @if(old('stabilizer') == "75°") selected @endif>75°</option>
                             {{-- <option value="90度">90度</option> --}}
-                            <option value="90度" @if(old('stabilizer') == "90度") selected @endif>90度</option>
+                            <option value="90°" @if(old('stabilizer') == "90°") selected @endif>90°</option>
                         </select>
                     </div>
                 </div>

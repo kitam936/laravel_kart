@@ -211,7 +211,7 @@ class StintController extends Controller
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
                 'stints.cab_lo','stints.photo1','stints.photo2','stints.photo3','stints.created_at')
-        ->latest()->first();
+        ->latest()->orderBy('stints.created_at', 'DESC')->first();
 
         $user = User::findOrFail(Auth::id());
 
