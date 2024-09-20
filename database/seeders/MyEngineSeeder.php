@@ -18,14 +18,21 @@ class MyEngineSeeder extends Seeder
             'id' => 11,
             'user_id'=> 11,
             'engine_id' => 1,
-            'my_engine_info'=>'New',
+            'my_engine_info'=>'New Engine',
             'purchase_date'=>'2020/02/20',
             ],
             [
             'id' => 10,
             'user_id'=> 11,
             'engine_id' => 2,
-            'my_engine_info'=>'old',
+            'my_engine_info'=>'中古エンジン',
+            'purchase_date'=>'2010/12/04',
+            ],
+            [
+            'id' => 9,
+            'user_id'=> 11,
+            'engine_id' => 2,
+            'my_engine_info'=>'New Engine',
             'purchase_date'=>'2006/04/20',
             ],
             // [
