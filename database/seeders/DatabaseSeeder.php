@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             MyKartSeeder::class,
             MyTireSeeder::class,
             MyEngineSeeder::class,
-            StintSeeder::class,
+            // StintSeeder::class,
             EgMaintCategorySeeder::class,
             ChMaintCategorySeeder::class,
             EgMaintSeeder::class,

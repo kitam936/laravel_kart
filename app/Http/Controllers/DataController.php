@@ -27,9 +27,9 @@ class DataController extends Controller
         ->leftjoin('tiretemps','tiretemps.id','=','stints.tire_temp')
         ->leftjoin('humidities','humidities.id','=','stints.humidity')
         ->select('stints.id','users.name','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
-                'roadtemps.roadtemp_range','temps.temp_range','stints.temp','stints.tire_temp','tiretemps.tiretemp_range',
+                'roadtemps.roadtemp_range','stints.temp','temps.temp_range','stints.tire_temp','tiretemps.tiretemp_range',
                 'stints.atm_pressure','stints.humidity','humidities.humi_range','stints.my_kart_id','my_karts.maker_id',
-                'makers.maker_name','stints.my_engine_id','my_engines.engine_id','engines.engine_name','my_karts.model_year',
+                'makers.maker_name','my_karts.model_year','stints.my_engine_id','my_engines.engine_id','engines.engine_name',
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
@@ -37,14 +37,14 @@ class DataController extends Controller
         ->get();
 
         $csvHeader = [
-            'stints.id','users.name','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
-            'roadtemps.roadtemp_range','temps.temp_range','stints.temp','stints.tire_temp','tiretemps.tiretemp_range',
-            'stints.atm_pressure','stints.humidity','humidities.humi_range','stints.my_kart_id','my_karts.maker_id',
-            'makers.maker_name','stints.my_engine_id','my_engines.engine_id','engines.engine_name','my_karts.model_year',
-            'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
-            'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
-            'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-            'stints.cab_lo','stints.stint_info',];
+            'stint_id','member_name','circuit_name','start_date','dry_wet','roadtemp_id',
+            'roadtemp_range','temp_id','temp_range','tiretemp_id','tiretemp_range',
+            'atm_pressure','humidity_id','humidity_range','my_kart_id','maker_id',
+            'maker_name','model_year','my_engine_id','engine_id','engine_name',
+            'my_tire_id','tire_id','tire_name','laps','best_time',
+            'max_rev','min_rev','front_tread','rear_tread','front_sprocket',
+            'rear_sprocket','stabilizer','tire_pres','tire_age','cab_hi',
+            'cab_lo','stint_info',];
         $csvData = $stints->toArray();
 
         // dd($stints,$csvHeader,$csvData);
@@ -84,23 +84,23 @@ class DataController extends Controller
         ->leftjoin('tiretemps','tiretemps.id','=','stints.tire_temp')
         ->leftjoin('humidities','humidities.id','=','stints.humidity')
         ->select('stints.id','users.name','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
-                'roadtemps.roadtemp_range','temps.temp_range','stints.temp','stints.tire_temp','tiretemps.tiretemp_range',
+                'roadtemps.roadtemp_range','stints.temp','temps.temp_range','stints.tire_temp','tiretemps.tiretemp_range',
                 'stints.atm_pressure','stints.humidity','humidities.humi_range','stints.my_kart_id','my_karts.maker_id',
-                'makers.maker_name','stints.my_engine_id','my_engines.engine_id','engines.engine_name','my_karts.model_year',
+                'makers.maker_name','my_karts.model_year','stints.my_engine_id','my_engines.engine_id','engines.engine_name',
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
                 'stints.cab_lo','stints.stint_info',)
         ->get();
         $csvHeader = [
-            'stints.id','users.name','circuits.cir_name','stints.start_date','stints.dry_wet','stints.road_temp',
-            'roadtemps.roadtemp_range','temps.temp_range','stints.temp','stints.tire_temp','tiretemps.tiretemp_range',
-            'stints.atm_pressure','stints.humidity','humidities.humi_range','stints.my_kart_id','my_karts.maker_id',
-            'makers.maker_name','stints.my_engine_id','my_engines.engine_id','engines.engine_name','my_karts.model_year',
-            'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
-            'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
-            'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-            'stints.cab_lo','stints.stint_info',];
+            'stint_id','member_name','circuit_name','start_date','dry_wet','roadtemp_id',
+            'roadtemp_range','temp_id','temp_range','tiretemp_id','tiretemp_range',
+            'atm_pressure','humidity_id','humidity_range','my_kart_id','maker_id',
+            'maker_name','model_year','my_engine_id','engine_id','engine_name',
+            'my_tire_id','tire_id','tire_name','laps','best_time',
+            'max_rev','min_rev','front_tread','rear_tread','front_sprocket',
+            'rear_sprocket','stabilizer','tire_pres','tire_age','cab_hi',
+            'cab_lo','stint_info',];
         $csvData = $stints->toArray();
 
         // dd($stints,$csvHeader,$csvData);

@@ -15,32 +15,32 @@ class MyEngineSeeder extends Seeder
     {
         DB::table('my_engines')->insert([
             [
-            'id' => 1,
-            'user_id'=> 1,
+            'id' => 11,
+            'user_id'=> 11,
             'engine_id' => 1,
             'my_engine_info'=>'New',
             'purchase_date'=>'2020/02/20',
             ],
             [
-            'id' => 2,
-            'user_id'=> 1,
+            'id' => 10,
+            'user_id'=> 11,
             'engine_id' => 2,
             'my_engine_info'=>'old',
-            'purchase_date'=>'2018/02/20',
+            'purchase_date'=>'2006/04/20',
             ],
-            [
-            'id' => 4,
-            'user_id'=> 2,
-            'engine_id' => 1,
-            'my_engine_info'=>'old',
-            'purchase_date'=>'2016/02/20',
-            ],
-            ['id' => 5,
-            'user_id'=> 3,
-            'engine_id' => 2,
-            'my_engine_info'=>'old',
-            'purchase_date'=>'2015/02/20',
-            ],
+            // [
+            // 'id' => 4,
+            // 'user_id'=> 2,
+            // 'engine_id' => 1,
+            // 'my_engine_info'=>'old',
+            // 'purchase_date'=>'2016/02/20',
+            // ],
+            // ['id' => 5,
+            // 'user_id'=> 3,
+            // 'engine_id' => 2,
+            // 'my_engine_info'=>'old',
+            // 'purchase_date'=>'2015/02/20',
+            // ],
 
     ]);
     }

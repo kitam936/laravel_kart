@@ -78,7 +78,7 @@
                 <button type="button" class="w-20 h-8 bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('stint_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
             </div>
             <div class="ml-24 mt-2 md:ml-24 md:mt-0">
-                <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('StintCSV_download') }}'" >StintDataDL</button>
+                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('StintCSV_download') }}'" >StintDataダウンロード</button>
             </div>
         </div>
         </form>
