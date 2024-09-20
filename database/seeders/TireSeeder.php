@@ -30,9 +30,9 @@ class TireSeeder extends Seeder
             ],
             [
             'id' => 3,
-            'tire_maker_name' => 'Mojo',
-            'tire_name' => 'Mojo',
-            'tire_info' => 'Mojo',
+            'tire_maker_name' => 'YOKOHAMA',
+            'tire_name' => 'SL07',
+            'tire_info' => 'SL07',
             'sort_order' => 3
             ],
             [
