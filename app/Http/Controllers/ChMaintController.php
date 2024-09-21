@@ -103,7 +103,7 @@ class ChMaintController extends Controller
     {
         $my_kart_id = $request['mykart_id2'];
 
-        dd($my_kart_id);
+        // dd($my_kart_id);
 
         ChMaint::findOrFail($id)->delete();
 

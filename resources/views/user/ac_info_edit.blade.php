@@ -41,7 +41,8 @@
                                 {{-- <option value="" @if(\Request::get('area_id') == '0') selected @endif >エリア</option> --}}
                                 <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option>
                                 @foreach ($areas as $area)
-                                    <option value="{{ $area->id }}" @if(\Request::get('area_id') == $area->id) selected @endif >{{ $area->area_name }}</option>
+                                    <option value="{{ $area->id }}" @if(old('area_id') == $area->id) selected @endif>{{ $area->area_name }}</option>
+                                    {{-- <option value="{{ $area->id }}" @if(\Request::get('area_id') == $area->id) selected @endif >{{ $area->area_name }}</option> --}}
                                 @endforeach
                                 </select>
                         </div>
@@ -65,7 +66,7 @@
                                 <input id="realname_kana" name="realname_kana" value=" {{ $user->realname_kana }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></input>
                             </div> --}}
                             <div class="relative">
-                                <label for="email" class="leading-7 text-sm  text-gray-800 dark:text-gray-200 leading-tight">Mail</label>
+                                <label for="email" class="leading-7 text-sm  text-gray-800 dark:text-gray-200 leading-tight">Mail　※公開されません</label>
                                 <input id="email" name="email" type="email" value=" {{ $user->email }}" required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></input>
                             </div>
                             <div class="relative">
@@ -86,11 +87,11 @@
                         <div class="p-0 md:flex">
                         <div class="relative">
                             <label for="photo1" class="leading-7 text-sm text-gray-600">画像1</label>
-                            <input type="file" id="photo1" name="photo1" multiple accept=“image/png,image/jpeg,image/jpg” required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="file" id="photo1" name="photo1" multiple accept=“image/png,image/jpeg,image/jpg” class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         <div class="relative">
                             <label for="photo2" class="leading-7 text-sm text-gray-600">画像2</label>
-                            <input type="file" id="photo2" name="photo2" multiple accept=“image/png,image/jpeg,image/jpg” required class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+                            <input type="file" id="photo2" name="photo2" multiple accept=“image/png,image/jpeg,image/jpg” class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                         </div>
                         </div>
 

@@ -7,8 +7,11 @@
         <div class="md:flex md:ml-20">
         <x-input type="hidden" id="maker_id" name="maker_id" value="{{ $maker->id }}"/>
         <x-input type="hidden" id="maker_id" name="maker_id" value="{{ $maker->id }}"/>
+        <div class="ml-2 ">
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
+        </div>
         <div class="ml-0 md:ml-4">
-            <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('maker_index') }}'" >Maker List</button>
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('maker_index') }}'" >Maker List</button>
         </div>
 
         </div>

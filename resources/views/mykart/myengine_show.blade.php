@@ -127,7 +127,7 @@
             </div>
 
             <div class="bg-white mt-4">
-                <span class="text-ml ml-24"> メンテナンス履歴</span><span class="text-sm">　　※IDクリックで詳細表示</span>
+                <span class="text-ml ml-24"> メンテナンス履歴</span><span class="text-sm">　　※IDクリックでメンテナンス詳細表示</span>
             </div>
 
             <div class=" mx-auto sm:px-4 lg:px-4 border ">

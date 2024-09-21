@@ -91,6 +91,7 @@
     </x-slot>
 
     <div class="py-0 border">
+        　　　　　※BestTimeクリックでStint詳細表示
         <div class=" mx-auto sm:px-4 lg:px-4 border ">
             {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
