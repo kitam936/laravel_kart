@@ -63,15 +63,17 @@
                 @endforeach
             </select>
             </div>
-        <div class="flex">
+        <div class="md:flex">
             <div class="ml-0 ">
                 <button type="button" class="w-40 h-8 bg-indigo-500 text-white mr-20 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('my_stint') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
             </div>
-            <div class="ml-0 mt-2 md:ml-4 md:mt-0">
-                <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_create') }}'" >Stint登録</button>
+            <div class="flex mt-2 md:mt-0">
+            <div class="ml-0 md:ml-4 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_create') }}'" >Stint登録</button>
             </div>
-            <div class="ml-0 mt-2 md:ml-4 md:mt-0">
-                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('myStintCSV_download') }}'" >MyStintDataダウンロード</button>
+            <div class="ml-0 ml-2 md:ml-4 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white hover:bg-blue-500 rounded" onclick="location.href='{{ route('myStintCSV_download') }}'" >MyStintDataダウンロード</button>
+            </div>
             </div>
 
         </div>
@@ -97,9 +99,9 @@
                         <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Stint</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Date</th>
                         <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">サーキット</th>
+                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Tire</th>
+                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Engine</th>
                         <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">BestTime</th>
-                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">最高回転</th>
-                        <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">最低回転</th>
                         <th class="w-2/13 md:2/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Laps</th>
                     </tr>
                 </thead>
@@ -111,9 +113,9 @@
                         <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->stint_id }} </td>
                         <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($stint->start_date)->format("y/m/d H:i") }} </td>
                         <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->cir_name }} </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->tire_name }} </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->engine_name }} </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('my_stint_show',['stint'=>$stint->stint_id]) }}" > {{$stint->best_time}}</a> </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->max_rev }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->min_rev }} </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->laps }} </td>
                     </tr>
                     @endforeach

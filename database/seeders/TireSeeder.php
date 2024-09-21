@@ -50,6 +50,13 @@ class TireSeeder extends Seeder
             'sort_order' => 21
             ],
             [
+            'id' => 31,
+            'tire_maker_name' => 'Mojo',
+            'tire_name' => 'Mojo',
+            'tire_info' => 'Mojo',
+            'sort_order' => 31
+            ],
+            [
             'id' => 99,
             'tire_maker_name' => 'Others',
             'tire_name' => 'Others',

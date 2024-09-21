@@ -26,7 +26,7 @@ class MyKartSeeder extends Seeder
             'id' => 10,
             'user_id'=> 11,
             'maker_id' => 1,
-            'model_year' => 2010,
+            'model_year' => 2011,
             'my_kart_info'=>'新車購入',
             'purchase_date'=>'2010/12/04',
             ],

@@ -82,7 +82,7 @@
                     </div>
                     <div class="relative w-full mr-2 ">
                         <x-label for="maint_info" value="内容" class="mt-1"/>
-                        <div class="pl-2 w-full h-6 text-sm items-center bg-gray-100 border rounded" id="maint_info" name="maint_info"  value="{{ $maint->maint_info }}">{{ $maint->maint_info  }}
+                        <div class="pl-2 w-full text-sm items-center bg-gray-100 border rounded" id="maint_info" name="maint_info"  value="{{ $maint->maint_info }}">{!! nl2br(e($maint->maint_info)) !!}
                         </div>
                     </div>
                     <div class="relative w-32 mr-2 ">

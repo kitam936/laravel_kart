@@ -14,13 +14,6 @@ class MyTireSeeder extends Seeder
     {
         DB::table('my_tires')->insert([
             [
-            'id' => 10,
-            'user_id'=> 11,
-            'tire_id' => 1,
-            'my_tire_info'=>'New',
-            'purchase_date'=>'2023/08/16',
-            ],
-            [
             'id' => 11,
             'user_id'=> 11,
             'tire_id' => 1,
@@ -28,9 +21,17 @@ class MyTireSeeder extends Seeder
             'purchase_date'=>'2024/06/30',
             ],
             [
-            'id' => 9,
+            'id' => 10,
             'user_id'=> 11,
             'tire_id' => 1,
+            'my_tire_info'=>'New',
+            'purchase_date'=>'2023/08/16',
+            ],
+
+            [
+            'id' => 9,
+            'user_id'=> 11,
+            'tire_id' => 2,
             'my_tire_info'=>'New',
             'purchase_date'=>'2023/03/11',
             ],

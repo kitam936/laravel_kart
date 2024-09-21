@@ -43,7 +43,7 @@ class StintController extends Controller
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
         ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
-        'stints.laps','stints.max_rev','stints.min_rev')
+        'stints.laps','stints.max_rev','stints.min_rev','makers.maker_name','engines.engine_name','tires.tire_name')
         ->orderBy('stints.best_time')
         ->get();
 

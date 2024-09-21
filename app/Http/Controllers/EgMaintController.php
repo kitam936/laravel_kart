@@ -39,7 +39,7 @@ class EgMaintController extends Controller
         ->join('engines','engines.id','=','my_engines.engine_id')
         ->join('eg_maint_categories','eg_maint_categories.id','=','eg_maints.eg_maint_category_id')
         ->where('eg_maints.id' ,$id)
-        ->select('eg_maints.id as maint_id','eg_maints.maint_date','eg_maints.maint_fee','eg_maint_categories.eg_maint_name','eg_maints.maint_info','my_engines.engine_id as myengine_id')
+        ->select('eg_maints.id as maint_id','eg_maints.maint_date','eg_maints.maint_fee','eg_maint_categories.eg_maint_name','eg_maints.maint_info','my_engines.id as myengine_id')
         ->first();
 
         $eg_maint_categories = DB::table('eg_maint_categories')

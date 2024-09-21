@@ -45,6 +45,7 @@ class DataController extends Controller
             'max_rev','min_rev','front_tread','rear_tread','front_sprocket',
             'rear_sprocket','stabilizer','tire_pres','tire_age','cab_hi',
             'cab_lo','stint_info',];
+
         $csvData = $stints->toArray();
 
         // dd($stints,$csvHeader,$csvData);
