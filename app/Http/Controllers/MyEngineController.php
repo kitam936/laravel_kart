@@ -82,7 +82,7 @@ class MyEngineController extends Controller
             $maint_date = $max_date;
         };
 
-
+        // dd( $id,$first_date,$max_date,$maint_date);
         $stints_total = DB::table('stints')
         ->where('stints.my_engine_id' ,$id)
         ->wheredate('stints.start_date' ,'>=',$maint_date->latest)
@@ -99,17 +99,18 @@ class MyEngineController extends Controller
         ->join('eg_maint_categories','eg_maint_categories.id','=','eg_maints.eg_maint_category_id')
         ->where('eg_maints.my_engine_id' ,$id)
         ->where('eg_maints.eg_maint_category_id','LIKE','%'.($request->category_id).'%')
-        ->select('eg_maints.id as maint_id','eg_maints.maint_date','eg_maint_categories.eg_maint_name','eg_maints.maint_info','eg_maints.eg_maint_category_id')
+        ->select('eg_maints.id as maint_id','eg_maints.maint_date','eg_maint_categories.eg_maint_name','eg_maints.maint_info','eg_maints.eg_maint_category_id','eg_maints.my_engine_id')
         ->orderBy('maint_date','desc')
         ->get();
 
         $maint_categories = DB::table('eg_maint_categories')->get();
 
-        // dd($request->category_id,$first_date,$max_date,$min_date,$maint_date->latest,$stints_total);
+        // dd($request->category_id,$first_date,$max_date,$maint_date->latest,$stints_total);
 
         return view('mykart.myengine_show',compact('myengine','engines','stints','stints_total','maints','maint_categories'));
 
     }
+
 
     public function store(Request $request)
     {

@@ -19,6 +19,7 @@
             <div class=" w-1/2 mt-0 flex md:ml-60">
                 <div class="ml-4 md:ml-4">
                     <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_show',['engine'=>$maint->myengine_id]) }}'" >MyEngine詳細</button>
+                    {{-- <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button> --}}
                 </div>
                 <div class="md:ml-2 md:ml-4">
                     <button type="button" class="w-32 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('eg_maint_edit',['maint'=>$maint->maint_id])}}'" >編集</button>
@@ -82,7 +83,7 @@
                     </div>
                     <div class="relative w-full mr-2 ">
                         <x-label for="maint_info" value="内容" class="mt-1"/>
-                        <div class="pl-2 w-full h-6 text-sm items-center bg-gray-100 border rounded" id="maint_info" name="maint_info"  value="{{ $maint->maint_info }}">{{ $maint->maint_info  }}
+                        <div class="pl-2 w-full text-sm items-center bg-gray-100 border rounded" id="maint_info" name="maint_info"  value="{{ $maint->maint_info }}">{!! nl2br(e($maint->maint_info)) !!}
                         </div>
                     </div>
 
