@@ -122,7 +122,7 @@ class StintController extends Controller
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3')
+                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3','stints.filename')
         // 'stints.laps','stints.max_rev','stints.min_rev')
 
         // ->select('reservations.id as resv_id','reservations.event_id','events.start_date','events.end_date','events.event_name',
@@ -457,7 +457,7 @@ class StintController extends Controller
                 'stints.my_tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.best_time',
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
-                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3')
+                'stints.cab_lo','stints.stint_info','stints.photo1','stints.photo2','stints.photo3','stints.filename')
         ->first();
 
 

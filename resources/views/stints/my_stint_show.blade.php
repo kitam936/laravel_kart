@@ -11,11 +11,11 @@
             <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('my_stint') }}'" >MyStint</button>
         </div>
         <div class="ml-0 mt-2 md:ml-4 md:mt-0">
-            <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_edit',['stint'=>$stint_id]) }}'" >DataUpload</button>
+            <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_edit',['stint'=>$stint_id]) }}'" >ロガーDataアップロード</button>
         </div>
         @if(!empty($stint->filename))
         <div class="ml-00 mt-2 md:ml-4 md:mt-0">
-            <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >Data Download</button>
+            <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >ロガーDataダウンロード</button>
         </div>
         @endif
 
@@ -31,11 +31,11 @@
 
                 <x-validation-errors class="mb-4" />
 
-            @if (session('status'))
+            {{-- @if (session('status'))
                 <div class="mb-4 font-medium text-sm text-green-600">
                     {{ session('status') }}
                 </div>
-            @endif
+            @endif --}}
 
             <x-flash-message status="session('status')"/>
 

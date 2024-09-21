@@ -4,8 +4,8 @@
             Stint_List
         </h2>
         <div class="ml-4 md:ml-13 text-indigo-500">
-            ※ベストタイムをクリックしてStint内容の確認、Dataダウンロード<br>
-            　Member名、サーキット名をクリックして詳細表示ができます。
+            ※BestTime　をクリックしてStint内容の確認、Dataダウンロード<br>
+            　Member名、サーキット名　をクリックして詳細表示ができます。
         </div>
 
         <form method="get" action="{{ route('stint_list')}}" class="mt-1">

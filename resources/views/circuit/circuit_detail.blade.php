@@ -47,7 +47,7 @@
         </div>
         <span class="text-indigo-600 ml-4">ホームコース登録するとStintDataの新着お知らせメールが届きます。     </span>
         <br>
-        <span class="text-indigo-600 ml-4">ホームコースはアカウント情報で確認できます。     </span>
+        <span class="text-indigo-600 ml-4">ホームコースはMyAccuntで確認できます。     </span>
 
 
 

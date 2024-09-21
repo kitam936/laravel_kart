@@ -31,48 +31,48 @@ class UserSeeder extends Seeder
         ],
         [
             'id' => 2,
-            'name' => 'manager',
-            'email' => 'manager@manager.com',
+            'name' => 'test1',
+            'email' => 'test1@test.com',
             'password' => Hash::make('password123'),
             'role_id' => 5,
             'area_id' => 4
         ],
         [
             'id' => 3,
-            'name' => 'staff_menber',
-            'email' => 'staff@staff.com',
+            'name' => 'test2',
+            'email' => 'test2@test.com',
             'password' => Hash::make('password123'),
             'role_id' => 7,
             'area_id' => 5
         ],
         [
             'id' => 4,
-            'name' => 'member1',
-            'email' => 'member1@member.com',
+            'name' => 'test6',
+            'email' => 'test6@test.com',
             'password' => Hash::make('password123'),
             'role_id' => 9,
             'area_id' => 6
         ],
         [
             'id' => 5,
-            'name' => 'member2',
-            'email' => 'member2@member.com',
+            'name' => 'test3',
+            'email' => 'test3@test.com',
             'password' => Hash::make('password123'),
             'role_id' => 9,
             'area_id' => 6
         ],
         [
             'id' => 6,
-            'name' => 'member3',
-            'email' => 'member3@member.com',
+            'name' => 'test4',
+            'email' => 'test4@member.com',
             'password' => Hash::make('password123'),
             'role_id' => 9,
             'area_id' => 6
         ],
         [
             'id' => 7,
-            'name' => 'member4',
-            'email' => 'member4@member.com',
+            'name' => 'test5',
+            'email' => 'test5@test.com',
             'password' => Hash::make('password123'),
             'role_id' => 9,
             'area_id' => 6

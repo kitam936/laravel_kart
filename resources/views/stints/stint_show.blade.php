@@ -14,7 +14,7 @@
         @if(!empty($stint->filename))
         <div class="ml-00 mt-2 md:ml-4 md:mt-0">
             <x-input type="hidden" id="stint_id" name="stint_id" value="{{ $stint_id }}"/>
-            <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >Data Download</button>
+            <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >ロガーDataダウンロード</button>
         </div>
         @endif
 

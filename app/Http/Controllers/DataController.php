@@ -34,6 +34,7 @@ class DataController extends Controller
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
                 'stints.cab_lo','stints.stint_info',)
+        ->orderby('stints.start_date','desc')
         ->get();
 
         $csvHeader = [
@@ -92,6 +93,7 @@ class DataController extends Controller
                 'stints.max_rev','stints.min_rev','stints.fr_tread','stints.re_tread','stints.fr_sprocket',
                 'stints.re_sprocket','stints.stabilizer','stints.tire_pres','stints.tire_age','stints.cab_hi',
                 'stints.cab_lo','stints.stint_info',)
+        ->orderby('stints.start_date','desc')
         ->get();
         $csvHeader = [
             'stint_id','member_name','circuit_name','start_date','dry_wet','roadtemp_id',
