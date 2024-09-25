@@ -4,9 +4,13 @@
             My Chassis登録
         </h2>
 
-        <div class="flex mt-4 ml-8">
+        <div class="flex mt-4 ml-2">
         <div class="ml-2 ">
             <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
+        </div>
+
+        <div class="ml-2 md:ml-4">
+            <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('maker_index') }}'" >Maker List</button>
         </div>
 
         {{-- <div class="ml-12 md:ml-12">
@@ -70,7 +74,7 @@
                     </div>
                     <div class="ml-2">
                         <x-label for="purchase_date" value="購入日" />
-                        <x-input id="purchase_date" class="bg-gray-100 text-gray-800 block mt-1 w-full" id="purchase_date" type="text" name="purchase_date" :value="old('purchase_date')" required  />
+                        <x-input id="purchase_date" class="bg-gray-100 text-gray-800 block mt-1 w-40" id="purchase_date" type="text" name="purchase_date" :value="old('purchase_date')" required  />
                     </div>
                     </div>
                     <div class="relative">

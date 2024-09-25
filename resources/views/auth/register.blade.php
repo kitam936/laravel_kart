@@ -45,8 +45,12 @@
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Member登録') }}
             </x-primary-button>
         </div>
     </form>
+    <br>
+    <div class="bg-white text-sm">
+    このサイトに関するお問い合わせは　kart-meeting@ktm936.com　までお願いします。
+    </div>
 </x-guest-layout>

@@ -13,9 +13,9 @@
 
         <div class="flex text-gray-900 dark:text-gray-100  ">
             <div class="flex px-2 py-2 md:w-2/3">
-            <button type="button" class="w-32 h-8 ml-0 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('chassis_create') }}'" >Chassis登録</button>
-            <button type="button" class="w-32 h-8 ml-2 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('myengine_create') }}'" >Engine登録</button>
-            <button type="button" class="w-32 h-8 ml-2 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('mytire_create') }}'" >Tire登録</button>
+            <button type="button" class="w-24 h-8 ml-0 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('chassis_create') }}'" >Chassis登録</button>
+            <button type="button" class="w-24 h-8 ml-2 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('myengine_create') }}'" >Engine登録</button>
+            <button type="button" class="w-24 h-8 ml-2 mb-2 border-gray-900 p-0 text-sm text-white dark:text-white bg-green-500  hover:bg-green-600 rounded" onclick="location.href='{{ route('mytire_create') }}'" >Tire登録</button>
             </div>
         </div>
 
@@ -41,7 +41,7 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Tire No</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
                         <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
@@ -90,7 +90,7 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Chassis No</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
                         <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Model_Year</th>
@@ -124,7 +124,7 @@
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                 <thead>
                     <tr>
-                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Engine No</th>
+                        <th class="w-1/12 md:1/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">購入日</th>
                         <th class="w-3/12 md:3/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Maker</th>
                         <th class="w-2/12 md:2/12 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>

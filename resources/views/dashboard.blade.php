@@ -28,7 +28,7 @@
                 <br>
                 <br>
                 <div class="bg-white text-sm">
-                このサイトに関するお問い合わせは　kart_meeting@ktm936.com　までお願いします。
+                このサイトに関するお問い合わせは　<br>kart-meeting@ktm936.com　までお願いします。
                 </div>
     </div>
 </x-app-layout>

@@ -4,7 +4,7 @@
             My Stint
         </h2>
         <div class="ml-4 md:ml-13 text-indigo-500">
-            ※”ベストタイム”をクリックすると<br>Stint内容の確認、Dataダウンロードができます。
+            ※”ベストタイム”をクリックすると<br>Stint内容の確認、ロガーDataダウンロード・編集ができます。
         </div>
 
 
@@ -82,7 +82,7 @@
         <div class=" max-w-2xl  sm:px-0 lg:px-0 border mt-4 ml-0 rounded">
             @foreach ($num_of_laps as $lap)
             <div class='border bg-gray-100 h-6'>
-                Stint　：　{{ ($lap->number_of_laps) }}　回　　　Lap数　：　{{ ($lap->laps) }}　Lap
+                　　 Stint：{{ ($lap->number_of_laps) }}　回　　　Lap数：{{ ($lap->laps) }}　
             </div>
             @endforeach
         </div>
@@ -114,8 +114,8 @@
                         <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-center"> {{ $stint->stint_id }} </td>
                         <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($stint->start_date)->format("y/m/d H:i") }} </td>
                         <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->cir_name }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->tire_name }} </td>
-                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->engine_name }} </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->tire_name }}/ </td>
+                        <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ Str::limit($stint->engine_name,8) }}/ </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1 text-indigo-500 text-center"><a href="{{ route('my_stint_show',['stint'=>$stint->stint_id]) }}" > {{$stint->best_time}}</a> </td>
                         <td class="w-2/13 md:2/13 text-sm md:px-4 py-1  text-center"> {{ $stint->laps }} </td>
                     </tr>
@@ -124,7 +124,7 @@
                 </tbody>
 
             </table>
-            {{-- {{  $users->links()}} --}}
+            {{  $stints->links()}}
         </div>
     </div>
 

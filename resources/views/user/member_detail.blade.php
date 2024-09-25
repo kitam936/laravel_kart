@@ -6,7 +6,7 @@
             Member詳細
         </div>
         </h2>
-        <div class="md:flex ml-8 ">
+        <div class="md:flex ml-2 ">
         <div class="ml-2 mb-2 md:mb-0">
             <button type="button" onclick="location.href='{{ route('memberlist') }}'" class="w-32 h-8 text-center text-sm text-white bg-indigo-400 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded ">Memberリスト</button>
         </div>

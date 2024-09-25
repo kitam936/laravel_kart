@@ -44,7 +44,7 @@
 
                     <div class="ml-2">
                         <x-label for="maint_date" value="実施日" />
-                        <x-input id="maint_date" class="bg-gray-100 text-gray-800 block mt-1 w-full" id="maint_date" type="text" name="maint_date" :value="old('maint_date')" required  />
+                        <x-input id="maint_date" class="bg-gray-100 text-gray-800 block mt-1 w-52" id="maint_date" type="text" name="maint_date" :value="old('maint_date')" required  />
                     </div>
 
                     </div>

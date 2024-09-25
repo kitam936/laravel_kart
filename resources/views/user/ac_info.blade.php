@@ -99,7 +99,7 @@
                                         @endif
                                         {{-- <img src="{{ asset('storage/users/'.$user->photo1) }}"> --}}
                                     </div>
-                                    <div class="w-full mb-1 ml-1">
+                                    <div class="w-full mb-1 ml-0">
                                         <span class=" text-sm ">画像2</span>
                                         @if(!empty($user->photo2))
                                         <img src="{{ asset('storage/user/'.$user->photo2) }}">

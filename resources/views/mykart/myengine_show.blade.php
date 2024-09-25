@@ -5,17 +5,17 @@
         </h2>
         <div class="flex ">
         <form>
-            <div class="ml-2 md:flex md:ml-20">
+            <div class="ml-0 md:flex md:ml-20">
             <x-input type="hidden" id="my_engine_id" name="my_engine_id" value="{{ $myengine->my_engine_id }}"/>
             <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $myengine->engine_id }}"/>
             <div class="ml-2 ">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
+                <button type="button" class="w-24 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
             {{-- <div class="ml-0 md:ml-4">
                 <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('myengine_index') }}'" >MyEngine List</button>
             </div> --}}
             <div class="mt-2 md:mt-0 md:ml-2 ">
-                <button type="button" class="w-32 h-8 text-sm bg-pink-500 text-white ml-2 hover:bg-pink-600 rounded" onclick="location.href='{{ route('eg_maint_create',['eg'=>$myengine->my_engine_id])}}'" >メンテナンス登録</button>
+                <button type="button" class="w-32 h-8 text-sm bg-pink-500 text-white hover:bg-pink-600 rounded" onclick="location.href='{{ route('eg_maint_create',['eg'=>$myengine->my_engine_id])}}'" >メンテナンス登録</button>
             </div>
 
             </div>
@@ -24,13 +24,13 @@
         <div class="p-0 w-1/2 mt-0 flex md:ml-48">
 
             <div class="md:ml-2 ">
-                <button type="button" class="w-32 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('myengine_edit',['engine'=>$myengine->my_engine_id])}}'" >編集</button>
+                <button type="button" class="w-24 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('myengine_edit',['engine'=>$myengine->my_engine_id])}}'" >編集</button>
             </div>
         <form id="delete_{{$myengine->my_engine_id}}" method="POST" action="{{ route('myengine_destroy',['engine'=>$myengine->my_engine_id]) }}">
 
             @csrf
             <div class="ml-0 mt-0 md:ml-4 md:mt-0">
-                <div class="w-32 h-8 bg-red-500 text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
+                <div class="w-24 h-8 bg-red-500 text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
                 <a href="#" data-id="{{ $myengine->my_engine_id }}" onclick="deletePost(this)" >削除</a>
                 </div>
             </div>
@@ -99,8 +99,8 @@
 
                 <form method="get" action="{{ route('myengine_show',['engine'=>$myengine->my_engine_id])}}" class="mt-1">
 
-                    <span class="items-center text-sm mt-2 text-gray-800 dark:text-gray-200 leading-tight" >※メンテナンスカテゴリーを指定してメンテナンス以降の走行距離・時間を検索できます　　　</span>
-                    <div class="md:flex">
+                    <span class="items-center text-sm mt-2 text-gray-800 dark:text-gray-200 leading-tight" >※メンテナンスカテゴリーを指定して<br>メンテナンス以降の走行距離・時間を検索できます　　　</span>
+                    <div class="flex">
                     <select class="w-52 h-8 rounded text-sm pt-1 border mr-2 mb-2" id="category_id" name="category_id" type="text" >
                         <option value="" @if(\Request::get('category_id') == '0') selected @endif >メンテナンスカテゴリー検索</option>
                         @foreach ($maint_categories as $maint_category)
@@ -121,13 +121,12 @@
                 </form>
                 @if(!empty($stints_total->laps))
                 <div class='border text-sm bg-gray-100 h-6'>
-                    　　　Lap数：{{ ($stints_total->laps) }}Lap　/　 走行距離：{{ ($stints_total->distance)/1000  }}Km　/　走行時間：{{ round($stints_total->laps * $stints_total->time/60)  }} 分
-                </div>
+                    Lap数：{{ ($stints_total->laps) }}　 走行距離：{{ floor(($stints_total->distance)/1000)  }}Km　走行時間：{{ round($stints_total->laps * $stints_total->time/60)  }} 分
                 @endif
             </div>
 
             <div class="bg-white mt-4">
-                <span class="text-ml ml-24"> メンテナンス履歴</span><span class="text-sm">　　※IDクリックでメンテナンス詳細表示</span>
+                <span class="text-ml ml-24"> メンテナンス履歴</span><span class="text-sm">　　<br> 　　　　※IDクリックでメンテナンス詳細表示</span>
             </div>
 
             <div class=" mx-auto sm:px-4 lg:px-4 border ">
