@@ -4,7 +4,7 @@
             Maker詳細
         </h2>
     <form>
-        <div class="md:flex md:ml-20">
+        <div class="flex md:ml-20">
         <x-input type="hidden" id="maker_id" name="maker_id" value="{{ $maker->id }}"/>
         <x-input type="hidden" id="maker_id" name="maker_id" value="{{ $maker->id }}"/>
         <div class="ml-2 ">
@@ -64,17 +64,17 @@
             </div>
 
 
-            <div class="flex justify-between">
+            <div class="ml-2 flex justify-between">
             <div class="p-2 w-1/2 mt-2 flex md:ml-60">
                 <div class="md:ml-2 md:ml-4">
-                    <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('maker_edit',['maker'=>$maker->id])}}'" >編集</button>
+                    <button type="button" class="w-32 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('maker_edit',['maker'=>$maker->id])}}'" >編集</button>
                 </div>
             @if($login_user->role_id == 1)
             <form id="delete_{{$maker->id}}" method="POST" action="{{ route('maker_destroy',['maker'=>$maker->id]) }}">
 
                 @csrf
                 <div class="ml-0 mt-0 md:ml-4 md:mt-0">
-                    <div class="w-40 h-8 bg-red-500 text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
+                    <div class="w-32 h-8 bg-red-500 text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
                     <a href="#" data-id="{{ $maker->id }}" onclick="deletePost(this)" >削除</a>
                     </div>
                 </div>

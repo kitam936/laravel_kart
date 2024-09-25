@@ -18,16 +18,16 @@
         <div class="flex ">
             <div class=" w-1/2 mt-0 flex md:ml-60">
                 <div class="ml-4 md:ml-4">
-                    <button type="button" class="w-32 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_show',['chassis'=>$maint->my_kart_id]) }}'" >MyChassis詳細</button>
+                    <button type="button" class="w-28 h-8 bg-indigo-500 text-sm text-white md:ml-3232 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('chassis_show',['chassis'=>$maint->my_kart_id]) }}'" >MyChassis詳細</button>
                 </div>
                 <div class="md:ml-2 md:ml-4">
-                    <button type="button" class="w-32 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('ch_maint_edit',['maint'=>$maint->maint_id])}}'" >編集</button>
+                    <button type="button" class="w-28 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('ch_maint_edit',['maint'=>$maint->maint_id])}}'" >編集</button>
                 </div>
             <form id="delete_{{$maint->maint_id}}" method="POST" action="{{ route('ch_maint_destroy',['maint'=>$maint->maint_id]) }}">
                 <x-input type="hidden" id="mykart_id2" name="mykart_id2" value="{{ $maint->my_kart_id }}"/>
                 @csrf
                 <div class="ml-0 mt-0 md:ml-4 md:mt-0">
-                    <div class="w-32 h-8 bg-red-500  text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
+                    <div class="w-28 h-8 bg-red-500  text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
                     <a href="#" data-id="{{ $maint->maint_id }}" onclick="deletePost(this)" >削除</a>
                     </div>
                 </div>

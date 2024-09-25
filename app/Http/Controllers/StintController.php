@@ -44,8 +44,8 @@ class StintController extends Controller
         ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
         'stints.laps','stints.max_rev','stints.min_rev','makers.maker_name','engines.engine_name','tires.tire_name')
-        ->orderBy('stints.best_time')
-        ->get();
+        ->orderBy('stints.start_date','desc')
+        ->paginate(50);
 
         $circuits = DB::table('circuits')->get();
 
@@ -400,7 +400,7 @@ class StintController extends Controller
         ->select('stints.id as stint_id','stints.user_id','users.name','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
         'stints.laps','stints.max_rev','stints.min_rev','stints.cir_id')
         ->orderBy('stints.best_time')
-        ->get();
+        ->paginate(50);
 
         $circuits = DB::table('circuits')->get();
 

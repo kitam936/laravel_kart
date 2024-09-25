@@ -41,6 +41,7 @@ class MyTireController extends Controller
     {
 
         $tires = DB::table('tires')
+        ->orderBy('sort_order')
         ->get();
 
         // dd($tires);

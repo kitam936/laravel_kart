@@ -44,4 +44,10 @@
             </x-primary-button>
         </div>
     </form>
+    <br>
+    <div class="bg-white text-sm">
+    このサイトに関するお問い合わせは　<br>
+    kart-meeting@ktm936.com　<br>
+    までお願いします。
+    </div>
 </x-guest-layout>

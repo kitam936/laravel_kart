@@ -10,7 +10,7 @@
             <x-input type="hidden" id="tire_id" name="tire_id" value="{{ $mytire->tire_id }}"/>
 
             <div class="ml-2 ">
-                <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
+                <button type="button" class="w-24 h-8 text-sm bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mykart.index') }}'" >MyKart</button>
             </div>
             {{-- <div class="ml-0 md:ml-4">
                 <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('mytire_index') }}'" >My_tire_List</button>
@@ -21,13 +21,13 @@
         <div class="flex justify-between">
         <div class="w-1/2 mt-0 flex md:ml-60">
             <div class="md:ml-2 md:ml-4">
-                <button type="button" class="w-32 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('mytire_edit',['tire'=>$mytire->my_tire_id])}}'" >編集</button>
+                <button type="button" class="w-24 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('mytire_edit',['tire'=>$mytire->my_tire_id])}}'" >編集</button>
             </div>
             <form id="delete_{{$mytire->my_tire_id}}" method="POST" action="{{ route('mytire_destroy',['tire'=>$mytire->my_tire_id]) }}">
 
                 @csrf
                 <div class="ml-0 mt-0 md:ml-4 md:mt-0">
-                    <div class="w-32 h-8 bg-red-500 text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
+                    <div class="w-24 h-8 bg-red-500 text-sm text-white pt-1 ml-2 hover:bg-red-600 rounded text-center">
                     <a href="#" data-id="{{ $mytire->my_tire_id }}" onclick="deletePost(this)" >削除</a>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
         <div class=" max-w-2xl mt-2 mx-auto sm:px-6 lg:px-8 rounded">
             @if(!empty($stints_total->laps))
             <div class='border bg-gray-100 h-6'>
-                　　　Lap数　：　{{ ($stints_total->laps) }}　周　　　走行距離　：　{{ ($stints_total->distance)/1000  }}Km　
+                　　　Lap数：{{ ($stints_total->laps) }}　周　　走行距離：{{ floor(($stints_total->distance)/1000)  }}Km　
             </div>
             @endif
         </div>

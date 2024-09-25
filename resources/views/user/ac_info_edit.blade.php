@@ -7,11 +7,11 @@
         </div>
         </h2>
         <x-flash-message status="session('status')"/>
-        <div class="flex ml-8 ">
+        <div class="flex ml-2 ">
         <div class="ml-2 mb-2 md:mb-0">
             <button type="button" onclick="location.href='{{ route('ac_info') }}'" class="w-32 h-8 text-center text-sm text-white bg-indigo-400 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded ">アカウント情報</button>
         </div>
-        <div class="ml-20 md:ml-60 mb-2 md:mb-0">
+        <div class="ml-8 md:ml-60 mb-2 md:mb-0">
             <button type="button" onclick="location.href='{{ route('pw_change',['user'=>$user->id]) }}'" class="w-32 h-8 text-center text-sm text-white bg-red-400 border-0 py-1 px-2 focus:outline-none hover:bg-red-600 rounded ">パスワード変更</button>
         </div>
         </div>

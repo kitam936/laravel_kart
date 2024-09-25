@@ -3,15 +3,15 @@
         <h2 class="font-semibold mb-2 text-xl text-gray-800 leading-tight">
             Circuit_List
         </h2>
-        <div class="ml-4 md:ml-13 text-indigo-500">
-            ※サーキット名をクリックして詳細表示ができます。
+        <div class="ml-0 md:ml-13 text-indigo-500">
+            ※サーキット名クリックで詳細表示ができます。
         </div>
 
         <form method="get" action="{{ route('circuit_list')}}" class="mt-1">
             <x-flash-message status="session('status')"/>
             <span class="items-center text-sm mt-2 text-gray-800 dark:text-gray-200 leading-tight" >※エリア・サーキット名で検索できます　　　</span>
             <div class="md:flex">
-            <select class="w-52 h-8 rounded text-sm pt-1 border mr-2 mb-2" id="area_id" name="area_id" type="text" >
+            <select class="w-40 md:w-52 h-8 rounded text-sm pt-1 border mr-2 mb-2" id="area_id" name="area_id" type="text" >
                 <option value="" @if(\Request::get('area_id') == '0') selected @endif >エリア検索</option>
                 @foreach ($areas as $area)
                     <option value="{{ $area->area_id }}" @if(\Request::get('area_id') == $area->area_id ) selected @endif >{{ $area->area_name  }}</option>
@@ -21,7 +21,7 @@
             <div class="mb-2 flex">
                 <div>
                 {{-- <label class="items-center ml-2 mr-1 text-sm mt-2 text-gray-800 leading-tight" >検索</label> --}}
-               <input class="w-52 h-8 ml-0 md:ml-2 rounded text-sm pt-1" id="cir_name" placeholder="サーキット名検索（部分OK）" name="cir_name"  class="border">
+               <input class="w-40 md:w-52 h-8 ml-0 md:ml-2 rounded text-sm pt-1" id="cir_name" placeholder="サーキット名検索（部分OK）" name="cir_name"  class="border">
                 </div>
             <div>
                 <div class="ml-2 ">

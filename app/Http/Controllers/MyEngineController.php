@@ -32,6 +32,7 @@ class MyEngineController extends Controller
     {
 
         $engines = DB::table('engines')
+        ->orderBy('sort_order')
         ->get();
 
         // dd($engines);

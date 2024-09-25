@@ -10,12 +10,17 @@
         <div class="ml-0 md:ml-4">
             <button type="button" class="w-40 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('my_stint') }}'" >MyStint</button>
         </div>
+        @if(empty($stint->filename))
         <div class="ml-0 mt-2 md:ml-4 md:mt-0">
             <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_edit',['stint'=>$stint_id]) }}'" >ロガーDataアップロード</button>
         </div>
+        @endif
         @if(!empty($stint->filename))
         <div class="ml-00 mt-2 md:ml-4 md:mt-0">
             <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >ロガーDataダウンロード</button>
+        </div>
+        <div class="ml-0 mt-2 md:ml-4 md:mt-0">
+            <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-0 hover:bg-green-600 rounded" onclick="location.href='{{ route('stint_data_edit',['stint'=>$stint_id]) }}'" >ロガーData更新</button>
         </div>
         @endif
 
@@ -158,11 +163,11 @@
             </div>
             <div class="ml-2 mr-4 flex">
                 <div>
-                    <x-label for="fr_sprocket" value="エンジン側スプロケット" class="mt-1"/>
+                    <x-label for="fr_sprocket" value="フロントスプロケット" class="mt-1"/>
                     <div id="fr_sprocket" class="pl-2 w-32 h-6 mr-2 text-sm items-center bg-gray-100 border rounded" name="fr_sprocket" value="{{ $stint->fr_sprocket}}" >{{ $stint->fr_sprocket}}</div>
                 </div>
                 <div>
-                    <x-label for="re_sprocket" value="シャフト側スプロケット" class="mt-1"/>
+                    <x-label for="re_sprocket" value="リアスプロケット" class="mt-1"/>
                     <div id="re_sprocket" class="pl-2 w-32 h-6 mr-2 text-sm items-center bg-gray-100 border rounded" name="re_sprocket" value="{{ $stint->re_sprocket}}" >{{ $stint->re_sprocket}}</div>
                 </div>
                 <div>

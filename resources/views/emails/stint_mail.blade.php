@@ -13,7 +13,7 @@ Data更新内容
 <br>
 
 
-アプリの　"Stint List" から確認をお願いします。<br>
+アプリの　"Stint List" から確認できます。<br>
 
 
 <br>

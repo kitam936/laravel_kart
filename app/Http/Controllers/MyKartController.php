@@ -35,6 +35,7 @@ class MyKartController extends Controller
     {
 
         $makers = DB::table('makers')
+        ->orderBy('sort_order')
         ->get();
 
         // dd($karts);

@@ -15,22 +15,22 @@
             <button type="button" onclick="location.href='{{ route('circuit_list') }}'" class="w-32 h-8 text-center text-sm text-white bg-indigo-400 border-0 py-1 px-2 focus:outline-none hover:bg-indigo-600 rounded ">Circuit_List</button>
         </div>
         {{-- @foreach ($users as $user) --}}
-
+        <div class="flex md:ml-2">
+            @if(!($favorite))
+            <div class="ml-2 mb-2 md:ml-0">
+                <button type="button" onclick="location.href='{{ route('favorite_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-blue-300 border-0 py-1 px-2 focus:outline-none hover:bg-blue-400 rounded ">ホームコース登録</button>
+            </div>
+            @else
+            <div class="ml-2 mb-2 md:ml-0">
+                <button type="button" onclick="location.href='{{ route('favorite_edit_of',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-pink-400 border-0 py-1 px-2 focus:outline-none hover:bg-pink-500 rounded ">ホームコース解除</button>
+            </div>
+            @endif
+        </div>
 
         </div>
-        <div class="flex md:ml-2 mt-2">
-            <div class="flex md:ml-0">
-                @if(!($favorite))
-                <div class="ml-2 mb-2 md:ml-0">
-                    <button type="button" onclick="location.href='{{ route('favorite_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-blue-300 border-0 py-1 px-2 focus:outline-none hover:bg-blue-400 rounded ">ホームコース登録</button>
-                </div>
-                @else
-                <div class="ml-2 mb-2 md:ml-0">
-                    <button type="button" onclick="location.href='{{ route('favorite_edit_of',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-pink-400 border-0 py-1 px-2 focus:outline-none hover:bg-pink-500 rounded ">ホームコース解除</button>
-                </div>
-                @endif
-            </div>
-            <div class="ml-2 mb-2 md:ml-32">
+        <div class="flex md:ml-0 mt-2">
+
+            <div class="ml-2 mb-2 md:ml-2">
                 <button type="button" onclick="location.href='{{ route('circuit_edit',['circuit'=>$circuit->cir_id])}}'" class="w-32  h-8 text-center text-sm text-white bg-green-500 border-0 py-1 px-2 focus:outline-none hover:bg-green-600 rounded ">編集</button>
             </div>
             @if(($user->role_id == 1))
@@ -47,7 +47,7 @@
         </div>
         <span class="text-indigo-600 ml-4">ホームコース登録するとStintDataの新着お知らせメールが届きます。     </span>
         <br>
-        <span class="text-indigo-600 ml-4">ホームコースはMyAccuntで確認できます。     </span>
+        <span class="text-indigo-600 ml-4">ホームコースはMyAccountで確認できます。     </span>
 
 
 
@@ -136,7 +136,7 @@
 
         <div class="py-0 border">
             <div class=" mx-auto sm:px-4 lg:px-4 border ">
-                LapList
+                　　LapList
                 {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
                 <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
                     <thead>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Stint編集
+            MyStint編集
         </h2>
 
         <div class="flex mt-4 ml-8">
@@ -47,18 +47,18 @@
                     <div class="flex justify-between">
                         <div class="mr-2">
                             <x-label for="start_date" value="走行日" />
-                            <x-input id="start_date" class="bg-gray-100 block mt-1 w-full" id="start_date" type="text" name="start_date" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('Y-m-d') }}" required  />
+                            <x-input id="start_date" class="bg-gray-100 block mt-1 w-40" id="start_date" type="text" name="start_date" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('Y-m-d') }}" required  />
                         </div>
                         <div>
                             <x-label for="start_time" value="開始時間" />
-                            <x-input id="start_time" class="bg-gray-100 block mt-1 w-full" id="start_time" type="text" name="start_time" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('H:i') }}" required  />
+                            <x-input id="start_time" class="bg-gray-100 block mt-1 w-40" id="start_time" type="text" name="start_time" value="{{ \Carbon\Carbon::parse($stint->start_date)->format('H:i') }}" required  />
                         </div>
                     </div>
                 </div>
                 <div class="flex relative w-40">
                     <div class="relative ml-2 mr-2">
                     <x-label for="cir_id" value="サーキット" />
-                    <select  id="cir_id" name="cir_id"  class="bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
+                    <select  id="cir_id" name="cir_id"  class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
                         <option value="{{ $stint->cir_id }}" @if(\Request::get('cir_id') == '0') selected @endif >{{ $stint->cir_name }}</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($cirs as $cir)
@@ -68,7 +68,7 @@
                     </div>
                     <div class="relative ml-2">
                         <x-label for="kart_id" value="カート" />
-                        <select  id="kart_id" name="kart_id"  class="bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
+                        <select  id="kart_id" name="kart_id"  class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
                         <option value="{{ $stint->my_kart_id }}" @if(\Request::get('kart_id') == '0') selected @endif >{{ $stint->maker_name }}_{{ $stint->model_year }}</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($karts as $kart)
@@ -81,7 +81,7 @@
 
                     <div class="relative ml-2 mr-2">
                         <x-label for="engine_id" value="エンジン" />
-                        <select  id="engine_id" name="engine_id"  class="bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
+                        <select  id="engine_id" name="engine_id"  class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
                         <option value="{{ $stint->my_engine_id }}" @if(\Request::get('engine_id') == '0') selected @endif >{{ $stint->my_engine_id }}_{{ $stint->engine_name }}_{{ \Carbon\Carbon::parse($stint->my_engine_date)->format('y-m') }}</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($engines as $engine)
@@ -91,7 +91,7 @@
                     </div>
                     <div class="relative ml-2 ">
                         <x-label for="tire_id" value="タイヤ" />
-                        <select  id="tire_id" name="tire_id"  class="bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
+                        <select  id="tire_id" name="tire_id"  class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" >
                         <option value="{{ $stint->my_tire_id }}" @if(\Request::get('tire_id') == '0') selected @endif >{{ $stint->my_tire_id }}_{{ $stint->tire_name }}_{{ \Carbon\Carbon::parse($stint->my_tire_date)->format('y-m') }}</option>
                         {{-- <option value="{{ $user->area_id }}" @if(\Request::get('area_id') == '0') selected @endif >{{ $user->area_name }}</option> --}}
                         @foreach ($tires as $tire)
@@ -104,7 +104,7 @@
                 <div class="ml-2 mr-4 flex relative ">
                     <div >
                         <x-label for="atm_pressure" value="気圧" class="mt-0"/>
-                        <select name="atm_pressure" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <select name="atm_pressure" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->atm_pressure }}" @if(\Request::get('atm_pressure') == '0') selected @endif >{{ $stint->atm_pressure }}</option>
                             @for($i = 990; $i <= 1040; $i=$i+5)
                             <option value="{{$i}}">{{$i}}</option>
@@ -114,7 +114,7 @@
 
                     <div>
                         <x-label for="temp_id" value="気温" class="mt-0 ml-2"/>
-                        <select class="w-32 bg-gray-100 border-gray-300 ml-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="temp_id" name="temp_id" type="text" >
+                        <select class="w-24 bg-gray-100 border-gray-300 ml-2 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="temp_id" name="temp_id" type="text" >
                             <option value="{{ $stint->temp }}" @if(\Request::get('temp_id') == '0') selected @endif >{{ $stint->temp_range }}</option>
                             @foreach ($temps as $temp)
                                 <option value="{{ $temp->id }}" @if(\Request::get('temp_id') == $temp->id ) selected @endif >{{ $temp->temp_range  }}</option>
@@ -123,7 +123,7 @@
                     </div>
                     <div>
                         <x-label for="humi_id" value="湿度" class="mt-0"/>
-                        <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="humi_id" name="humi_id" type="text" >
+                        <select class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="humi_id" name="humi_id" type="text" >
                             <option value="{{ $stint->humidity }}" @if(\Request::get('humi_id') == '0') selected @endif >{{ $stint->humi_range  }}</option>
                             @foreach ($humis as $humi)
                                 <option value="{{ $humi->id }}" @if(\Request::get('humi_id') == $humi->id ) selected @endif >{{ $humi->humi_range  }}</option>
@@ -136,7 +136,7 @@
                 <div class="ml-2 mr-4 flex">
                     <div class="mr-2">
                         <x-label for="dry/wet" value="路面" class="mt-0"/>
-                        <select name="dry/wet" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <select name="dry/wet" class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->dry_wet }}" @if(\Request::get('dry/wet') == '0') selected @endif >{{ $stint->dry_wet }}</option>
                             <option value="dry">dry</option>
                             <option value="wet">wet</option>
@@ -145,7 +145,7 @@
 
                     <div>
                         <x-label for="road_temp_id" value="路面温度" class="mt-0"/>
-                        <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="road_temp_id" name="road_temp_id" type="text" >
+                        <select class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="road_temp_id" name="road_temp_id" type="text" >
                             <option value="{{ $stint->road_temp }}" @if(\Request::get('road_temp_id') == '0') selected @endif >{{ $stint->roadtemp_range }}</option>
                             @foreach ($road_temps as $road_temp)
                                 <option value="{{ $road_temp->id }}" @if(\Request::get('road_temp_id') == $road_temp->id ) selected @endif >{{ $road_temp->roadtemp_range  }}</option>
@@ -158,7 +158,7 @@
                 <div class="ml-2 mr-4 flex">
                     <div class="mr-2">
                         <x-label for="tire_pres" value="タイヤ圧" class="mt-0"/>
-                        <select name="tire_pres" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                        <select name="tire_pres" class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                             <option value="{{ $stint->tire_pres*100 }}" @if(\Request::get('tire_pres') == '0') selected @endif >{{ $stint->tire_pres }}</option>
                             @for($i = 65; $i <= 130; $i=$i+5)
                             <option value="{{$i}}">{{$i/100}}</option>
@@ -167,7 +167,7 @@
                     </div>
                     <div>
                         <x-label for="tire_temp_id" value="タイヤ温度" class="mt-0"/>
-                        <select class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="tire_temp_id" name="tire_temp_id" type="text" >
+                        <select class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mr-2 " id="tire_temp_id" name="tire_temp_id" type="text" >
                             <option value="{{ $stint->tire_temp }}" @if(\Request::get('tire_temp_id') == '0') selected @endif >{{ $stint->tiretemp_range }}</option>
                             @foreach ($tire_temps as $tire_temp)
                                 <option value="{{ $tire_temp->id }}" @if(\Request::get('tire_temp_id') == $tire_temp->id ) selected @endif >{{ $tire_temp->tiretemp_range  }}</option>
@@ -179,7 +179,7 @@
                 <div class="ml-2 mr-4 flex">
                 <div class="mr-2">
                     <x-label for="fr_tread" value="フロントトレッド" class="mt-0"/>
-                    <select name="fr_tread" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                    <select name="fr_tread" class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                         <option value="{{ $stint->fr_tread }}" @if(\Request::get('fr_tread') == '0') selected @endif >{{ $stint->fr_tread }}</option>
                         @for($i = 1; $i <= 5; $i++)
                         <option value="{{$i}}">{{$i}}</option>
@@ -188,7 +188,7 @@
                 </div>
                 <div>
                     <x-label for="re_tread" value="リアトレッド" class="mt-0"/>
-                    <select name="re_tread" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                    <select name="re_tread" class="w-40 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                         <option value="{{ $stint->re_tread }}" @if(\Request::get('re_tread') == '0') selected @endif > {{ $stint->re_tread }}</option>
                         @for($i = 1350; $i <= 1400; $i=$i+5)
                         <option value="{{$i}}">{{$i}}</option>
@@ -221,7 +221,7 @@
                         </select>
                         <span>　秒　</span>
                     </div>
-                    <div class="flex ml-00 ml-8">
+                    <div class="flex ml-00 ml-4">
                         <div>
                         <x-label for="laps" value="Lap数" class="mt-0"/>
                         {{-- <x-input id="number_of_sub" class="bg-gray-100 block mt-1 w-full" id="number_of_sub" type="text" name="number_of_sub" :value="old('number_of_sub')" required  /> --}}
@@ -248,7 +248,7 @@
                     </div>
                     <div class="mr-4">
                         <x-label for="min_rev" value="最低回転数" class="mt-0"/>
-                        <select name="min_rev" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <select name="min_rev" class="w-20 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->min_rev }}" @if(\Request::get('max_rev') == '0') selected @endif >{{ $stint->min_rev }}</option>
                             @for($i = 6500; $i <= 9000; $i=$i+100)
                             <option value="{{$i}}">{{$i}}</option>
@@ -276,8 +276,8 @@
                 </div>
                 <div class="ml-2 mr-4 flex">
                     <div class="mr-2">
-                        <x-label for="fr_sprocket" value="エンジン側スプロケ" class="mt-00"/>
-                        <select name="fr_sprocket" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <x-label for="fr_sprocket" value="フロントスプロケ" class="mt-00"/>
+                        <select name="fr_sprocket" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->fr_sprocket }}" @if(\Request::get('fr_sprocket') == '0') selected @endif >{{ $stint->fr_sprocket }}</option>
                             @for($i = 8; $i <= 12; $i++)
                             <option value="{{$i}}">{{$i}}</option>
@@ -285,8 +285,8 @@
                         </select>
                     </div>
                     <div class="mr-2">
-                        <x-label for="re_sprocket" value="シャフト側スプロケ" class="mt-00"/>
-                        <select name="re_sprocket" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <x-label for="re_sprocket" value="リアスプロケ" class="mt-00"/>
+                        <select name="re_sprocket" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->re_sprocket }}" @if(\Request::get('re_sprocket') == '0') selected @endif >{{ $stint->re_sprocket }}</option>
                             @for($i = 75; $i <= 90; $i++)
                             <option value="{{$i}}">{{$i}}</option>
@@ -295,7 +295,7 @@
                     </div>
                     <div>
                         <x-label for="stabilizer" value="スタビ" class="mt-00"/>
-                        <select name="stabilizer" class="w-32 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
+                        <select name="stabilizer" class="w-24 bg-gray-100 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" type="text">
                             <option value="{{ $stint->stabilizer }}">{{ $stint->stabilizer }}</option>
                             <option value="0度">0度</option>
                             <option value="30度">30度</option>

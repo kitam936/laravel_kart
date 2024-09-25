@@ -4,7 +4,7 @@
             Engine詳細
         </h2>
     <form>
-        <div class="md:flex md:ml-20">
+        <div class="flex md:ml-20">
         <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $engine->id }}"/>
         <x-input type="hidden" id="engine_id" name="engine_id" value="{{ $engine->id }}"/>
         <div class="ml-2 ">
@@ -68,7 +68,7 @@
             </div>
 
 
-            <div class="flex justify-between">
+            <div class="ml-2 flex justify-between">
             <div class="p-2 w-1/2 mt-2 flex md:ml-60">
                 <div class="md:ml-2 md:ml-4">
                     <button type="button" class="w-40 h-8 text-sm bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('engine_edit',['engine'=>$engine->id])}}'" >編集</button>

@@ -13,7 +13,7 @@
             <div class="flex" >
                 <div class="mb-2 ml-00 md:flex mb-4">
                     {{--  <label class="items-center text-sm mt-2 text-gray-800 leading-tight" >エリア　</label>  --}}
-                    <select class="w-32 h-8 rounded text-sm pt-1" id="ar_id" name="ar_id"  class="border" >
+                    <select class="w-40 h-8 rounded text-sm pt-1" id="ar_id" name="ar_id"  class="border" >
                     <option value="" @if(\Request::get('ar_id') == '0') selected @endif >全エリア</option>
                     @foreach ($areas as $area)
                         <option value="{{ $area->id }}" @if(\Request::get('ar_id') == $area->id) selected @endif >{{ $area->area_name }}</option>
@@ -24,14 +24,14 @@
                 </div>
                 <div class="flex mb-2 md:flex mb-4">
                          {{-- <label class="items-center ml-2 mr-1 text-sm mt-2 text-gray-800 leading-tight" >検索</label> --}}
-                        <input class="w-44 h-8 ml-0 md:ml-4 rounded text-sm pt-1" id="user_name" placeholder="Name検索" name="user_name"  class="border">
+                        <input class="w-40 h-8 ml-0 md:ml-4 rounded text-sm pt-1" id="user_name" placeholder="Name検索" name="user_name"  class="border">
 
                 <div class="ml-2 md:ml-4">
-                    <button type="button" class="w-20 h-8 text-sm  bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('memberlist') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
+                    <button type="button" class="w-20 h-8 text-sm  bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('memberlist') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
                 </div>
                 @if($login_user->role_id == 1)
                 <div class="ml-2 md:ml-4">
-                    <button type="button" class="w-20 h-8 text-sm  bg-green-500 text-white ml-2 hover:bg-green-600 rounded" onclick="location.href='{{ route('role_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">Role</button>
+                    <button type="button" class="w-20 h-8 text-sm  bg-green-500 text-white ml-0 hover:bg-green-600 rounded" onclick="location.href='{{ route('role_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">Role</button>
                 </div>
                 @endif
 

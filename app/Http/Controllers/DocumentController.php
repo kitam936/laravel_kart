@@ -104,18 +104,57 @@ class DocumentController extends Controller
 
     }
 
+    public function data_download($id)
+    {
+        $stint = Stint::findorfail($id);
+        if(!empty($stint->filename)){
+            $file_path1 = 'public/data/'.$stint->filename;
+            $mimeType1 = Storage::mimeType($file_path1);
+            $headers1 = [['Content-Type' =>$mimeType1]];
+            // dd($dl_filename1,$file_path1,$user_role);
+            return Storage::download($file_path1,  $stint->filename, $headers1);
+        }
+    }
+
+    // public function data_upload(Request $request)
+    // {
+    //     $stint_id = $request->stint_id;
+    //     $filename = $request->file('files');
+    //     if(!is_null($filename)){
+    //         foreach($filename as $DocFile){
+    //             $fileNameToStore = UploadService::upload($DocFile, $stint_id);
+    //             $isExist = Stint::where('filename',$fileNameToStore)
+    //                 ->exists();
+    //                 // dd($fileNameToStore,$isExist);
+    //             if(!$isExist)
+    //             {
+    //                 $stint = Stint::findorfail($request->stint_id);
+    //                 $stint->filename=$fileNameToStore;
+    //                 // dd($document->event_id,$document->doc_title,$document->doc_information,$document->doc_filename);
+    //                 $stint->save();
+    //                 return to_route('my_stint_show',['stint'=>$stint_id])->with(['message'=>'Dataをアップロードしました','status'=>'info']);
+    //             }else{
+    //                 return to_route('stint_data_edit',['stint'=>$request->stint_id])->with(['message'=>'そのDataは既にアップロードされています','status'=>'alert']);
+    //             };
+    //         }
+    //     }else{
+    //         return to_route('stint_data_edit',['stint'=>$request->stint_id])->with(['message'=>'Dataが選択されていません','status'=>'info']);
+    //     }
+    // }
+
     public function data_upload(Request $request)
     {
         $stint_id = $request->stint_id;
-        $DocFiles = $request->file('files');
-        if(!is_null($DocFiles)){
-            foreach($DocFiles as $DocFile){
+        $stint_filename = Stint::findorfail($stint_id)->filename;
+        $file_path = 'public/data/'.$stint_filename;
+        $filename = $request->file('files');
+        if(!is_null($filename)){
+            foreach($filename as $DocFile){
                 $fileNameToStore = UploadService::upload($DocFile, $stint_id);
-                $isExist = Stint::where('filename',$fileNameToStore)
-                    ->exists();
-                    // dd($fileNameToStore,$isExist);
-                if(!$isExist)
+                   // dd($fileNameToStore,$isExist);
+                if((!empty($fileNameToStore))&&(Storage::exists($file_path)))
                 {
+                    Storage::delete($file_path);
                     $stint = Stint::findorfail($request->stint_id);
                     $stint->filename=$fileNameToStore;
                     // dd($document->event_id,$document->doc_title,$document->doc_information,$document->doc_filename);
@@ -130,18 +169,6 @@ class DocumentController extends Controller
         }
     }
 
-
-    public function data_download($id)
-    {
-        $stint = Stint::findorfail($id);
-        if(!empty($stint->filename)){
-            $file_path1 = 'public/data/'.$stint->filename;
-            $mimeType1 = Storage::mimeType($file_path1);
-            $headers1 = [['Content-Type' =>$mimeType1]];
-            // dd($dl_filename1,$file_path1,$user_role);
-            return Storage::download($file_path1,  $stint->filename, $headers1);
-        }
-    }
 
     public function data_destroy(Request $request, $id)
     {
