@@ -39,8 +39,9 @@
                             <div>
                                 <h2 class="mt-2 text-xl font-semibold text-gray-900">Kart Meeting</h2>
                                 <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-                                    Kart Meeting は RacingKartドライバー同士の情報共有サイトです<br>
-                                    各サーキットにおけるタイム、セッティング情報を共有できればと思います。<br><br>
+                                    Kart Meeting は <br><br>
+                                    RacingKartの各サーキットにおけるタイム、セッティング等の情報交換サイトです。<br><br>
+                                    ”こんなコンディションではどんなセッティングがいいんだろうか？”<br>と悩んだ時に参考になればと思います。<br><br>
                                     自分のマシンのメンテナンス情報も管理できます。
 
 

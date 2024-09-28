@@ -33,7 +33,7 @@ class StoreStintRequest extends FormRequest
             'laps' => ['required', 'numeric', 'between:1,200'],
             'upper_of_time' => ['required', 'numeric'],
             'bottom_of_time' => ['required', 'numeric'],
-            // 'dry_wet' => ['required'],
+            'dry/wet' => ['required'],
             'image'=>['image|mimes:jpg,jpeg,png|max:2048'],
             'files.*.image' => ['required|image|mimes:jpg,jpeg,png|max:2048'],
 

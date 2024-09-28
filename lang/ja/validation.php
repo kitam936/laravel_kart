@@ -178,6 +178,6 @@ return [
         'eg_maint_info' => 'メンテナンス内容',
         'ch_maint_category_id' =>'メンテナンスカテゴリー',
         'maint_info' => 'メンテナンス内容',
-
+        'dry/wet' => '路面',
     ]
 ];

@@ -63,13 +63,28 @@ class MyTireController extends Controller
         $tires = DB::table('tires')
         ->get();
 
+        // $stints = DB::table('stints')
+        // ->join('my_tires','my_tires.id','=','stints.my_tire_id')
+        // ->join('tires','tires.id','=','my_tires.tire_id')
+        // ->join('circuits','circuits.id','=','stints.cir_id')
+        // ->where('stints.my_tire_id' ,$id)
+        // ->select('stints.id','stints.start_date','stints.my_tire_id','my_tires.tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.distance','stints.best_time','circuits.cir_name')
+        // ->orderBy('stints.start_date','desc')
+        // ->get();
+
         $stints = DB::table('stints')
         ->join('my_tires','my_tires.id','=','stints.my_tire_id')
         ->join('tires','tires.id','=','my_tires.tire_id')
         ->join('circuits','circuits.id','=','stints.cir_id')
         ->where('stints.my_tire_id' ,$id)
-        ->select('stints.id','stints.start_date','stints.my_tire_id','my_tires.tire_id','my_tires.tire_id','tires.tire_name','stints.laps','stints.distance','stints.best_time','circuits.cir_name')
+        ->select('circuits.cir_name')
+        ->selectRaw('DATE_FORMAT(stints.start_date, "%Y%m%d") as date')
+        ->selectRaw('SUM(laps) as laps')
+        ->selectRaw('SUM(distance) as distance')
+        ->groupBy('date','circuits.cir_name')
+        ->orderBy('date','desc')
         ->get();
+
 
         $stints_total = DB::table('stints')
         ->where('stints.my_tire_id' ,$id)

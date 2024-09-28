@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold mb-2 text-xl text-gray-800 leading-tight">
-            Stint_List
+            Stint List
         </h2>
-        <div class="ml-4 md:ml-13 text-indigo-500">
+        {{-- <div class="ml-4 md:ml-13 text-indigo-500">
             ※BestTime　をクリックしてStint内容の確認、Dataダウンロード<br>
             　Member名、サーキット名　をクリックして詳細表示ができます。
-        </div>
+        </div> --}}
 
         <form method="get" action="{{ route('stint_list')}}" class="mt-1">
             <x-flash-message status="session('status')"/>
@@ -17,6 +17,13 @@
                 @foreach ($circuits as $circuit)
                     <option value="{{ $circuit->id }}" @if(\Request::get('cir_id') == $circuit->id ) selected @endif >{{ $circuit->cir_name  }}</option>
                 @endforeach
+            </select>
+            <select id="dry_wet" name="dry_wet" class="w-32 h-8 rounded text-sm pt-1 border mr-2 " type="text">
+                <option value="" @if(\Request::get('dry_wet') == '0') selected @endif >路面</option>
+                {{-- <option value="dry">dry</option> --}}
+                <option value="dry" @if(\Request::get('dry_wet') == "dry") selected @endif>dry</option>
+                <option value="wet" @if(\Request::get('dry_wet') == "wet") selected @endif>wet</option>
+                {{-- <option value="wet">wet</option> --}}
             </select>
             </div>
 
@@ -63,22 +70,24 @@
                 @endforeach
             </select>
             </div>
-            {{-- <span class="items-center text-sm mt-2 text-gray-800 dark:text-gray-200 leading-tight" >※期間を選択してください　　　</span>
-            <div class="flex">
-                <div>
-                    <x-input id="from_date" class="block mt-1 w-full" id="from_date" type="text" name="from_date" :value="old('from_date')" required  />
-                </div>
-                <div>
 
-                    <x-input id="to_date" class="block mt-1 w-full" id="to_date" type="text" name="to_date" :value="old('to_date')" required  />
-                </div>
-            </div> --}}
+            <select id="sort" name="sort" class="w-32 h-8 rounded text-sm pt-1 border mr-2 mb-2" type="text">
+                <option value="" @if(\Request::get('sort') == '0') selected @endif >並び順</option>
+                {{-- <option value="dry">dry</option> --}}
+                <option value="1" @if(\Request::get('sort') == "1") selected @endif>日付順</option>
+                <option value="2" @if(\Request::get('sort') == "2") selected @endif>Time順</option>
+                {{-- <option value="wet">wet</option> --}}
+            </select>
+
         <div class="flex">
             <div class="ml-0 ">
                 <button type="button" class="w-40 h-8 bg-indigo-500 text-white ml-0 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('stint_list') }}'" class="mb-2 ml-2 text-right text-black bg-indigo-300 border-0 py-0 px-2 focus:outline-none hover:bg-indigo-300 rounded ">全表示</button>
             </div>
-            <div class="ml-4 mt-0 md:ml-24 md:mt-0">
-                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('StintCSV_download') }}'" >StintDataダウンロード</button>
+            {{-- <div class="ml-0 ml-2 md:ml-4 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white hover:bg-blue-500 rounded" onclick="location.href='{{ route('myStintCSV_download') }}'" >MyStintダウンロード</button>
+            </div> --}}
+            <div class="ml-0 ml-2 md:ml-4 md:mt-0">
+                <button type="button" class="w-40 h-8 text-sm bg-blue-400 text-white hover:bg-blue-500 rounded" onclick="location.href='{{ route('stint_DL') }}'" >csvダウンロード</button>
             </div>
         </div>
         </form>
@@ -88,6 +97,7 @@
     </x-slot>
 
     <div class="py-0 border">
+        　　※BestTimeクリックでStint詳細表示・ロガーDataダウンロード
         <div class=" mx-auto sm:px-4 lg:px-4 border ">
             {{-- <input type="hidden" id="evt_id" name="evt_id" value="{{ $event->id }}"/> --}}
             <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
@@ -120,7 +130,18 @@
                 </tbody>
 
             </table>
-            {{  $stints->links()}}
+            {{-- {{  $stints->links()}} --}}
+            {{  $stints->appends([
+                'cir_id'=>\Request::get('cir_id'),
+                'dry_wet'=>\Request::get('dry_wet'),
+                'kart_id'=>\Request::get('kart_id'),
+                'engine_id'=>\Request::get('engine_id'),
+                'tire_id'=>\Request::get('tire_id'),
+                'temp_id'=>\Request::get('temp_id'),
+                'humi_id'=>\Request::get('humi_id'),
+                'road_temp_id'=>\Request::get('road_temp_id'),
+                'sort'=>\Request::get('sort'),
+            ])->links()}}
         </div>
     </div>
 
@@ -164,6 +185,17 @@
             humi.addEventListener('change', function(){
             this.form.submit()
             })
+
+            const dry_wet = document.getElementById('dry_wet')
+            dry_wet.addEventListener('change', function(){
+            this.form.submit()
+            })
+
+            const sort = document.getElementById('sort')
+            sort.addEventListener('change', function(){
+            this.form.submit()
+            })
+
 
             const from_date = document.getElementById('from_date')
             from_date.addEventListener('change', function(){

@@ -109,7 +109,7 @@
         <table class="md:w-full bg-white table-auto w-full text-center whitespace-no-wrap">
             <thead>
                 <tr>
-                    <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th>
+                    {{-- <th class="w-1/13 md:1/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">No</th> --}}
                     <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">走行日</th>
                     <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">サーキット</th>
                     <th class="w-3/13 md:3/13 md:px-4 py-1 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Laps</th>
@@ -130,11 +130,11 @@
                 @foreach ($stints as $stint)
 
                 <tr>
-                    <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('stint_show',['stint'=>$stint->id]) }}" >{{ $stint->id }} </a></td>
-                    <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($stint->start_date)->format("y/m/d") }} </td>
+                    {{-- <td class="w-1/13 md:1/13 text-sm md:px-4 py-1 text-indigo-500 text-center"> <a href="{{ route('stint_show',['stint'=>$stint->id]) }}" >{{ $stint->id }} </a></td> --}}
+                    <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ \Carbon\Carbon::parse($stint->date)->format("y/m/d") }} </td>
                     <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->cir_name }} </td>
                     <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->laps }} </td>
-                    <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ $stint->distance/1000 }}km </td>
+                    <td class="w-3/13 md:3/13 text-sm md:px-4 py-1 text-center"> {{ floor($stint->distance/1000) }}km </td>
                 @endforeach
 
             </tbody>
