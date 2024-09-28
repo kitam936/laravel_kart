@@ -4,7 +4,7 @@
             Stint詳細
         </h2>
     <form>
-        <div class="flex md:ml-20">
+        <div class="flex md:ml-0">
         <div class="ml-0 md:ml-4">
             <button type="button" class="w-32 h-8 text-sm bg-indigo-500 text-white ml-2 hover:bg-indigo-600 rounded" onclick="location.href='{{ route('stint_list') }}'" >StintList</button>
         </div>
@@ -13,9 +13,14 @@
         </div>
         </div>
         @if(!empty($stint->filename))
-        <div class="ml-0 mt-2 md:ml-4 md:mt-0">
+        <div class="ml-0 mt-2 md:ml-4 md:mt-2">
             <x-input type="hidden" id="stint_id" name="stint_id" value="{{ $stint_id }}"/>
             <button type="button" class="w-32 h-8 text-sm bg-blue-400 text-white ml-2 hover:bg-blue-500 rounded" onclick="location.href='{{ route('stint_data_download',['stint'=>$stint_id]) }}'" >ロガーData DL</button>
+        </div>
+        @endif
+        @if(empty($stint->filename))
+        <div class="text-red-500 mt-4">
+        　　　　　　　※ロガーDataはアップロードされていません
         </div>
         @endif
 

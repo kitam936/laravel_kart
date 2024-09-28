@@ -24,7 +24,7 @@ class StintController extends Controller
 {
     public function my_stint_list(Request $request)
     {
-        $stints = DB::table('stints')
+        $stints0 = DB::table('stints')
         ->join('my_engines','my_engines.id','=','stints.my_engine_id')
         ->join('engines','engines.id','=','my_engines.engine_id')
         ->join('my_karts','my_karts.id','=','stints.my_kart_id')
@@ -41,21 +41,34 @@ class StintController extends Controller
         ->where('stints.temp','LIKE','%'.($request->temp_id).'%')
         ->where('stints.road_temp','LIKE','%'.($request->road_temp_id).'%')
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
+        ->where('stints.dry_wet','LIKE','%'.($request->dry_wet).'%')
         ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
-        'stints.laps','stints.max_rev','stints.min_rev','makers.maker_name','engines.engine_name','tires.tire_name')
-        ->orderBy('stints.start_date','desc')
-        ->paginate(50);
+        'stints.laps','stints.max_rev','stints.min_rev','makers.maker_name','engines.engine_name','tires.tire_name');
+        // ->orderBy('stints.start_date','desc')
+        // ->paginate(50);
+
+        if(($request->sort == 0) || ($request->sort == 1))
+        {
+            $stints=$stints0->orderBy('stints.start_date','desc')
+            ->paginate(50);
+        }
+        if(($request->sort == 2) )
+        {
+            $stints=$stints0->orderBy('stints.best_time')
+            ->paginate(50);
+        }
 
         $circuits = DB::table('circuits')->get();
 
         $karts = DB::table('makers')
-        ->get();
+        ->orderBy('makers.sort_order')->get();
 
         $tires = DB::table('tires')
-        ->get();
+        ->orderBy('tires.sort_order')->get();
 
         $engines = DB::table('engines')
+        ->orderBy('engines.sort_order')
         ->get();
 
         $temps = DB::table('temps')
@@ -87,12 +100,13 @@ class StintController extends Controller
         ->where('stints.temp','LIKE','%'.($request->temp_id).'%')
         ->where('stints.road_temp','LIKE','%'.($request->road_temp_id).'%')
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
+        ->where('stints.dry_wet','LIKE','%'.($request->dry_wet).'%')
         ->selectRaw('SUM(stints.laps) as laps')
         ->selectRaw('COUNT(stints.id) as number_of_laps')
         ->get();
 
         // dd($road_temps);
-        // dd($stints,$circuits,$engines,$karts,$tires,$temps,$road_temps,$humis);
+        // dd($request->dry_wet,$stints,$circuits,$engines,$karts,$tires,$temps,$road_temps,$humis);
         return view('stints.my_stint_list',compact('stints','circuits','karts','tires','engines','num_of_laps','temps','road_temps','humis'));
     }
 
@@ -379,7 +393,7 @@ class StintController extends Controller
     }
     public function stint_list(Request $request)
     {
-        $stints = DB::table('stints')
+        $stints0 = DB::table('stints')
         ->join('users','users.id','=','stints.user_id')
         ->join('my_engines','my_engines.id','=','stints.my_engine_id')
         ->join('engines','engines.id','=','my_engines.engine_id')
@@ -396,21 +410,35 @@ class StintController extends Controller
         ->where('stints.temp','LIKE','%'.($request->temp_id).'%')
         ->where('stints.road_temp','LIKE','%'.($request->road_temp_id).'%')
         ->where('stints.humidity','LIKE','%'.($request->humi_id).'%')
+        ->where('stints.dry_wet','LIKE','%'.($request->dry_wet).'%')
         // ->whereDate('stints.start_date', 'LIKE','%'.$request['from_date'].'%')
         ->select('stints.id as stint_id','stints.user_id','users.name','stints.start_date','circuits.cir_name','areas.area_name','stints.best_time',
-        'stints.laps','stints.max_rev','stints.min_rev','stints.cir_id')
-        ->orderBy('stints.best_time')
-        ->paginate(50);
+        'stints.laps','stints.max_rev','stints.min_rev','stints.cir_id');
+         // ->orderBy('stints.best_time')
+        // ->paginate(50);
+
+        if(($request->sort == 0) || ($request->sort == 1))
+        {
+            $stints=$stints0->orderBy('stints.start_date','desc')
+            ->paginate(50);
+        }
+        if(($request->sort == 2) )
+        {
+            $stints=$stints0->orderBy('stints.best_time')
+            ->paginate(50);
+        }
+
 
         $circuits = DB::table('circuits')->get();
 
         $karts = DB::table('makers')
-        ->get();
+        ->orderBy('makers.sort_order')->get();
 
         $tires = DB::table('tires')
-        ->get();
+        ->orderBy('tires.sort_order')->get();
 
         $engines = DB::table('engines')
+        ->orderBy('engines.sort_order')
         ->get();
 
         $temps = DB::table('temps')

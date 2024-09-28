@@ -173,6 +173,10 @@ Route::post('eg_category_destroy/{category}', [MainteContoroller::class, 'eg_des
 
 Route::get('myStintCSV_download', [DataController::class, 'myStintCSV_download'])->name('myStintCSV_download');
 Route::get('StintCSV_download', [DataController::class, 'StintCSV_download'])->name('StintCSV_download');
+Route::get('stint_DL', [DataController::class, 'stint_DL'])->name('stint_DL');
+Route::get('StintCSV_download2', [DataController::class, 'StintCSV_download2'])->name('StintCSV_download2');
+Route::get('mystint_DL', [DataController::class, 'mystint_DL'])->name('mystint_DL');
+Route::get('myStintCSV_download2', [DataController::class, 'myStintCSV_download2'])->name('myStintCSV_download2');
 });
 
 require __DIR__.'/auth.php';

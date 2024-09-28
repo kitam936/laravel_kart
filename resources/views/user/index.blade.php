@@ -71,7 +71,7 @@
             </table>
             {{  $users->appends([
                 'ar_id'=>\Request::get('ar_id'),
-                'role_id'=>\Request::get('role_id'),
+                // 'role_id'=>\Request::get('role_id'),
                 'user_name'=>\Request::get('user_name'),
             ])->links()}}
         </div>
@@ -82,10 +82,10 @@
 
 
         <script>
-            const role = document.getElementById('role_id')
-            role.addEventListener('change', function(){
-            this.form.submit()
-            })
+            // const role = document.getElementById('role_id')
+            // role.addEventListener('change', function(){
+            // this.form.submit()
+            // })
 
             const area = document.getElementById('ar_id')
             area.addEventListener('change', function(){
